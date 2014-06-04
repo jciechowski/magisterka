@@ -310,7 +310,7 @@
 % \end{figure} 
 % Odrzucamy trzy krawędzie zewnętrznej ściany \textit{H} a następnie rozłączamy każdą krawędź w jej bliskim sąsiedztwie aby utworzyć zbiór \textit{n = ($\frac{3k}{n}$) - 3 + k  - 3} odcinków. Żadne dwa z \textit{k - 3} małych odcinków nie są widoczne z jednego punktu więc \textit{k - 3} punktów jest potrzebnych aby strzec taki zbiór. Możemy łatwo sprawdzić, że \textit{k - 3} punktów jest również wystarczające z czego wynika, ze \textit{k - 3 = $\floor{\frac{2n - 3}{5}}$} co kończy dowód twierdzenia \ref{straznicy strzezenie}.
 
-% \section{Oświetlanie odcinków}
+% \section{Oświetlanie odcinków}\label{oświetlanie odcinków}
 % \subsection{Wprowadzenie}
 % Kolejną wariacją strzeżenie odcinków jest ich podświetlanie. Tym razem aby strzec odcinek wymagane jest jego podświetlenie. Należy zwrócić uwagę na fakt, że punkt na odcinku może zostać podświetlony również przez promień padający na niego z drugiej strony odcinka.
 
@@ -382,8 +382,21 @@
 \chapter{K-nadajniki}
 \section{K-Nadajniki}
 \subsection{Wprowadzenie}
+Ilość sieci wifi cały czas rośnie, zarówno w naszych domach jak i w ogólnodostępnych miejscach. Fabila-Monroy, Aichholzer oraz inni zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy nadajnik o nieskończonym zasięgu oraz możliwości przebicia \textit{k} ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. 
+\todo{To nie jest definicja, zmienić albo nazwę albo tekst żeby brzmiało jak definicja}
+\begin{Definicja}
+    Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele nadajników jest potrzebnych oraz koniecznych aby pokryć cały obszar?
+  \end{Definicja}  
+Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki (strażnicy, którzy nie widzą przez ściany).
+\\W wypadku, gdy wymagamy strzeżenia całej płaszczyzny nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
 
-
+\section{Pokrycie płaszczyzny z przeszkodami}
+\subsection{Prostopadłe odcinki}
+W tym podrozdziale przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni \todo{odnośnik do bibliografi} dowiódł, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasem jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. 
+\indent Ballinger i inni \todo{odnośnik do biblio} rozszerzyli to ograniczenie dla k-najdaników.
+\begin{Definicja}
+  $\ceil{\frac{5n+6}{12}}$ 1-nadajników jest zawsze wystarczających a $\ceil{\frac{n+1}{4}}$ czasami koniecznych aby pokryć całą płaszczyznę z n rozłącznymi odcinkami prostopadłymi.
+\end{Definicja}
 
 %%\summary
 %%
@@ -411,17 +424,17 @@
 %%\chapter{Tytuł załącznika}
 %%
 %%Załącznik…
-%\begin{bibdiv}
-%\begin{biblist}
-%
+% \begin{bibdiv}
+% \begin{biblist}
+
 %  \bibselect{literatura}
 %   Joseph O'Rourke - Art gallery theorems and algorithms
 %  \\*Journal of Combinatorial Theory 18, 39-41 (1975)
 %  \\*Aldo Laurentini - Guardin the walls of an art gallery (The Visual Computer, 1999)
-%  	
-%
-%\end{biblist}
-%\end{bibdiv}
+%  \\*. J. Czyzowicz, E. Rivera-Campo, N. Santoro, J. Urrutia, and J. Zaks. Guarding rectangular art galleries. Discrete Applied Math, 50:149–157, 1994. 
+
+% \end{biblist}
+% \end{bibdiv}
 
 % spis tabel
 %\listoftables
