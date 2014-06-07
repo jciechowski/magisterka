@@ -394,9 +394,62 @@ Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki 
 \subsection{Prostopadłe odcinki}
 W tym podrozdziale przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni \todo{odnośnik do bibliografi} dowiódł, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasem jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. 
 \indent Ballinger i inni \todo{odnośnik do biblio} rozszerzyli to ograniczenie dla k-najdaników.
-\begin{Definicja}
+\begin{Definicja} \label{ograniczenie zbiór odcinków prostopadłych}
   $\ceil{\frac{5n+6}{12}}$ 1-nadajników jest zawsze wystarczających a $\ceil{\frac{n+1}{4}}$ czasami koniecznych aby pokryć całą płaszczyznę z n rozłącznymi odcinkami prostopadłymi.
 \end{Definicja}
+\textit{Dowód.} Łatwo ustalić dolną granicę ponieważ pojedynczy 1-nadajnik może pokryć co najwyżej \textit{n + 1} regionów. $\ceil{\frac{n+1}{4}}$ 1-nadajników potrzebujemy dla \textit{n} lini równoległych.
+\\------
+\\------
+\\------
+\\------
+\\------
+\todo{Rysunek}
+\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
+\begin{itemize}
+  \item ze zbioru wszystkich odcinków \textit{S} usuń odcinki niezależne
+  \item rozmieść 0-nadajniki w pozostałych odcinkach
+  \item zwiększamy zasięg przekaźników o jeden
+\end{itemize}
+
+W pierwszym kroku przedłużamy wszystkie odcinki, dopóki się nie przetną lub nie staną się półprostymi. Po tym kroku płaszczyzna została podzielona na \textit{n + 1} ścian. Następnie tworzymy graf widzialności \textit{G(S)}, w którym każdy odcinek ze zbioru \textit{S} jest wierzchołkiem grafu. Krawędzie między wierzchołkami tworzymy jeżeli dwa odcinki \textit{s} oraz \textit{t} są słabo widzialne, tzn. istnieją punkty \textit{p} należący do odcinka \textit{s} oraz \textit{q} należący do odcinka \textit{t}, które połączone odcinkiem nie przecinają żadnego innego odcinka ze zbioru \textit{S}.
+\todo{rysunek}
+
+\begin{Lemat}\label{0-1-nadajniki}
+  Jeżeli I jest niezależnym zbiorem w grafie G(S) a T jest zbiorem 0-nadajników, które pokrywają całą płaszczyznę S - I, to T jest również zbiorem 1-nadajników, które pokrywają całą płaszczyznę S.
+\end{Lemat}
+
+\textit{Dowód.} Załóżmy, że 0-nadajnik w punkcie \textit{p} pokrywa punkt \textit{q} na płąszczyźnie \textit{S - I}. Odcinek \textit{pq} nie może przecinać dwóch lub więcej odcinków ze zbioru \textit{I} ponieważ wtedy takie odcinki nie byłyby niezależne. Jednoczesnie, odcinek \textit{pq} nie przecina żadnego odcinka ze zbioru \textit{S - I} a więc 1-nadajnik w punkcie \textit{p} pokrywa \textit{q} na płaszczyźnie \textit{S}.
+\\\indent Aby uzyskać duży zbiór niezależny w \textit{G(S)}, pokolorujemy graf \textit{G(S)} a następnie wybierzemy najbardziej liczną klasę kolorów. Zakładamy, ze ściany powstałe przez przedłużenie odcinków w zbiorze \textit{S} są prostokątne (w przeciwnym wypadku są trójkątne a więc 4-kolorowalne) oraz, że \textit{G(S)} jest 1-planarny i 6-kolorowalny. Dowód, że 1-planarny graf jest 6-kolorowany przedstawił Ringel w 1965 roku. \todo{przypis czy coś}
+
+\begin{Definicja}
+  Grafem 1-planarnym nazywamy graf, którego każda z krawędzi może przeciąć inną krawędź co najwyżej raz.
+\end{Definicja}
+\begin{figure}[ht!]
+  \centering
+  \label{przedłużone odcinki}
+  \includegraphics{rysunki/przedluzone_odcinki.png}
+  \caption{Przedłużone odcinki S oraz graf G(S)}
+\end{figure} 
+\todo{rysunek}
+
+\begin{Lemat}
+  Jeżeli S jest zbiorem przedłużonych odcinków prostopadłych to G(S) jest \textit{1-planarny}.
+\end{Lemat}
+\textit{Dowód.} Jeżeli przedłużymy każdy odcinek zbioru \textit{S} to nie mogą się one przecinać co najwyżej w jednym punkcie ponieważ są prostopadłe. Tworząc graf \textit{G(S)} zamieniamy odcinki na wierzchołki, łącząc je krawędziami jeżeli się przecinają oraz dodatkowo łączymy odcinki, które są prostopadłe. Tak skonstruowany graf jest 1-planarny, co widać na rysunku \ref{przedłużone odcinki}
+
+Wracając do ograniczenia górnego z tw. \ref{ograniczenie zbiór odcinków prostopadłych}, wiemy, że możemy pokolorować graf \textit{G(S)} sześcioma kolorami. Najliczniejsza klasa kolorów ma więc \textit{$\frac{n}{6}$} elementów oraz tworzy zbiór niezależny \textit{I} \todo{dlaczego?}. Pozostały zbiór \textit{S - I} posiadana $\frac{5n}{6}$ odcinków a więc zgodnie z rezultatem Czyżowicza \todo{przypis do biblio} potrzeba $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników aby pokryć całą płaszczyznę. Zgodnie z lematem \ref{0-1-nadajniki} rozmieszczenie 1-nadajników w tych punktach pokrywa płaszczyznę \textit{S}.
+
+\section{Podział gilotynowy}
+Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Ścianą $S_0$ nazywamy całą płaszczyznę.
+
+\begin{Twierdzenie}
+  Dowolny podział gilotynowy możemy pokryć $\frac{n+1}{2}$ 1-nadajnikami.
+\end{Twierdzenie}
+\todo{coś tutaj wpisać, nie podoba mi się, że tw i lemat są od razu pod sobą}
+Dowód powyższego twierdzenia zaczniemy od lematu:
+\begin{Lemat}
+  Niech F będzie ścianą podziału gilotynowego S. Jeżeli każda inna ściana, która dzieli krawędź z F, posiada wewnątrz nadajnik to taki zbiór nadajników pokrywa całe F.
+\end{Lemat}
 
 %%\summary
 %%
