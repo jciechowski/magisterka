@@ -101,7 +101,7 @@
 % \begin{Lemat}\label{t trójkątów triangulacja}
 %   Jeżeli wielokąt P posiada h dziur oraz n krawędzi (zarówno krawędzi dziur jak i własnych, zewnętrznych) to po triangulacji będzie miał t = n + 2h - 2 trójkątów.
 % \end{Lemat}
-% \textit{Dowód.} Niech zęwnętrzna krawędź wielokąta \textit{P} posiada $n_0$ krawędzi oraz niech \textit{i-ta} dziura posiada $n_i$ krawędzi wtedy \textit{n = $n_0$ + $n_1$ + \ldots + $n_i$}. W takim wypadku suma wewnętrznych kątów zewnętrznej krawędzi wynosi ($n_0$ - 2)*180 stopni a suma kątów zewnętrznych jesst równa ($n_i$ + 2)*180.
+% \indent Niech zęwnętrzna krawędź wielokąta \textit{P} posiada $n_0$ krawędzi oraz niech \textit{i-ta} dziura posiada $n_i$ krawędzi wtedy \textit{n = $n_0$ + $n_1$ + \ldots + $n_i$}. W takim wypadku suma wewnętrznych kątów zewnętrznej krawędzi wynosi ($n_0$ - 2)*180 stopni a suma kątów zewnętrznych jesst równa ($n_i$ + 2)*180.
 % \todo{rysunek bo niewiadomo o co chodzi}
 % Taki wynik można zapisać jako sumę:
 % \\\textit{180(($n_0$ - 2) + ($n_1$ + 2) + \ldots + ($n_k$ +2)) = 180t $\implies$ t = n + 2i - 2}
@@ -111,7 +111,7 @@
 %   Dla wielokąta o n wierzchołkach oraz h dziurach $\floor{\frac{n+2h}{3}}$ = $\ceil{\frac{t}{3}}$ strażników kombinatorycznych jest wystarczających aby dominować każdą triangulację wielokąta.
 % \end{Twierdzenie}
 
-% \textit{Dowód.} Główną ideą jest taki podział wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, aby 
+% \indent Główną ideą jest taki podział wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, aby 
 
 
 % \chapter{Strażnicy mobilni}
@@ -382,62 +382,65 @@
 \chapter{K-nadajniki}
 \section{K-Nadajniki}
 \subsection{Wprowadzenie}
-Ilość sieci wifi cały czas rośnie, zarówno w naszych domach jak i w ogólnodostępnych miejscach. Fabila-Monroy, Aichholzer oraz inni zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy nadajnik o nieskończonym zasięgu oraz możliwości przebicia \textit{k} ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. 
-\todo{To nie jest definicja, zmienić albo nazwę albo tekst żeby brzmiało jak definicja}
-\begin{Definicja}
-    Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele nadajników jest potrzebnych oraz koniecznych aby pokryć cały obszar?
-  \end{Definicja}  
-Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki (strażnicy, którzy nie widzą przez ściany).
+Ilość sieci wifi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy, Aichholzer zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy nadajnik o nieskończonym zasięgu oraz możliwości przebicia \textit{k} ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco:
+
+\textit{
+  Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele  nadajników jest potrzebnych oraz koniecznych aby pokryć cały obszar?}  
+\\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki (strażnicy, którzy nie widzą przez ściany).
 \\W wypadku, gdy wymagamy strzeżenia całej płaszczyzny nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
 
 \section{Pokrycie płaszczyzny z przeszkodami}
 \subsection{Prostopadłe odcinki}
-W tym podrozdziale przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni \todo{odnośnik do bibliografi} dowiódł, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasem jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. 
-\indent Ballinger i inni \todo{odnośnik do biblio} rozszerzyli to ograniczenie dla k-najdaników.
+W tym podrozdziale omówię wariant, w którym przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni dowiedli, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasami jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. 
+\indent Ballinger i inni rozszerzyli to ograniczenie dla k-najdaników.
 \begin{Definicja} \label{ograniczenie zbiór odcinków prostopadłych}
   $\ceil{\frac{5n+6}{12}}$ 1-nadajników jest zawsze wystarczających a $\ceil{\frac{n+1}{4}}$ czasami koniecznych aby pokryć całą płaszczyznę z n rozłącznymi odcinkami prostopadłymi.
 \end{Definicja}
-\textit{Dowód.} Łatwo ustalić dolną granicę ponieważ pojedynczy 1-nadajnik może pokryć co najwyżej \textit{n + 1} regionów. $\ceil{\frac{n+1}{4}}$ 1-nadajników potrzebujemy dla \textit{n} lini równoległych.
-\\------
-\\------
-\\------
-\\------
-\\------
-\todo{Rysunek}
-\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
+\indent Łatwo ustalić dolną granicę ponieważ pojedynczy 1-nadajnik może pokryć co najwyżej cztery z \textit{n + 1} obszarów, z czego wynika, że $\ceil{\frac{n+1}{4}}$ 1-nadajników potrzebujemy dla \textit{n} lini równoległych.
+\begin{figure}[ht!]
+  \centering
+  \includegraphics{rysunki/k_nadajniki_ogr_dolne.png}
+  \caption{1-nadajnik strzegący 4 obszarów}
+  \label{fig:ogr_dolne}
+\end{figure} 
+\\\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
 \begin{itemize}
   \item ze zbioru wszystkich odcinków \textit{S} usuń odcinki niezależne
   \item rozmieść 0-nadajniki w pozostałych odcinkach
-  \item zwiększamy zasięg przekaźników o jeden
+  \item zwiększ zasięg przekaźników o jeden
 \end{itemize}
 
-W pierwszym kroku przedłużamy wszystkie odcinki, dopóki się nie przetną lub nie staną się półprostymi. Po tym kroku płaszczyzna została podzielona na \textit{n + 1} ścian. Następnie tworzymy graf widzialności \textit{G(S)}, w którym każdy odcinek ze zbioru \textit{S} jest wierzchołkiem grafu. Krawędzie między wierzchołkami tworzymy jeżeli dwa odcinki \textit{s} oraz \textit{t} są słabo widzialne, tzn. istnieją punkty \textit{p} należący do odcinka \textit{s} oraz \textit{q} należący do odcinka \textit{t}, które połączone odcinkiem nie przecinają żadnego innego odcinka ze zbioru \textit{S}.
+W pierwszym kroku przedłużamy wszystkie odcinki, dopóki się nie przetną lub nie staną się półprostymi, jednocześnie dzieląc płaszczyznę na \textit{n + 1} ścian. Następnie tworzymy graf widzialności \textit{G(S)}, w którym każdy odcinek ze zbioru \textit{S} jest wierzchołkiem grafu. Krawędzie między wierzchołkami tworzymy jeżeli dwa odcinki \textit{s} i \textit{t} są słabo widzialne, tzn. istnieją punkty \textit{p} należący do odcinka \textit{s} oraz \textit{q} należący do odcinka \textit{t}, które połączone odcinkiem nie przecinają żadnego innego odcinka ze zbioru \textit{S}.
 \todo{rysunek}
 
 \begin{Lemat}\label{0-1-nadajniki}
   Jeżeli I jest niezależnym zbiorem w grafie G(S) a T jest zbiorem 0-nadajników, które pokrywają całą płaszczyznę S - I, to T jest również zbiorem 1-nadajników, które pokrywają całą płaszczyznę S.
 \end{Lemat}
 
-\textit{Dowód.} Załóżmy, że 0-nadajnik w punkcie \textit{p} pokrywa punkt \textit{q} na płąszczyźnie \textit{S - I}. Odcinek \textit{pq} nie może przecinać dwóch lub więcej odcinków ze zbioru \textit{I} ponieważ wtedy takie odcinki nie byłyby niezależne. Jednoczesnie, odcinek \textit{pq} nie przecina żadnego odcinka ze zbioru \textit{S - I} a więc 1-nadajnik w punkcie \textit{p} pokrywa \textit{q} na płaszczyźnie \textit{S}.
-\\\indent Aby uzyskać duży zbiór niezależny w \textit{G(S)}, pokolorujemy graf \textit{G(S)} a następnie wybierzemy najbardziej liczną klasę kolorów. Zakładamy, ze ściany powstałe przez przedłużenie odcinków w zbiorze \textit{S} są prostokątne (w przeciwnym wypadku są trójkątne a więc 4-kolorowalne) oraz, że \textit{G(S)} jest 1-planarny i 6-kolorowalny. Dowód, że 1-planarny graf jest 6-kolorowany przedstawił Ringel w 1965 roku. \todo{przypis czy coś}
+\indent Załóżmy, że 0-nadajnik w punkcie \textit{p} pokrywa punkt \textit{q} na płaszczyźnie \textit{S - I}. Odcinek \textit{pq} nie może przecinać dwóch lub więcej odcinków ze zbioru \textit{I} ponieważ wtedy takie odcinki nie byłyby niezależne. Jednoczesnie, odcinek \textit{pq} nie przecina żadnego odcinka ze zbioru \textit{S - I} a więc 1-nadajnik w punkcie \textit{p} pokrywa \textit{q} na płaszczyźnie \textit{S}.
+\\\indent Aby uzyskać największy możliwy zbiór niezależny w \textit{G(S)}, kolorujemy graf \textit{G(S)} a następnie wybierzemy najliczniejszą klasę kolorów. Zakładamy, ze ściany powstałe przez przedłużenie odcinków w zbiorze \textit{S} są prostokątne (w przeciwnym wypadku są trójkątne a więc 4-kolorowalne). 
+Tak powstały graf jest 1-planarny oraz 6-kolorowalny (Ringel, 1965).
 
 \begin{Definicja}
   Grafem 1-planarnym nazywamy graf, którego każda z krawędzi może przeciąć inną krawędź co najwyżej raz.
 \end{Definicja}
 \begin{figure}[ht!]
   \centering
-  \label{przedłużone odcinki}
-  \includegraphics{rysunki/przedluzone_odcinki.png}
-  \caption{Przedłużone odcinki S oraz graf G(S)}
+  \includegraphics[width=6.5cm]{rysunki/zbior_odcinkow.png}
+  \includegraphics[width=6.5cm]{rysunki/graf_zbioru_odcinkow.png}
+  \caption{Zbiór odcinków S oraz graf G(S). Zbiór niezależny został pogrubiony.}
+  \label{fig:przedluzone odcinki}
 \end{figure} 
 \todo{rysunek}
 
 \begin{Lemat}
   Jeżeli S jest zbiorem przedłużonych odcinków prostopadłych to G(S) jest \textit{1-planarny}.
 \end{Lemat}
-\textit{Dowód.} Jeżeli przedłużymy każdy odcinek zbioru \textit{S} to nie mogą się one przecinać co najwyżej w jednym punkcie ponieważ są prostopadłe. Tworząc graf \textit{G(S)} zamieniamy odcinki na wierzchołki, łącząc je krawędziami jeżeli się przecinają oraz dodatkowo łączymy odcinki, które są prostopadłe. Tak skonstruowany graf jest 1-planarny, co widać na rysunku \ref{przedłużone odcinki}
+\indent Jeżeli przedłużymy każdy odcinek zbioru \textit{S} to może on przecinać inny odcinek, co najwyżej w jednym punkcie, ponieważ odcinki są w stosunku do siebie równoległe bądź prostopadłe. Tworząc graf \textit{G(S)} zamieniamy odcinki na wierzchołki, łącząc je krawędziami wtedy i tylko wtedy, gdy się przecinają lub są do siebie równoległe. Tak skonstruowany graf przedstawia rysunek \ref{fig:przedluzone odcinki}
 
-Wracając do ograniczenia górnego z tw. \ref{ograniczenie zbiór odcinków prostopadłych}, wiemy, że możemy pokolorować graf \textit{G(S)} sześcioma kolorami. Najliczniejsza klasa kolorów ma więc \textit{$\frac{n}{6}$} elementów oraz tworzy zbiór niezależny \textit{I} \todo{dlaczego?}. Pozostały zbiór \textit{S - I} posiadana $\frac{5n}{6}$ odcinków a więc zgodnie z rezultatem Czyżowicza \todo{przypis do biblio} potrzeba $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników aby pokryć całą płaszczyznę. Zgodnie z lematem \ref{0-1-nadajniki} rozmieszczenie 1-nadajników w tych punktach pokrywa płaszczyznę \textit{S}.
+\indent Aby uzyskać ograniczenie górne kolorujemy graf \textit{G(S)} szcześcioma kolorami. Najliczniejsza klasa kolorów ma więc $\frac{n}{6}$ elementów oraz tworzy zbiór niezależny \textit{I}. Pozostały zbiór \textit{S - I} posiada $\frac{5n}{6}$ odcinków a więc zgodnie z rezultatem Czyżowicza potrzeba $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników, rozmieszczonych na odcinkach zbioru \textit{S - I} o tym samym kolorze. Następnie, zgodnie z lematem \ref{0-1-nadajniki} zwiększamy moc rozmieszczonych nadajników o jeden, co pozwala strzec całą płaszczyznę.
+\todo{rysunek}
+
 
 \section{Podział gilotynowy}
 Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Ścianą $S_0$ nazywamy całą płaszczyznę.
@@ -445,11 +448,51 @@ Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$
 \begin{Twierdzenie}
   Dowolny podział gilotynowy możemy pokryć $\frac{n+1}{2}$ 1-nadajnikami.
 \end{Twierdzenie}
-\todo{coś tutaj wpisać, nie podoba mi się, że tw i lemat są od razu pod sobą}
 Dowód powyższego twierdzenia zaczniemy od lematu:
-\begin{Lemat}
-  Niech F będzie ścianą podziału gilotynowego S. Jeżeli każda inna ściana, która dzieli krawędź z F, posiada wewnątrz nadajnik to taki zbiór nadajników pokrywa całe F.
-\end{Lemat}
+\begin{Lemat}\label{sasiednie sciany strzega F}
+  Niech F będzie ścianą podziału gilotynowego S. Jeżeli każda inna ściana, która dzieli krawędź z F, posiada wewnątrz 1-nadajnik to taki zbiór nadajników pokrywa całe F.
+\end{Lemat}\label{nadajniki strzega f' i f}
+\indent Rozpatrzmy odcinek $s_i$, którego dodanie tworzy ścianę \textit{F}. Przed dodaniem odcinka $s_i$, podział $S_{i-1}$ zawierał jedną ścianę, która została podzielona na dwie części \textit{F} oraz \textit{F'} przez $s_i$. 
+\begin{figure}[ht!]
+  \centering
+  \label{podzial F przez s_i}
+  \includegraphics{rysunki/podzial_F.png}
+  \caption{Ściana F oraz F' po dodaniu odcinka $s_i$}
+\end{figure} 
+\todo{rysunek}
+W dalszym procesie ściana \textit{F} nie będzie już dzielona ale podzielimy ścianę \textit{F'} uzyskujac kolejne ściany $F'_1$, \ldots, $F'_k$, takie, że $F'_j$ $\subseteq$ F' oraz $F'_j$ dzieli część odcinka $s_i$ ze ścianą \textit{F} dla każdego \textit{j $\in$ \{1,\ldots,k\}}
+\begin{figure}[ht!]
+  \centering
+  \label{podzial F' na kolejne ściany}
+  \includegraphics{rysunki/podzial_F'.png}
+  \caption{Kolejne podziały ściany F'}
+\end{figure} 
+\todo{rysunek}
+Zgodnie z lematem \ref{nadajniki strzega f' i f} 1-nadajniki umieszczone wewnątrz ścian \textit{$F'_1$, \ldots, $F'_k$} strzegą wnętrza \textit{F}. 
+\\Aby to udowodnić, tymczasowo usuniemy odcinek $s_i$. W ten sposób uzyskamy podział \textit{S'}, przedłużając odcinki, którymi wcześniej dokonaliśmy podziału ściany \textit{F'}.
+
+\begin{figure}[ht!]
+  \centering
+  \label{podzial po usunieciu si}
+  \includegraphics{rysunki/usuniete_si.png}
+  \caption{Podział płaszczyzny po usunięciu odcinka $s_i$}
+\end{figure} 
+\todo{rysunek}
+
+Po tej operacji, każda ze ścian \textit{$F'_j$} w \textit{S} powiększa się w \textit{S'} a dodatkowe części ścian sumują się do \textit{F}. Widzimy, ze każdy z 1-nadajników rozmieszczonych wewnątrz ścian \textit{$F'_j$} pokrywa przynajmniej \textit{$F'_j$} a więc razem nadajniki \textit{$F'_1$,\ldots,$F'_k$} strzegą ściany \textit{F}.
+
+\begin{figure}[ht!]
+  \centering
+  \label{pokrycie f}
+  \includegraphics{rysunki/pokrycie_f.png}
+  \caption{Nadajniki każdej ze ścian strzegące całą ścianę F}
+\end{figure} 
+\todo{rysunek}
+
+\begin{Twierdzenie}
+  Dowolny podział gilotynowy strzeże co najwyżej $\frac{n+1}{2}$ 1-nadajników.
+\end{Twierdzenie}
+\indent Rozpatrzmy graf dualny \textit{T} podziału. \textit{T} jest triangulacją o \textit{n + 1} krawędziach. Niech \textit{M} będzie maksymalnym skojarzeniem w grafie \textit{T}. Każda nieskojarzona krawędź jest incydentna tylko z krawędziami skojarzonymi ( w przeciwnym przypadku skojarzenie nie byłoby maksymalne). Niech \textit{G} będzie zbiorem 1-nadajników, uzyskanych przez rozmieszczenie ich w pierwszej skojarzonej krawędzi \textit{e $\in$ M}. W takim wypadku |\textit{G}| = |\textit{M}| $\le \frac{n+1}{2}$. Dla każdej ściany \textit{F} z \textit{S}, \textit{F} albo zawiera 1-nadajnik w \textit{G} albo wszystkie sąsiednie ściany, które dzielą krawędź z \textit{F} zawierają 1-nadajnik w \textit{G}. W pierwszym przypadku \textit{F} jest oczywiście strzeżona. Natomiast w drugim przypadku, zgodnie z lematem \ref{sasiednie sciany strzega F}, ściana \textit{F} również jest strzeżona. Dlatego \textit{G} jest zbiorem 1-nadajników, które strzegą wszystkie ściany \textit{F} o mocy co najwyżej $\frac{n+1}{2}$
 
 %%\summary
 %%
