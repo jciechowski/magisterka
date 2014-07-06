@@ -43,24 +43,30 @@
 
 \section{Problem galerii sztuki dla wielokątów prostych}
 
-\subsection{Wprowadzenie}
-Jako pierwszy problem galerii sztuki przedstawił Victor Klee w 1973, odpowiadając na prośbę Vaseka Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee było znalezienie minimalnej ilości strażników, wystarczających aby strzec wnętrze pomieszczenia galerii sztuki o kształcie n-kąta. Niedługo potem Chv\'atal zaproponował teorię, która szybko została nazwana ,,Teorią galerii sztuki Chv\'atala'', która mówi, że $\floor{\frac{n}{3}}$ strażników jest zawsze wystarczających a czasami potrzebnych aby strzec n-kąt (Chv\'atal 1975). Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń.
+% idzie do wprowadzenia
+% Jako pierwszy problem galerii sztuki przedstawił Victor Klee w 1973, odpowiadając na prośbę Vaseka Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee było znalezienie minimalnej ilości strażników, wystarczających aby strzec wnętrze pomieszczenia galerii sztuki o kształcie n-kąta. Niedługo potem Chv\'atal zaproponował teorię, która szybko została nazwana ,,Teorią galerii sztuki Chv\'atala'', która mówi, że $\floor{\frac{n}{3}}$ strażników jest zawsze wystarczających a czasami potrzebnych aby strzec n-kąt (Chv\'atal 1975). Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń.
+
 \subsection{Twierdzenie Chv\'atala (1975)}
-Zgodnie z twierdzeniem Chv\'atala (1975)\label{tw chvatala}, ilość strażników potrzebnych do strzeżenia wielokąta prostego wynosi g(n) $\le$ $\floor{\frac{n}{3}}$, gdzie g(n) jest funkcją opisującą ilość strażników wystarczających aby zawsze strzec określony n-kąt. Inaczej mówiąc g(n) strażników zawsze wystarcza a czasami jest potrzebnych aby pokryć n-kąt.
-\\Postaram się przedstawić dowód Fiska (1978), który jest znacznie prostszy od indukcyjnej wersji Chv\'atala a bazuje na trójkolorowaniu grafu. 
+Zgodnie z twierdzeniem Chv\'atala (1975)\label{tw chvatala}, ilość strażników potrzebnych do strzeżenia wielokąta prostego wynosi g(n) $\le$ $\floor{\frac{n}{3}}$, gdzie g(n) jest funkcją opisującą ilość strażników wystarczających aby zawsze strzec określony n-kąt. Inaczej mówiąc, g(n) strażników zawsze wystarcza a czasami jest potrzebnych aby pokryć n-kąt.
+\\Przedstawię dowód Fiska (1978) powyższego twierdzenia, który jest znacznie prostszy od indukcyjnej wersji Chv\'atala a bazuje na trójkolorowaniu grafu. 
+
+Pierwszym krokiem jest triangulacja wielokąta P, przez dodanie wewnętrznych przekątnych między wierzchołkami, do momentu gdy nie będzie można już dodać więcej krawędzi. 
+Dowód na to, że każdy wielokąt prosty można podzielić na trójkąty znajduje się w dodatku \ref{triangulacja}.
+Za wierzchołki i krawędzie grafu przyjmujemy odpowiednio wierzchołki i krawędzie wielokąta. Jako, że graf powstały po triangulacji jest planarny, zgodnie z twierdzeniem o czterech barwach (Appel i Haken, 1977) jest 4-kolorowalny.
+\begin{Lemat}
+Graf wielokąta prostego po triangulacji zawsze jest 3-kolorowalny.
+\end{Lemat}
 
 \begin{Definicja}
-K-kolorowanie grafu to przyporządkowanie liczby naturalnej każdemu wierzchołkowi grafu takiej, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe k.
+  \begin{figure}[ht!]
+    \centering
+    \label{podzial F' na kolejne ściany}
+    \includegraphics[width=9cm,height=6cm]{rysunki/podzial_F'.png}
+    \caption{Kolejne podziały ściany F'}
+  \end{figure} ormal{K-kolorowanie grafu} to przyporządkowanie takiej liczby naturalnej każdemu wierzchołkowi grafu G, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe K.
 \end{Definicja}
 
-\subsection{Dowód twierdzenia Chv'atala \ref{tw chvatala}}
-Pierwszym krokiem jest triangulacja wielokąta P przez dodanie wewnętrznych krawędzi między wierzchołkami, do momentu aż nie będzie można dodać więcej takich krawędzi. %słabo po polsku ;)
-Dowód na to, że każdy wielokąt prosty można podzielić na trójkąty znajduje się w dodatku \ref{triangulacja}.
-Za wierzchołki i krawędzie grafu przyjmujemy odpowiednio wierzchołki i krawędzie wielokąta. Jako, że graf jest planarny zgodnie z twierdzeniem o czterech barwach (Appel i Haken, 1977) wiemy, że jest 4-kolorowalny.
-\begin{Lemat}
-Wierzchołki wielokąta prostego po triangulacji zawsze są 3-kolorowalne.
-\end{Lemat}
-Dowód polega na indukcji po ilości trójkątów wielokąta podzielonego na trójkąty. Trójkąt jest przypadkiem bazowym - zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu dualnego danego wielokąta, który jest drzewem.
+Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt jest przypadkiem bazowym - zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu dualnego danego wielokąta, który jest drzewem.
 
 \begin{figure}[ht!]
   \centering
@@ -75,47 +81,63 @@ Z grafu dualnego usuwamy dowolny liść wraz z odpowiadającym mu trójkątem, k
     \caption{Pokolorowany wielokąt wraz z grafem dualnym}
 \end{figure} 
 Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym.
-\newpage\indent Ograniczenie g(n)$\le$$\floor{\frac{n}{3}}$ nie oznacza, że wystarczy rozmieścić strażnika na co trzecim wierzchołku. Przykład wielokąta dla którego takie rozmieszczenie nie pozwoli strzec całego wnętrza znajduje się poniżej.
+\newpage\indent Ograniczenie g(n)$\le$$\floor{\frac{n}{3}}$ nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku. 
 \begin{figure}[ht!]
   \centering
   \includegraphics{rysunki/co_trzeci.png}
-  \caption{Strażnicy na co trzecim wierzchołku, którzy nie strzegą całego wielokąta}
+  \caption{Punkt x jest niestrzeżony, przy rozmieszczeniu strażników w co trzecim wierzchołku.}
 \end{figure} 
-\todo[inline]{PRZERYSOWAĆ!}
 
 \subsection{Wielokąty z dziurami}
-Ciekawym rozwinięciem klasycznego zagadnienia galerii sztuki jest wprowadzenie dziur we wnętrzu wielokąta.
+Ciekawym rozwinięciem klasycznego zagadnienia galerii sztuki jest wprowadzenie dziur do wnętrza wielokąta.
 
 \begin{Definicja}\label{def wielokat z dziurami}
-  Wielokątem z dziurami nazywamy wielokąt P, który mieści w sobie wiele innych wielokątów $H_1$, \ldots, $H_n$ - dziury.
+  \textnormal{Wielokątem z dziurami} nazywamy wielokąt P, który mieści w sobie wiele innych wielokątów $H_1$, \ldots, $H_n$ nazywanych dziurami.
 \end{Definicja}
 Dodatkowo, żaden wielokąt nie może przecinać zarówno krawędzi wielokąta \textit{P} jak i innych wielokątów wewnętrznych $H_i$.
 
-\indent Podobnie jak w przypadku standardowych wielokątów, również dla wariantu z dziurami aby obliczyć potrzebną ilość strażników wykorzystamy triangulację.
+\indent Podobnie jak w przypadku standardowych wielokątów, również dla wariantu z dziurami, aby obliczyć potrzebną ilość strażników, wykorzystamy triangulację.
 
 \begin{Lemat}
-  Wielokąt z dziurami P można podzielić na trójkaty.
+  Każdy wielokąt P z dziurami, można podzielić na trójkaty.
 \end{Lemat}
-\todo{Dowód chyba będzie w dodatku}
 
 \begin{Lemat}\label{t trójkątów triangulacja}
-  Jeżeli wielokąt P posiada h dziur oraz n krawędzi (zarówno krawędzi dziur jak i własnych, zewnętrznych) to po triangulacji będzie miał t = n + 2h - 2 trójkątów.
+  Każdy wielokąt P o \textnormal{h} dziurach oraz \textnormal{n} krawędziach poddany triangulacji, dzieli się na \textit{t = n + 2h - 2} trójkątów.
 \end{Lemat}
-\indent Niech zęwnętrzna krawędź wielokąta \textit{P} posiada $n_0$ krawędzi oraz niech \textit{i-ta} dziura posiada $n_i$ krawędzi wtedy \textit{n = $n_0$ + $n_1$ + \ldots + $n_i$}. W takim wypadku suma wewnętrznych kątów zewnętrznej krawędzi wynosi ($n_0$ - 2)*180 stopni a suma kątów zewnętrznych jesst równa ($n_i$ + 2)*180.
-\todo{rysunek bo niewiadomo o co chodzi}
-Taki wynik można zapisać jako sumę:
-\\\textit{180(($n_0$ - 2) + ($n_1$ + 2) + \ldots + ($n_k$ +2)) = 180t $\implies$ t = n + 2i - 2}.
-Mając ilość trójkątów, na które zostanie podzielony wielokąt \textit{P}, możemy przejść do twierdzenia określającego wymaganą ilość strażników.
+\todo{rysunek}
+
+W dowodzie skorzystam z twierdzenia Eulera.
+\todo{Dowód?}
+\begin{Twierdzenie}\label{tw eulera}
+  Niech G będzie spójnym grafem planarnym o N wierzchołkach, M krawędziach oraz F ścianach. Wtedy N - M + F = 2.
+\end{Twierdzenie}
+
+Korzystając z tw. Eulera \ref{tw eulera}, V = n wierzchołków, F = t + h + 1 ścian (po jednej na każdy trójkąt oraz dziurę i ścianę zewnętrzną) a E = $\frac{3t+n}{2}$ krawędzi (trzy krawędzie na każdy trójkąt plus krawędzie zewnętrzne liczone podwójnie).  Wtedy \textit{V - E + F = 2} a więc \textit{n - $\frac{3t+n}{2}$ + t + h + 1 - 2} z czego wynika, że \textit{t = n + 2h - 2}.
+% \indent Niech zęwnętrzna krawędź wielokąta \textit{P} posiada $n_0$ krawędzi oraz niech \textit{i-ta} dziura posiada $n_i$ krawędzi wtedy \textit{n = $n_0$ + $n_1$ + \ldots + $n_i$}. W takim wypadku suma wewnętrznych kątów zewnętrznej krawędzi wynosi ($n_0$ - 2)*180 stopni a suma kątów zewnętrznych jesst równa ($n_i$ + 2)*180.
+% \todo{rysunek bo niewiadomo o co chodzi}
+% Taki wynik można zapisać jako sumę:
+% \\\textit{180(($n_0$ - 2) + ($n_1$ + 2) + \ldots + ($n_k$ +2)) = 180t $\implies$ t = n + 2i - 2}.
+
+
+Wiedząc, na ile trójkątów został podzielony wielokąt \textit{P}, możemy przejść do twierdzenia określającego wymaganą ilość strażników.
 
 \begin{Twierdzenie}[O'Rourke 1982]
   Dla wielokąta o n wierzchołkach oraz h dziurach $\floor{\frac{n+2h}{3}}$ = $\ceil{\frac{t}{3}}$ strażników kombinatorycznych jest wystarczających aby dominować każdą triangulację wielokąta.
 \end{Twierdzenie}
 
-\indent Główną ideą dowodu jest kolejne usuwanie dziur wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, poprzez łączenie ich ze ścianą zewnętrzną. Każda z dziur musi posiadać krawędź w grafie triangulacji T, która łączy ją z inną dziurą lub z zewnętrzną krawędzią wielokąta P. ,,Przecięcie'' wzdłuż takiej krawędzi połączy dziurę ze ścianą zewnętrzną lub scali dwie dziury w jedną. W każdym z tych przypadków całkowita ilość dziur zmniejszy się o jeden. Trudność polega jedynie na wyborze krawędzi z T, które pozwolą uzyskać taki podział.
+\indent Główną ideą dowodu jest kolejne usuwanie dziur wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, poprzez łączenie ich ze ścianą zewnętrzną. Każda z dziur posiada krawędź w grafie triangulacji T, która łączy ją z inną dziurą lub z zewnętrzną krawędzią wielokąta P. ,,Przecięcie'' wzdłuż takiej krawędzi połączy dziurę ze ścianą zewnętrzną lub scali dwie dziury w jedną. W każdym z tych przypadków, całkowita ilość dziur zmniejszy się o jeden. Trudność polega jedynie na wyborze krawędzi z T, które pozwolą uzyskać taki podział.
 
-\indent Niech T' będzie grafem dualny triangulacji \textit{T}. \textit{T'} jest grafem planarnym, co najwyżej trzeciego stopnia, posiadającym \textit{h} graniczących ze sobą scian \textit{$F_1$, \ldots, $F_h$}, po jednej na każdą dziurę wielokąta P. Niech $F_0$ będzie ścianą zewnętrzną. Wybieramy dowolną ścianę $F_i$, która posiada przynajmniej jedną krawędź \textit{e} ze ścianą $F_0$. Taka krawędź istnieje, ponieważ w grafie \textit{T} musi istnieć przekątna łącząca krawędź zewnętrzną wielokąta \textit{P} z dowolną dziurą - w grafie \textit{T'} jest to krawędź \textit{e}. Usunięcie \textit{e} z \textit{T'} scala \textit{$F_i$} z $F_0$, bez rozspójniania grafu.
-\todo{Rysunek}
+\indent Niech T' będzie grafem dualny triangulacji \textit{T}. \textit{T'} jest grafem planarnym, co najwyżej trzeciego stopnia, posiadającym \textit{h} graniczących ze sobą scian \textit{$F_1$, \ldots, $F_h$}, po jednej na każdą dziurę wielokąta P. Niech $F_0$ będzie ścianą zewnętrzną. Wybieramy dowolną ścianę $F_i$, która posiada przynajmniej jedną wspólną krawędź \textit{e} ze ścianą $F_0$. Taka krawędź istnieje, ponieważ w grafie \textit{T} musi istnieć przekątna łącząca krawędź zewnętrzną wielokąta \textit{P} z dowolną dziurą - w grafie \textit{T'} jest to krawędź \textit{e}. Usunięcie krawędzi \textit{e} z \textit{T'} scala \textit{$F_i$} z $F_0$, bez rozspójniania grafu.
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics{rysunki/triangulacja_dziury.png}
+    \caption{Wielokąt z dziurami wraz z grafem dualnym. Krawędź \textit{e} odpowiada krawędzi \textit{e'} w grafie dualnym.}
+    \vspace{3in}
+\end{figure} 
+
+\indent Niech \textit{P'} będzie wielokątem uzyskany według powyższej procedury. W takim wypadku \textit{P'} posiada \textit{n + 2h} krawędzi oraz \textit{t} trójkątów, ponieważ każde cięcie daje nam dwie dodatkowe krawędzie ale nie dodaje nowych trójkątów. Zgodnie z tw. Chv\'atala \textit{P'} potrzebuje $\floor{\frac{n+2h}{3}} = \ceil{\frac{t}{3}}$ strażników.
 
 % \chapter{Strażnicy mobilni}
 % \section{Strzeżenie wielokątów prostych przez strażników mobilnych}
@@ -382,147 +404,142 @@ Mając ilość trójkątów, na które zostanie podzielony wielokąt \textit{P},
 % \\Przejdźmy teraz do właściwego dowodu twierdzenia \ref{moc zbioru ukrytego tw}.
 % \\Rozpatrzmy rodzinę \textit{n} rozłącznych odcinków. Wybieramy punkt $p_i$ na każdym z odcinków $L_i$, w taki sposób aby współrzędne $x_1$,\ldots, $x_n$ dla $p_i$,\ldots,$p_n$ były różne. Możemy założyć, bez straty ogólności, że $x_1$ $<$ $x_2$ $<$ \ldots $<$ $x_n$. Następnie, dla każdego $L_i$ wybieramy odcinek $L'_i$ zawierający się w nim, ze środkiem w punkcie $p_i$ w taki sposób, że rzut na oś OX $L'_i$,\ldots,$L'_n$, tworzy zbiór rozłączny. Rozważmy teraz ciąg nachyleń $L'_1$, \ldots, $L'_n$. Zgodnie z def. \ref{podciag rosnacy} taki ciąg zawiera podciąg rosnący lub malejący o rozmiarze co najmniej $\sqrt{n}$, co biorąc pod uwagę lemat \ref{zbior ukryty}, kończy dowód.
 
-% \chapter{K-nadajniki}
-% \section{K-Nadajniki}
-% \subsection{Wprowadzenie}
-% Ilość sieci wifi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy, Aichholzer zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy nadajnik o nieskończonym zasięgu oraz możliwości przebicia \textit{k} ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco:
+\chapter{K-nadajniki}
+\section{K-Nadajniki}
+\subsection{Wprowadzenie}
+Ilość sieci wifi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy, Aichholzer zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy nadajnik o nieskończonym zasięgu oraz możliwości przebicia \textit{k} ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco:
 
-% \textit{
-%   Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele  nadajników jest potrzebnych oraz koniecznych aby pokryć cały obszar?}  
-% \\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki (strażnicy, którzy nie widzą przez ściany).
-% \\W wypadku, gdy wymagamy strzeżenia całej płaszczyzny nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
+\textit{
+  Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele  nadajników jest potrzebnych oraz koniecznych aby pokryć cały obszar?}  
+\\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem sztuki (strażnicy, którzy nie widzą przez ściany).
+\\W wypadku, gdy wymagamy strzeżenia całej płaszczyzny nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
 
-% \section{Pokrycie płaszczyzny z przeszkodami}
-% \subsection{Prostopadłe odcinki}
-% W tym podrozdziale omówię wariant, w którym przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni dowiedli, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasami jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. 
-% \indent Ballinger i inni rozszerzyli to ograniczenie dla k-najdaników.
-% \begin{Definicja} \label{ograniczenie zbiór odcinków prostopadłych}
-%   $\ceil{\frac{5n+6}{12}}$ 1-nadajników jest zawsze wystarczających a $\ceil{\frac{n+1}{4}}$ czasami koniecznych aby pokryć całą płaszczyznę z n rozłącznymi odcinkami prostopadłymi.
-% \end{Definicja}
-% \indent Łatwo ustalić dolną granicę ponieważ pojedynczy 1-nadajnik może pokryć co najwyżej cztery z \textit{n + 1} obszarów, z czego wynika, że $\ceil{\frac{n+1}{4}}$ 1-nadajników potrzebujemy dla \textit{n} lini równoległych.
-% \begin{figure}[ht!]
-%   \centering
-%   \includegraphics{rysunki/k_nadajniki_ogr_dolne.png}
-%   \caption{1-nadajnik strzegący 4 obszarów}
-%   \label{fig:ogr_dolne}
-% \end{figure} 
-% \\\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
-% \begin{itemize}
-%   \item ze zbioru wszystkich odcinków \textit{S} usuń odcinki niezależne
-%   \item rozmieść 0-nadajniki w pozostałych odcinkach
-%   \item zwiększ zasięg przekaźników o jeden
-% \end{itemize}
+\section{Pokrycie płaszczyzny z przeszkodami}
+\subsection{Odcinki prostopadłe}
+W tym podrozdziale omówię wariant, w którym przeszkodami będzie zbiór \textit{n} rozłącznych odcinków prostopadłych a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni dowiedli, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza a czasami jest koniecznych aby pokryć całą płaszczyznę na której znajduje się \textit{n} rozłącznych prostopadłych odcinków. Ballinger i inni rozszerzyli to ograniczenie dla k-najdaników.
+\begin{Definicja} \label{ograniczenie zbiór odcinków prostopadłych}
+  $\ceil{\frac{5n+6}{12}}$ 1-nadajników jest zawsze wystarczających a $\ceil{\frac{n+1}{4}}$ czasami koniecznych aby pokryć całą płaszczyznę z n rozłącznymi odcinkami prostopadłymi.
+\end{Definicja}
+\indent Łatwo ustalić dolną granicę ponieważ pojedynczy 1-nadajnik może pokryć co najwyżej cztery z \textit{n + 1} obszarów, z czego wynika, że potrzebujemy $\ceil{\frac{n+1}{4}}$ 1-nadajników dla \textit{n} lini równoległych.
+\begin{figure}[ht!]
+  \centering
+  \includegraphics{rysunki/k_nadajniki_ogr_dolne.png}
+  \caption{1-nadajnik strzegący 4 obszarów}
+  \label{fig:ogr_dolne}
+\end{figure} 
+\\\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
+\begin{itemize}
+  \item ze zbioru wszystkich odcinków \textit{S} usuń odcinki niezależne
+  \item rozmieść 0-nadajniki w pozostałych odcinkach
+  \item zwiększ zasięg przekaźników o jeden
+\end{itemize}
 
-% W pierwszym kroku przedłużamy wszystkie odcinki, dopóki się nie przetną lub nie staną się półprostymi, jednocześnie dzieląc płaszczyznę na \textit{n + 1} ścian. Następnie tworzymy graf widzialności \textit{G(S)}, w którym każdy odcinek ze zbioru \textit{S} jest wierzchołkiem grafu. Krawędzie między wierzchołkami tworzymy jeżeli dwa odcinki \textit{s} i \textit{t} są słabo widzialne, tzn. istnieją punkty \textit{p} należący do odcinka \textit{s} oraz \textit{q} należący do odcinka \textit{t}, które połączone odcinkiem nie przecinają żadnego innego odcinka ze zbioru \textit{S}.
-% \todo{rysunek}
+W pierwszym kroku przedłużamy wszystkie odcinki, dopóki się nie przetną lub nie staną się półprostymi, jednocześnie dzieląc płaszczyznę na \textit{n + 1} ścian. Następnie tworzymy graf widzialności \textit{G(S)}, w którym każdy odcinek ze zbioru \textit{S} jest wierzchołkiem grafu. Krawędzie między wierzchołkami tworzymy jeżeli dwa odcinki \textit{s} i \textit{t} są słabo widzialne, tzn. istnieją punkty \textit{p} należący do odcinka \textit{s} oraz \textit{q} należący do odcinka \textit{t}, które połączone odcinkiem nie przecinają żadnego innego odcinka ze zbioru \textit{S}.
 
-% \begin{Lemat}\label{0-1-nadajniki}
-%   Jeżeli I jest niezależnym zbiorem w grafie G(S) a T jest zbiorem 0-nadajników, które pokrywają całą płaszczyznę S - I, to T jest również zbiorem 1-nadajników, które pokrywają całą płaszczyznę S.
-% \end{Lemat}
+\begin{Lemat}\label{0-1-nadajniki}
+  Jeżeli I jest niezależnym zbiorem w grafie G(S) a T jest zbiorem 0-nadajników, które pokrywają całą płaszczyznę S - I, to T jest również zbiorem 1-nadajników, które pokrywają całą płaszczyznę S.
+\end{Lemat}
 
-% \indent Załóżmy, że 0-nadajnik w punkcie \textit{p} pokrywa punkt \textit{q} na płaszczyźnie \textit{S - I}. Odcinek \textit{pq} nie może przecinać dwóch lub więcej odcinków ze zbioru \textit{I} ponieważ wtedy takie odcinki nie byłyby niezależne. Jednoczesnie, odcinek \textit{pq} nie przecina żadnego odcinka ze zbioru \textit{S - I} a więc 1-nadajnik w punkcie \textit{p} pokrywa \textit{q} na płaszczyźnie \textit{S}.
-% \\\indent Aby uzyskać największy możliwy zbiór niezależny w \textit{G(S)}, kolorujemy graf \textit{G(S)} a następnie wybierzemy najliczniejszą klasę kolorów. Zakładamy, ze ściany powstałe przez przedłużenie odcinków w zbiorze \textit{S} są prostokątne (w przeciwnym wypadku są trójkątne a więc 4-kolorowalne). 
-% Tak powstały graf jest 1-planarny oraz 6-kolorowalny (Ringel, 1965).
+\indent Załóżmy, że 0-nadajnik w punkcie \textit{p} pokrywa punkt \textit{q} na płaszczyźnie \textit{S - I}. Odcinek \textit{pq} nie może przecinać dwóch lub więcej odcinków ze zbioru \textit{I}, ponieważ wtedy takie odcinki nie byłyby niezależne. Jednocześnie, odcinek \textit{pq} nie przecina żadnego odcinka ze zbioru \textit{S - I} a więc 1-nadajnik w punkcie \textit{p} pokrywa \textit{q} na płaszczyźnie \textit{S}.
+\\\indent Aby uzyskać największy możliwy zbiór niezależny w \textit{G(S)}, kolorujemy graf \textit{G(S)} a następnie wybierzemy najliczniejszą klasę kolorów. Zakładamy, ze ściany powstałe przez przedłużenie odcinków w zbiorze \textit{S} są prostokątne (w przeciwnym wypadku są trójkątne a więc 4-kolorowalne). 
+Tak powstały graf jest 1-planarny oraz 6-kolorowalny (Ringel, 1965).
 
-% \begin{Definicja}
-%   Grafem 1-planarnym nazywamy graf, którego każda z krawędzi może przeciąć inną krawędź co najwyżej raz.
-% \end{Definicja}
-% \begin{figure}[ht!]
-%   \centering
-%   \includegraphics[width=6.5cm]{rysunki/zbior_odcinkow.png}
-%   \includegraphics[width=6.5cm]{rysunki/graf_zbioru_odcinkow.png}
-%   \caption{Zbiór odcinków S oraz graf G(S). Zbiór niezależny został pogrubiony.}
-%   \label{fig:przedluzone odcinki}
-% \end{figure} 
-% \todo{rysunek}
+\begin{Definicja}
+  Grafem 1-planarnym nazywamy graf, którego każda z krawędzi może przeciąć inną krawędź co najwyżej raz.
+\end{Definicja}
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=6.5cm]{rysunki/zbior_odcinkow.png}
+  \includegraphics[width=6.5cm]{rysunki/graf_zbioru_odcinkow.png}
+  \caption{Zbiór odcinków S oraz graf G(S). Zbiór niezależny został pogrubiony.}
+  \label{fig:przedluzone odcinki}
+\end{figure} 
 
-% \begin{Lemat}
-%   Jeżeli S jest zbiorem przedłużonych odcinków prostopadłych to G(S) jest \textit{1-planarny}.
-% \end{Lemat}
-% \indent Jeżeli przedłużymy każdy odcinek zbioru \textit{S} to może on przecinać inny odcinek, co najwyżej w jednym punkcie, ponieważ odcinki są w stosunku do siebie równoległe bądź prostopadłe. Tworząc graf \textit{G(S)} zamieniamy odcinki na wierzchołki, łącząc je krawędziami wtedy i tylko wtedy, gdy się przecinają lub są do siebie równoległe. Tak skonstruowany graf przedstawia rysunek \ref{fig:przedluzone odcinki}
+\begin{Lemat}
+  Jeżeli S jest zbiorem przedłużonych odcinków prostopadłych to G(S) jest \textit{1-planarny}.
+\end{Lemat}
+\indent Jeżeli przedłużymy każdy odcinek zbioru \textit{S} to może on przecinać inny odcinek, co najwyżej w jednym punkcie, ponieważ odcinki są w stosunku do siebie równoległe, bądź prostopadłe. Tworząc graf \textit{G(S)} zamieniamy odcinki na wierzchołki, łącząc je krawędziami wtedy i tylko wtedy, gdy przecinają się lub są do siebie równoległe. Tak skonstruowany graf przedstawia rysunek \ref{fig:przedluzone odcinki}
 
-% \indent Aby uzyskać ograniczenie górne kolorujemy graf \textit{G(S)} szcześcioma kolorami. Najliczniejsza klasa kolorów ma więc $\frac{n}{6}$ elementów oraz tworzy zbiór niezależny \textit{I}. Pozostały zbiór \textit{S - I} posiada $\frac{5n}{6}$ odcinków a więc zgodnie z rezultatem Czyżowicza potrzeba $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników, rozmieszczonych na odcinkach zbioru \textit{S - I} o tym samym kolorze. Następnie, zgodnie z lematem \ref{0-1-nadajniki} zwiększamy moc rozmieszczonych nadajników o jeden, co pozwala strzec całą płaszczyznę.
-% \begin{figure}[ht!]
-%   \centering
-%   \includegraphics[width=6.5cm]{rysunki/pokrycie_nadajnikami.png}
-%   \caption{Pokrycie płaszczyzny 1-nadajnikami.}
-%   \label{fig:pokrycie plaszczyzny}
-% \end{figure} 
-% \todo{Pokolorować dokładnie}
+\indent Aby uzyskać ograniczenie górne kolorujemy graf \textit{G(S)} szcześcioma kolorami. Najliczniejsza klasa kolorów ma więc $\frac{n}{6}$ elementów oraz tworzy zbiór niezależny \textit{I}. Pozostały zbiór \textit{S - I} posiada $\frac{5n}{6}$ odcinków a więc zgodnie z rezultatem Czyżowicza potrzeba $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników, rozmieszczonych na odcinkach zbioru \textit{S - I} o tym samym kolorze. Następnie, zgodnie z lematem \ref{0-1-nadajniki} zwiększamy moc rozmieszczonych nadajników o jeden, co pozwala strzec całą płaszczyznę.
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=6.5cm]{rysunki/pokrycie_nadajnikami.png}
+  \caption{Pokrycie płaszczyzny 1-nadajnikami.}
+  \label{fig:pokrycie plaszczyzny}
+\end{figure} 
+\todo{Pokolorować dokładnie}
 
 
-% \section{Podział gilotynowy}
-% Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Ścianą $S_0$ nazywamy całą płaszczyznę.
+\section{Podział gilotynowy}
+Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Ścianą $S_0$ nazywamy całą płaszczyznę.
 
-% \begin{Twierdzenie}
-%   Dowolny podział gilotynowy możemy pokryć $\frac{n+1}{2}$ 1-nadajnikami.
-% \end{Twierdzenie}
-% Dowód powyższego twierdzenia zaczniemy od lematu:
-% \begin{Lemat}\label{sasiednie sciany strzega F}
-%   Niech F będzie ścianą podziału gilotynowego S. Jeżeli każda inna ściana, która dzieli krawędź z F, posiada wewnątrz 1-nadajnik to taki zbiór nadajników pokrywa całe F.
-% \end{Lemat}\label{nadajniki strzega f' i f}
-% \indent Rozpatrzmy odcinek $s_i$, którego dodanie tworzy ścianę \textit{F}. Przed dodaniem odcinka $s_i$, podział $S_{i-1}$ zawierał jedną ścianę, która została podzielona na dwie części \textit{F} oraz \textit{F'} przez $s_i$. 
+\begin{Twierdzenie}
+  Dowolny podział gilotynowy możemy pokryć $\frac{n+1}{2}$ 1-nadajnikami.
+\end{Twierdzenie}
+Dowód powyższego twierdzenia zaczniemy od lematu:
+\begin{Lemat}\label{sasiednie sciany strzega F}
+  Niech F będzie ścianą podziału gilotynowego S. Jeżeli każda inna ściana, która dzieli krawędź z F, posiada wewnątrz 1-nadajnik to taki zbiór nadajników pokrywa całe F.
+\end{Lemat}\label{nadajniki strzega f' i f}
+\indent Rozpatrzmy odcinek $s_i$, którego dodanie tworzy ścianę \textit{F}. Przed dodaniem odcinka $s_i$, podział $S_{i-1}$ zawierał jedną ścianę, która została podzielona na dwie części \textit{F} oraz \textit{F'} przez $s_i$. 
 % \begin{figure}[ht!]
 %   \centering
 %   \label{podzial F przez s_i}
-%   \includegraphics{rysunki/podzial_F.png}
+%   \includegraphics[width=9cm,height=6cm]{rysunki/podzial_F.png}
 %   \caption{Ściana F oraz F' po dodaniu odcinka $s_i$}
 % \end{figure} 
-% \todo{rysunek}
-% W dalszym procesie ściana \textit{F} nie będzie już dzielona ale podzielimy ścianę \textit{F'} uzyskujac kolejne ściany $F'_1$, \ldots, $F'_k$, takie, że $F'_j$ $\subseteq$ F' oraz $F'_j$ dzieli część odcinka $s_i$ ze ścianą \textit{F} dla każdego \textit{j $\in$ \{1,\ldots,k\}}
-% \begin{figure}[ht!]
-%   \centering
-%   \label{podzial F' na kolejne ściany}
-%   \includegraphics{rysunki/podzial_F'.png}
-%   \caption{Kolejne podziały ściany F'}
-% \end{figure} 
-% \todo{rysunek}
-% Zgodnie z lematem \ref{nadajniki strzega f' i f} 1-nadajniki umieszczone wewnątrz ścian \textit{$F'_1$, \ldots, $F'_k$} strzegą wnętrza \textit{F}. 
-% \\Aby to udowodnić, tymczasowo usuniemy odcinek $s_i$. W ten sposób uzyskamy podział \textit{S'}, przedłużając odcinki, którymi wcześniej dokonaliśmy podziału ściany \textit{F'}.
 
-% \begin{figure}[ht!]
-%   \centering
-%   \label{podzial po usunieciu si}
-%   \includegraphics{rysunki/usuniete_si.png}
-%   \caption{Podział płaszczyzny po usunięciu odcinka $s_i$}
-% \end{figure} 
-% \todo{rysunek}
 
-% Po tej operacji, każda ze ścian \textit{$F'_j$} w \textit{S} powiększa się w \textit{S'} a dodatkowe części ścian sumują się do \textit{F}. Widzimy, ze każdy z 1-nadajników rozmieszczonych wewnątrz ścian \textit{$F'_j$} pokrywa przynajmniej \textit{$F'_j$} a więc razem nadajniki \textit{$F'_1$,\ldots,$F'_k$} strzegą ściany \textit{F}.
+W dalszym procesie ściana \textit{F} nie będzie już dzielona ale podzielimy ścianę \textit{F'} uzyskujac kolejne ściany $F'_1$, \ldots, $F'_k$, takie, że $F'_j$ $\subseteq$ F' oraz $F'_j$ dzieli część odcinka $s_i$ ze ścianą \textit{F} dla każdego \textit{j $\in$ \{1,\ldots,k\}}
 
-% \begin{figure}[ht!]
-%   \centering
-%   \label{pokrycie f}
-%   \includegraphics{rysunki/pokrycie_f.png}
-%   \caption{Nadajniki każdej ze ścian strzegące całą ścianę F}
-% \end{figure} 
-% \todo{rysunek}
+\begin{figure}[ht!]
+  \centering
+  \label{podzial F' na kolejne ściany}
+  \includegraphics[width=9cm,height=6cm]{rysunki/podzial_F'.png}
+  \caption{Kolejne podziały ściany F'}
+\end{figure} 
+Zgodnie z lematem \ref{nadajniki strzega f' i f} 1-nadajniki umieszczone wewnątrz ścian \textit{$F'_1$, \ldots, $F'_k$} strzegą wnętrza \textit{F}. 
+\\Aby to udowodnić, tymczasowo usuniemy odcinek $s_i$. W ten sposób uzyskamy podział \textit{S'}, przedłużając odcinki, którymi wcześniej dokonaliśmy podziału ściany \textit{F'}.
 
-% \begin{Twierdzenie}
-%   Dowolny podział gilotynowy strzeże co najwyżej $\frac{n+1}{2}$ 1-nadajników.
-% \end{Twierdzenie}
-% \indent Rozpatrzmy graf dualny \textit{T} podziału. \textit{T} jest triangulacją o \textit{n + 1} krawędziach. Niech \textit{M} będzie maksymalnym skojarzeniem w grafie \textit{T}. Każda nieskojarzona krawędź jest incydentna tylko z krawędziami skojarzonymi ( w przeciwnym przypadku skojarzenie nie byłoby maksymalne). Niech \textit{G} będzie zbiorem 1-nadajników, uzyskanych przez rozmieszczenie ich w pierwszej skojarzonej krawędzi \textit{e $\in$ M}. W takim wypadku |\textit{G}| = |\textit{M}| $\le \frac{n+1}{2}$. Dla każdej ściany \textit{F} z \textit{S}, \textit{F} albo zawiera 1-nadajnik w \textit{G} albo wszystkie sąsiednie ściany, które dzielą krawędź z \textit{F} zawierają 1-nadajnik w \textit{G}. W pierwszym przypadku \textit{F} jest oczywiście strzeżona. Natomiast w drugim przypadku, zgodnie z lematem \ref{sasiednie sciany strzega F}, ściana \textit{F} również jest strzeżona. Dlatego \textit{G} jest zbiorem 1-nadajników, które strzegą wszystkie ściany \textit{F} o mocy co najwyżej $\frac{n+1}{2}$
+\begin{figure}[ht!]
+  \centering
+  \label{podzial po usunieciu si}
+  \includegraphics[width=9cm,height=6cm]{rysunki/usuniete_si.png}
+  \caption{Podział płaszczyzny po usunięciu odcinka $s_i$}
+\end{figure} 
 
+Po tej operacji, każda ze ścian \textit{$F'_j$} w \textit{S} powiększa się w \textit{S'} a dodatkowe części ścian sumują się do \textit{F}. Widzimy, ze każdy z 1-nadajników rozmieszczonych wewnątrz ścian \textit{$F'_j$} pokrywa przynajmniej \textit{$F'_j$} a więc razem nadajniki \textit{$F'_1$,\ldots,$F'_k$} strzegą ściany \textit{F}.
+
+\begin{Twierdzenie}
+  Dowolny podział gilotynowy strzeże co najwyżej $\frac{n+1}{2}$ 1-nadajników.
+\end{Twierdzenie}
+\indent Rozpatrzmy graf dualny \textit{T} podziału. \textit{T} jest triangulacją o \textit{n + 1} krawędziach. Niech \textit{M} będzie maksymalnym skojarzeniem w grafie \textit{T}. Każda nieskojarzona krawędź jest incydentna tylko z krawędziami skojarzonymi ( w przeciwnym przypadku skojarzenie nie byłoby maksymalne). Niech \textit{G} będzie zbiorem 1-nadajników, uzyskanych przez rozmieszczenie ich w pierwszej skojarzonej krawędzi \textit{e $\in$ M}. W takim wypadku |\textit{G}| = |\textit{M}| $\le \frac{n+1}{2}$. Dla każdej ściany \textit{F} z \textit{S}, \textit{F} albo zawiera 1-nadajnik w \textit{G} albo wszystkie sąsiednie ściany, które dzielą krawędź z \textit{F} zawierają 1-nadajnik w \textit{G}. W pierwszym przypadku \textit{F} jest oczywiście strzeżona. Natomiast w drugim przypadku, zgodnie z lematem \ref{sasiednie sciany strzega F}, ściana \textit{F} również jest strzeżona. Dlatego \textit{G} jest zbiorem 1-nadajników, które strzegą wszystkich ścian \textit{F} o mocy co najwyżej $\frac{n+1}{2}$
+\begin{figure}[ht!]
+  \centering
+  \label{pokrycie f}
+  \includegraphics[width=9cm,height=6cm]{rysunki/pokrycie_f.png}
+  \caption{Nadajniki każdej ze ścian strzegące całą ścianę F}
+  \vspace{6in}
+\end{figure} 
 % %\summary
 % %
 % %Streszczenie…
 
 % % załączniki (opcjonalnie):
-% \appendix
-% \chapter{Triangulacja wielokąta}\label{triangulacja}
-% \begin{Lemat}
-% N-kąt prosty można zawsze podzielić na n-2 trójkątów.
-% \end{Lemat}
-% Dowód przez indukcję po n:
-% \\Jeżeli n = 3 wielokąt jest już podzielony.
-% Załóżmy, że n $\ge$ 3 i rozpatrzmy skrajny lewy wierzchołek \textit{v} oraz jego sąsiadów \textit{u}, \textit{w}.
-% W pierwszym przypadku odcinek \textit{uw} jest przekątną a w drugim część krawędzi wielokąta P leży wewnątrz trójkąta \textit{uvw}.
-% \begin{align*}
-% \includegraphics[height=5cm]{rysunki/triangulacja_1.png} \hspace{3cm} \includegraphics[height=5cm]{rysunki/triangulacja_2.png}
-% \end{align*}
-% \\* Dla przypadku pierwszego przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o n-1 wierzchołkach na którym wykonujemy kolejny krok indukcji.
-% \\*W przypadku drugim znajdujemy punkt \textit{t}, który znajduje się najdalej od prostej \textit{uw}. Odcinek $\overline{v t}$ musi być przekątną, która dzieli wielokąt na dwa proste wielokąty o \textit{m} oraz \textit{n - m + 2} wierzchołkach, gdzie \textit{3$\ge$m$\ge$n-1} na którym wykonujemy kolejny krok indukcji.
-% \\*Na mocy lematu tak podzielony wielokąt możemy triangulować przy użyciu \textit{m-2 + n-m+2-2 = n - 2} trójkątów
+\appendix
+\chapter{Triangulacja wielokąta}\label{triangulacja}
+\begin{Lemat}\label{podzial na trojkaty}
+N-kąt prosty można zawsze podzielić na n-2 trójkątów.
+\end{Lemat}
+Dowód przez indukcję po n:
+\\Jeżeli n = 3 wielokąt jest już podzielony.
+Załóżmy, że n $\ge$ 3 i rozpatrzmy skrajny lewy wierzchołek \textit{v} oraz jego sąsiadów \textit{u}, \textit{w}.
+W pierwszym przypadku odcinek \textit{uw} jest przekątną a w drugim część krawędzi wielokąta P leży wewnątrz trójkąta \textit{uvw}.
+\begin{align*}
+\includegraphics[height=5cm]{rysunki/triangulacja_1.png} \hspace{3cm} \includegraphics[height=5cm]{rysunki/triangulacja_2.png}
+\end{align*}
+\\\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o n-1 wierzchołkach, na którym wykonujemy kolejny krok indukcji.
+\\\indent W przypadku drugim znajdujemy punkt \textit{t}, który znajduje się najdalej od prostej \textit{uw} a następnie łączymy go z punktem \textit{v}. Odcinek $\overline{v t}$ musi być przekątną, która dzieli wielokąt na dwa proste wielokąty o \textit{m} oraz \textit{n - m + 2} wierzchołkach, gdzie \textit{3 $\ge$ m $\ge$ n-1} na którym wykonujemy kolejny krok indukcji.
+\\\indent Na mocy lematu \ref{podzial na trojkaty} tak podzielony wielokąt możemy triangulować przy użyciu \textit{m - 2 + n - m + 2 - 2 = n - 2} trójkątów
 
 % %Załącznik…
 % %
