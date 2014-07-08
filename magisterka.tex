@@ -58,12 +58,7 @@ Graf wielokąta prostego po triangulacji zawsze jest 3-kolorowalny.
 \end{Lemat}
 
 \begin{Definicja}
-  \begin{figure}[ht!]
-    \centering
-    \label{podzial F' na kolejne ściany}
-    \includegraphics[width=9cm,height=6cm]{rysunki/podzial_F'.png}
-    \caption{Kolejne podziały ściany F'}
-  \end{figure} ormal{K-kolorowanie grafu} to przyporządkowanie takiej liczby naturalnej każdemu wierzchołkowi grafu G, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe K.
+   \textnormal{K-kolorowanie grafu} to przyporządkowanie takiej liczby naturalnej każdemu wierzchołkowi grafu G, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe K.
 \end{Definicja}
 
 Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt jest przypadkiem bazowym - zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu dualnego danego wielokąta, który jest drzewem.
@@ -105,10 +100,8 @@ Dodatkowo, żaden wielokąt nie może przecinać zarówno krawędzi wielokąta \
 \begin{Lemat}\label{t trójkątów triangulacja}
   Każdy wielokąt P o \textnormal{h} dziurach oraz \textnormal{n} krawędziach poddany triangulacji, dzieli się na \textit{t = n + 2h - 2} trójkątów.
 \end{Lemat}
-\todo{rysunek}
 
 W dowodzie skorzystam z twierdzenia Eulera.
-\todo{Dowód?}
 \begin{Twierdzenie}\label{tw eulera}
   Niech G będzie spójnym grafem planarnym o N wierzchołkach, M krawędziach oraz F ścianach. Wtedy N - M + F = 2.
 \end{Twierdzenie}
@@ -137,7 +130,7 @@ Wiedząc, na ile trójkątów został podzielony wielokąt \textit{P}, możemy p
     \vspace{3in}
 \end{figure} 
 
-\indent Niech \textit{P'} będzie wielokątem uzyskany według powyższej procedury. W takim wypadku \textit{P'} posiada \textit{n + 2h} krawędzi oraz \textit{t} trójkątów, ponieważ każde cięcie daje nam dwie dodatkowe krawędzie ale nie dodaje nowych trójkątów. Zgodnie z tw. Chv\'atala \textit{P'} potrzebuje $\floor{\frac{n+2h}{3}} = \ceil{\frac{t}{3}}$ strażników.
+\indent Niech \textit{P'} będzie wielokątem uzyskanym według powyższej procedury. W takim wypadku \textit{P'} posiada \textit{n + 2h} krawędzi oraz \textit{t} trójkątów, ponieważ każde cięcie daje nam dwie dodatkowe krawędzie ale nie dodaje nowych trójkątów. Zgodnie z tw. Chv\'atala \textit{P'} potrzebuje $\floor{\frac{n+2h}{3}} = \ceil{\frac{t}{3}}$ strażników.
 
 % \chapter{Strażnicy mobilni}
 % \section{Strzeżenie wielokątów prostych przez strażników mobilnych}
@@ -430,7 +423,7 @@ W tym podrozdziale omówię wariant, w którym przeszkodami będzie zbiór \text
 \\\indent Ograniczenie górne uzyskamy korzystając z następującego algorytmu:
 \begin{itemize}
   \item ze zbioru wszystkich odcinków \textit{S} usuń odcinki niezależne
-  \item rozmieść 0-nadajniki w pozostałych odcinkach
+  \item rozmieść 0-nadajniki
   \item zwiększ zasięg przekaźników o jeden
 \end{itemize}
 
@@ -467,8 +460,6 @@ Tak powstały graf jest 1-planarny oraz 6-kolorowalny (Ringel, 1965).
   \caption{Pokrycie płaszczyzny 1-nadajnikami.}
   \label{fig:pokrycie plaszczyzny}
 \end{figure} 
-\todo{Pokolorować dokładnie}
-
 
 \section{Podział gilotynowy}
 Podział gilotynowy \textit{S} otrzymujemy przez dodanie kolekcji $s_1$,\ldots,$s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Ścianą $S_0$ nazywamy całą płaszczyznę.
