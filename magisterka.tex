@@ -9,9 +9,10 @@
 
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-\newtheorem{Twierdzenie}{Twierdzenie}
-\newtheorem{Lemat}{Lemat}
-\newtheorem{Definicja}{Definicja}
+
+\newtheorem{Twierdzenie}{Twierdzenie} \theoremstyle{definition}
+\newtheorem{Lemat}{Lemat} \theoremstyle{definition}
+\newtheorem{Definicja}{Definicja} \theoremstyle{definition}
 
 \wersja   {wersja wstępna [\ymdtoday]}
 
@@ -27,21 +28,28 @@
 
 \begin{document}
 
-\begin{abstract}
- Streszczenie…
-\end{abstract}
+% \begin{abstract}
+%  Streszczenie…
+% \end{abstract}
 \keywords{Problem galerii sztuki}
 
 \maketitle
 
-% wstęp
 \introduction
-Klasyczny problem galerii sztuki 
+Jako pierwszy problem galerii sztuki przedstawił Victor Klee w 1973, odpowiadając na prośbę Vaseka Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee było znalezienie minimalnej ilości strażników, wystarczających aby strzec wnętrze pomieszczenia galerii sztuki o kształcie $n$-kąta. Niedługo potem Chv\'atal zaproponował rozwiązanie tego problemu, które szybko zostało nazwane ,,Teorią galerii sztuki Chv\'atala''. Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń. W pracy zajmę się rodziną problemów dotyczących odcinków na płaszczyźnie. 
 
-Jako pierwszy problem galerii sztuki przedstawił Victor Klee w 1973, odpowiadając na prośbę Vaseka Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee było znalezienie minimalnej ilości strażników, wystarczających aby strzec wnętrze pomieszczenia galerii sztuki o kształcie $n$-kąta. Niedługo potem Chv\'atal zaproponował teorię, która szybko została nazwana ,,Teorią galerii sztuki Chv\'atala'', która mówi, że $\floor{\frac{n}{3}}$ strażników jest zawsze wystarczających a czasami potrzebnych aby strzec $n$-kąt (Chv\'atal 1975). Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń.
+Jednym z takich zagadnień jest strzeżenie zbioru odcinków, które wymaga aby strzeżony odcinek był widziany przez strażnika przynajmniej w jednym punkcie. Można to zobrazować przez stacjonarnych strażników, którzy, rozmieszczeni w odpowiednich punktach, zawsze widzą na przykład obraz, przez co uniemożliwiają zdjęcie go ze ściany. Innym ciekawym podejściem do sprawy strzeżenia odcinków jest ich oświetlanie, które  rozumiemy przez takie umieszczenie źródła światła aby każdy punkt należący do odcinka był widoczny z takiego źródła. Rozwiązaniem problemu jest zbiór źródeł światła które w całości oświetlają każdy odcinek należący do zbioru. 
 
-\chapter{Podstawowe pojęcia}
-raz dwa
+Najbardziej nawiązującym do współczesności wariantem wywodzącym się z klasycznego problemu galerii sztuki jest zdecydowanie problem k-nadajników. Traktuje on strażników jako nadajnik o nieskończonym zasięgu oraz określonej mocy. Mając dany zbiór przeszkód oraz znając moc nadajników (tzn. liczbę przeszkód przez którą nadajnik jest w stanie nadawać) rozwiązanie problemu pozwala oszacować liczbę nadajników pozwalającą pokryć obszar, zawierający wszystkie przeszkody.
+
+Kolejne zagadnienie wywodzące się z problemu galerii sztuki bazuje na zdegenerowanych wielokątach, a dokładnie na siatkach zarówno dwu jak i trójwymiarowych. Siatką nazywamy połączony ze sobą zbiór poziomych oraz pionowych odcinków prostych. Problem ten wymaga aby strażnik znajdował się w każdej z korytarzy siatki. Szacowanie liczby strażników dla siatek dwuwymiarowych ściśle wiąże się ze skojarzeniami w grafie natomiast dla siatek trójwymiarowych problem należy do klasy np-zupełnej.
+
+Ostatni rozdział łączy w sobie klasyczny problem galerii sztuki oraz element z teorii grafów (?). Opisuje w nim wariant gry w policjanta i złodzieja, który wymaga aby policjant przemieszczający się z ograniczoną prędkością po krawędziach grafu zauważył złodzieja. Grafem jest siatka zdefiniowania podobnie jak we wcześniejszym problemie. Zakładamy, że policjant widzi przez całą długość krawędzi.
+
+
+
+% \chapter{Podstawowe pojęcia}
+% raz dwa
 
 \chapter{Klasyczny problem galerii sztuki}
 
@@ -132,7 +140,6 @@ Wiedząc, na ile trójkątów został podzielony wielokąt $P$, możemy przejś�
 
 \chapter{Strzeżenie zbioru odcinków}
 \section{Strzeżenie zbioru odcinków}
-\subsection{Wprowadzenie}
 Ten wariant zagadnienia galerii sztuki wymaga, aby strzeżony odcinek był widoczny przez strażnika przynajmniej w jednym punkcie. 
 \begin{Definicja}
 Niech F = \textnormal{\{}$S_1$,\ldots,$S_n$\textnormal{\}} będzie zbiorem $n$ prostych \textnormal{odcinków} na płaszczyźnie. Zbiór punktów $Q$ = \textnormal{\{}$p_1$,\ldots,$p_k$\textnormal{\}} \textnormal{strzeże} $F$, jeżeli każdy element $S_i$ ze zbioru $F$ zawiera punkt, który jest widziany przez przynajmniej jeden punkt $p_j$ należący do $Q$.
@@ -179,7 +186,7 @@ Niech \textit{F} = \{$S_1$,\ldots,$S_n$\} będzie zbiorem $n$ rozłącznych odci
 \\\indent Zgodnie z lematem \ref{podgraf indukowany}, liczba składowych spójności grafu $G(F) \setminus S$ jest co najwyżej równa ilości ścian płaszczyzny $\pi$ czyli |$H$| + 1. Można ponadto wykazać, że występują przynajmniej dwie sąsiednie ściany z $\pi$ takie, że odcinki, które je przecinają, należą do tej samej składowej spójności w grafie $G(F) \setminus S$. Stąd wniosek, że liczba elementów zbioru $G(F) \setminus S$ wynosi co najwyżej |$S$|, co implikuje, że $G(F)$ ma doskonałe skojarzenie $M$. Na tej podstawie możemy stwierdzić, że wystarczy co najwyżej $\ceil{\frac{n}{2}}$ punktów aby strzec $F$ -- po jednym na każdy wierzchołek krawędzi skojarzenia $M$.
 \subsection{Ograniczenie dolne}
 \indent Aby uzyskać ograniczenie dolne, należy wskazać $n$-elementowy zbiór $F$, który wymaga $\floor{\frac{2n-3}{5}}$ strażników.
-\\\indent Niech $H$ będzie planarnym grafem kubicznym z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi rozpinają płaszczyznę. \todo[inline]{Stopka z def. rozpinania} $H$ posiada $k$ wierzchołków, wtedy ma $\frac{3k}{2}$ krawędzi.
+\\\indent Niech $H$ będzie planarnym grafem kubicznym z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi rozpinają płaszczyznę. $H$ posiada $k$ wierzchołków, wtedy ma $\frac{3k}{2}$ krawędzi.
 \\\indent Zamieńmy krawędzie zbioru $H$ na odcinki takie, że na każde $k - 3$ wewnętrzne wierzchołki przypada trójkątna ściana, w której umieszczamy mały odcinek (rys. \ref{fig:przeksztalcenie h}).
 \begin{figure}[ht!]
  \centering
@@ -192,7 +199,7 @@ Odrzucamy trzy krawędzie zewnętrznej ściany $H$, a następnie rozłączamy ka
 \section{Oświetlanie odcinków}\label{oświetlanie odcinków}
 Kolejną wariacją strzeżenia odcinków jest ich oświetlanie. Tym razem aby strzec odcinek, wymagane jest jego oświetlenie.
 \begin{Definicja}
-	Zbiór źródeł światła S \textnormal{oświetla} F wtedy i tylko wtedy, jezeli każdy punkt leżący na odcinku ze zbioru F \textnormal{jest widzialny} z co najmniej jednego elementu z S.
+	Zbiór źródeł światła S \textnormal{oświetla} zbiór odcinków prostych F wtedy i tylko wtedy, jezeli każdy punkt leżący na odcinku ze zbioru F \textnormal{jest widzialny} z co najmniej jednego elementu z S.
 \end{Definicja} Należy zwrócić uwagę na fakt, że punkt na odcinku może zostać oświetlony przez promień padający na niego z dowolnej strony odcinka.
 
 \begin{Twierdzenie}
@@ -217,7 +224,7 @@ Możemy łatwo zauważyć, że elementy rodziny $H$ są styczne z przynajmniej t
   \includegraphics[height=4cm]{rysunki/skojarzenia_zrodla_swiatla.png}
   \caption{Graf G oraz źródła światła}
 \end{figure}
-Tak stworzony graf jest planarny oraz 2-spójny. Jako że każdy zbiór rodziny $H$ jest styczny z co najmniej trzema innymi zbiorami, stopień każdego wierzchołka grafu $G$ wynosi co najmniej trzy. Zgodnie z twierdzeniem Nishizaki (1977) \todo{jak zrobić cytat?} dla grafu $G$ istnieje skojarzenie M o mocy co najmniej $\ceil{\frac{(n+3)+4}{3}} = \ceil{\frac{n+1}{3}}  + 2$. Dla każdej pary elementów $S_i$ i $S_j$ skojarzonych w $M$ przez krawędź $G$, należy teraz umieścić źródło światła w punkcie ich styczności. W tak wyznaczonym punkcie światło będzie oświetlać odcinki $L_i$ oraz $L_j$ zawierające się, odpowiednio, w $S_i$ oraz $S_j$. Jako że skojarzenie $M$ ma przynajmniej $\ceil{\frac{n+1}{3}} + 2$ elementów, $2(\ceil{\frac{n+1}{3}} + 2)$ elementy ze zbioru $F$ pokryta zostaną przez $\ceil{\frac{n+1}{3}} + 2$ świateł. W każdym z pozostałych elementów, które nie miały skojarzenia, musimy rozmieścić po jednym źródle. W rezultacie uzyskujemy:
+Tak stworzony graf jest planarny oraz 2-spójny. Jako że każdy zbiór rodziny $H$ jest styczny z co najmniej trzema innymi zbiorami, stopień każdego wierzchołka grafu $G$ wynosi co najmniej trzy. Zgodnie z twierdzeniem Nishizaki (1977) dla grafu $G$ istnieje skojarzenie M o mocy co najmniej $\ceil{\frac{(n+3)+4}{3}} = \ceil{\frac{n+1}{3}}  + 2$. Dla każdej pary elementów $S_i$ i $S_j$ skojarzonych w $M$ przez krawędź $G$, należy teraz umieścić źródło światła w punkcie ich styczności. W tak wyznaczonym punkcie światło będzie oświetlać odcinki $L_i$ oraz $L_j$ zawierające się, odpowiednio, w $S_i$ oraz $S_j$. Jako że skojarzenie $M$ ma przynajmniej $\ceil{\frac{n+1}{3}} + 2$ elementów, $2(\ceil{\frac{n+1}{3}} + 2)$ elementy ze zbioru $F$ pokryta zostaną przez $\ceil{\frac{n+1}{3}} + 2$ świateł. W każdym z pozostałych elementów, które nie miały skojarzenia, musimy rozmieścić po jednym źródle. W rezultacie uzyskujemy:
 $(\ceil{\frac{n+1}{3}} + 2) + ((n + 3) - 2(\ceil{\frac{n+1}{3}})) = n + 5 - \ceil{\frac{n+1}{3}} \le \ceil{\frac{2n}{3}} + 3$
 
 \subsection{Ograniczenie dolne}
@@ -259,13 +266,12 @@ Rozpatrzmy zbiór \textit{F} = \{$L_1$,\ldots,$L_n$\} odcinków takich, że ich 
 \indent Przejdźmy teraz do właściwego dowodu twierdzenia \ref{moc zbioru ukrytego tw}. Rozpatrzmy rodzinę $n$ rozłącznych odcinków. Wybierzmy punkt $p_i$ na każdym z odcinków $L_i$ w taki sposób aby odcięte punktów $x_1,\ldots, x_n$ dla $p_i,\ldots,p_n$ były różne. Możemy założyć bez straty ogólności, że $x_1$ $<$ $x_2$ $<$ \ldots $<$ $x_n$. Następnie dla każdego $L_i$ wybierzmy odcinek $L'_i$ zawierający się w nim, ze środkiem w punkcie $p_i$, w taki sposób, że rzuty $L'_i,\ldots,L'_n$ na oś OX, tworzą zbiór rozłączny. Rozważmy teraz ciąg nachyleń $L'_1$, \ldots, $L'_n$. Zgodnie z def. \ref{podciag rosnacy} taki ciąg zawiera podciąg rosnący lub malejący o rozmiarze co najmniej $\sqrt{n}$, co biorąc pod uwagę lemat \ref{zbior ukryty}, kończy dowód twierdzenia \ref{moc zbioru ukrytego tw}.
 
 \chapter{K-nadajniki}
-\section{K-Nadajniki}
-Ilość sieci wi-fi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy \textit{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco.
+
+\section{Pokrycie płaszczyzny z przeszkodami}
+	Ilość sieci wi-fi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z teorią galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy \textit{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco.
 \textit{Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną k $>$ 0 oraz dany obszar, jak wiele  nadajników jest potrzebnych oraz koniecznych, aby pokryć cały obszar?}  
 \\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem galerii sztuki (strażnicy, którzy nie widzą przez ściany).
 \\W wypadku, gdy wymagamy strzeżenia całej płaszczyzny, zakładamy, że nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
-
-\section{Pokrycie płaszczyzny z przeszkodami}
 \subsection{Odcinki prostopadłe}
 W tym podrozdziale omówię wariant, w którym przeszkodami będzie zbiór $n$ rozłącznych odcinków prostopadłych, a celem będzie pokrycie całej płaszczyzny. Czyżowicz i inni dowiedli, że $\ceil{\frac{n+1}{2}}$ 0-nadajników zawsze wystarcza, a czasami jest koniecznych, aby pokryć całą płaszczyznę, na której znajduje się $n$ rozłącznych prostopadłych odcinków. Ballinger i inni rozszerzyli to ograniczenie dla \textit{k-nadajników.}
 
@@ -499,9 +505,9 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	\end{enumerate}
 	\begin{figure}[ht!]
 	  \centering
-	  \includegraphics[height=2cm]{rysunki/schemat_ruchu.png}
+	  \includegraphics[height=6cm]{rysunki/schemat_ruchu.png}
 	  \caption{Trasa pokonana przez gracza pierwszego w wyniku algorytmu}
-	  \todo[inline]{Poprawić ten obrazek}
+	  %\todo[inline]{Poprawić ten obrazek}
 	\end{figure} 
 
 	Czas, którego potrzebował gracz pierwszy aby wykonać powyższy schemat wynosi $t_{j+1}$ = $t_j$ + 3 + $\frac{n}{n+1}$.
@@ -517,7 +523,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	\indent W czasie, kiedy policjant przemieszcza się kolumną \textit{j}, złodziej może zbliżać się do niej wierszem \textit{i}. Policjant dotrze do wierzchołka (i,j) po czasie $\frac{i}{n+1}$ a więc do tego momentu złodziej musi znajdować się powyżej (lub poniżej) wiersza \textit{i}. Wynika z tego, że w momencie kiedy gracz nr jeden kończy pierwszy ruch, drugi gracz znajduje się w odległości $\frac{1-i}{n+1}$ - $\epsilon$ pomiędzy kolumną (i,j + 1) a kolumną (i,j). Obrazuje to rysunek \ref{fig:pierwszy krok}.
 	\begin{figure}[ht!]
 	  \centering
-	  \includegraphics[width=5cm,height=2cm]{rysunki/poscig_1.png}
+	  \includegraphics[width=5cm,height=5cm]{rysunki/poscig_1.png}
 	  \caption{Pierwszy etap pościgu.}
 	  \label{fig:pierwszy krok}
 	\end{figure}
@@ -526,7 +532,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	\begin{center}
 	$\frac{i}{n+1}$ - $\gamma$ < 1 - $\frac{i}{n+1}$
 	\end{center}
-	Widać to na poniższym rysunku \ref{fig:drugi krok}.
+	Widać to na poniższym rysunku.
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=5cm]{rysunki/poscig_2.png}
@@ -546,51 +552,51 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 
 	\indent Ponieważ policjant widzi przez całą długość wiersza/kolumny, takie samo rozumowanie będzie miało zastosowanie jeżeli złodziej będzie rozpoczynał swój ruch z każdej kolumny \textit{k > j + 1}. W ten sposób jeżeli pierwszy gracz rozpocznie grę w punkcie (0,0) oraz wszystkie założenia początkowe będą spełnione zawsze zakończy grę sukcesem w czasie nie większym niż \textit{$t_n$}.
 \end{proof} 
-\summary
+%\summary
 
-Streszczenie…
+% Streszczenie…
 
-% % załączniki (opcjonalnie):
-\appendix
-\chapter{Triangulacja wielokąta}\label{triangulacja}
-\begin{Lemat}\label{podzial na trojkaty}
-$N$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
-\end{Lemat}
-\begin{proof}
-	Dowód przez indukcję po n.
-	\\Jeżeli n = 3, to wielokąt jest już podzielony $3 - 2 = 1$ trójkąt.
-	Załóżmy, że n $\ge$ 3 i rozpatrzmy skrajny lewy wierzchołek \textit{v} oraz jego sąsiadów \textit{u}, \textit{w}.
-	W pierwszym przypadku odcinek \textit{uw} jest przekątną, a w drugim część krawędzi wielokąta P leży wewnątrz trójkąta \textit{uvw}.
-	\begin{align*}
-	\includegraphics[height=5cm]{rysunki/triangulacja_1.png} \hspace{3cm} \includegraphics[height=5cm]{rysunki/triangulacja_2.png}
-	\end{align*}
-	\\\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o $n - 1$ wierzchołkach, na których wykonujemy krok indukcyjny, otrzymując $1 + (n - 1) -2 = n - 2$ trókątów, najbliższych do $v$.
-	\\\indent W przypadku drugim znajdujemy punkt $t$, który znajduje się najdalej od prostej $uw$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ musi być przekątną, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n - m + 2$ wierzchołkach, gdzie $3 \ge m \ge n-1$ na których wykonujemy krok indukcji: z założenia indukcyjnego, podział wielokąta skłąda się z $(m - 2) + ((n - m + 2) -2) = n - 2$ trójkątow.
-\end{proof}
+% % % załączniki (opcjonalnie):
+% \appendix
+% \chapter{Triangulacja wielokąta}\label{triangulacja}
+% \begin{Lemat}\label{podzial na trojkaty}
+% $N$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
+% \end{Lemat}
+% \begin{proof}
+% 	Dowód przez indukcję po n.
+% 	\\Jeżeli n = 3, to wielokąt jest już podzielony $3 - 2 = 1$ trójkąt.
+% 	Załóżmy, że n $\ge$ 3 i rozpatrzmy skrajny lewy wierzchołek \textit{v} oraz jego sąsiadów \textit{u}, \textit{w}.
+% 	W pierwszym przypadku odcinek \textit{uw} jest przekątną, a w drugim część krawędzi wielokąta P leży wewnątrz trójkąta \textit{uvw}.
+% 	\begin{align*}
+% 	\includegraphics[height=5cm]{rysunki/triangulacja_1.png} \hspace{3cm} \includegraphics[height=5cm]{rysunki/triangulacja_2.png}
+% 	\end{align*}
+% 	\\\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o $n - 1$ wierzchołkach, na których wykonujemy krok indukcyjny, otrzymując $1 + (n - 1) -2 = n - 2$ trókątów, najbliższych do $v$.
+% 	\\\indent W przypadku drugim znajdujemy punkt $t$, który znajduje się najdalej od prostej $uw$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ musi być przekątną, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n - m + 2$ wierzchołkach, gdzie $3 \ge m \ge n-1$ na których wykonujemy krok indukcji: z założenia indukcyjnego, podział wielokąta skłąda się z $(m - 2) + ((n - m + 2) -2) = n - 2$ trójkątow.
+% \end{proof}
 
-%Załącznik…
-%
-%\chapter{Tytuł załącznika}
-%
-%Załącznik…
-\begin{bibdiv}
-\begin{biblist}
+% %Załącznik…
+% %
+% %\chapter{Tytuł załącznika}
+% %
+% %Załącznik…
+% \begin{bibdiv}
+% \begin{biblist}
 
- \bibselect{literatura}
-  Joseph O'Rourke - Art gallery theorems and algorithms
- \\*Journal of Combinatorial Theory 18, 39-41 (1975)
- \\*Aldo Laurentini - Guardin the walls of an art gallery (The Visual Computer, 1999)
- \\*. J. Czyzowicz, E. Rivera-Campo, N. Santoro, J. Urrutia, and J. Zaks. Guarding rectangular art galleries. Discrete Applied Math, 50:149–157, 1994. 
+%  \bibselect{literatura}
+%   Joseph O'Rourke - Art gallery theorems and algorithms
+%  \\*Journal of Combinatorial Theory 18, 39-41 (1975)
+%  \\*Aldo Laurentini - Guardin the walls of an art gallery (The Visual Computer, 1999)
+%  \\*. J. Czyzowicz, E. Rivera-Campo, N. Santoro, J. Urrutia, and J. Zaks. Guarding rectangular art galleries. Discrete Applied Math, 50:149–157, 1994. 
 
-\end{biblist}
-\end{bibdiv}
+% \end{biblist}
+% \end{bibdiv}
 
-spis tabel
-\listoftables
+% spis tabel
+% \listoftables
 
-spis rysunków
-\listoffigures
+% spis rysunków
+% \listoffigures
 
-\oswiadczenie
+% \oswiadczenie
 
 \end{document}
