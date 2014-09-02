@@ -83,38 +83,39 @@ Ostatni rozdział łączy w sobie klasyczny problem galerii sztuki oraz elementy
 \chapter{Klasyczny problem galerii sztuki}
 
 \section{Twierdzenie Chv\'atala}
-Zgodnie z twierdzeniem Chv\'atala (1975)\label{tw chvatala}, ilość strażników potrzebnych do strzeżenia wielokąta prostego $P$ wynosi $g(P) \le \floor{\frac{n}{3}}$, gdzie $g(P)$ jest funkcją opisującą ilość strażników wystarczających, aby zawsze strzec określony $n$-kąt. Inaczej mówiąc, $g(P)$ strażników zawsze wystarcza a czasami jest potrzebnych aby pokryć $n$-kąt.
-\\Przedstawię dowód Fiska (1978) powyższego twierdzenia, który jest znacznie prostszy od indukcyjnej wersji Chv\'atala, a który bazuje na trójkolorowaniu grafu. 
+Zgodnie z twierdzeniem Chv\'atala \cite{chvatal} \label{tw chvatala}, ilość strażników potrzebnych do strzeżenia wielokąta prostego $P$ wynosi $g(P) \le \floor{\frac{n}{3}}$, gdzie $g(P)$ jest funkcją opisującą ilość strażników wystarczających, aby zawsze strzec określony $n$-kąt. Inaczej mówiąc, $g(P)$ strażników zawsze wystarcza a czasami jest potrzebnych aby pokryć $n$-kąt.
+\\Przedstawię dowód Fiska \cite{fisk} powyższego twierdzenia, który jest znacznie prostszy od indukcyjnej wersji Chv\'atala, a który bazuje na trójkolorowaniu grafu. 
 
-Pierwszym krokiem jest triangulacja wielokąta $P$, przez dodanie wewnętrznych przekątnych między wierzchołkami, do momentu gdy nie będzie można już dodać więcej krawędzi. 
+Pierwszym krokiem jest triangulacja wielokąta $P$, przez dodanie wewnętrznych, nieprzecinających się przekątnych między wierzchołkami, do momentu gdy nie będzie można już dodać więcej przekątnych. 
 Dowód na to, że każdy wielokąt prosty można podzielić na trójkąty, znajduje się w dodatku \ref{triangulacja}.
-Za wierzchołki i krawędzie grafu przyjmujemy odpowiednio wierzchołki, krawędzie wielokąta oraz przekątne triangulacji. Jako że graf powstały po triangulacji jest planarny, zgodnie z twierdzeniem o czterech barwach (Appel i Haken, 1977) jest 4-kolorowalny.
+Za wierzchołki i krawędzie grafu triangulacji, przyjmujemy odpowiednio wierzchołki, krawędzie wielokąta oraz przekątne triangulacji. Jako że graf powstały po triangulacji jest planarny, zgodnie z twierdzeniem o czterech barwach (Appel i Haken \cite{appel}) jest 4-kolorowalny.
 
 \begin{Definicja} 
-   \emph{$K$-kolorowanie grafu} to przyporządkowanie takiej liczby naturalnej każdemu wierzchołkowi grafu G, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe $K$.
+   \emph{$K$-kolorowanie grafu} $G = (V,E)$ to przyporządkowanie takiej dodatniej liczby naturalnej każdemu wierzchołkowi grafu G, że żadnym dwóm sąsiednim wierzchołkom nie została przypisana taka sama liczba oraz wszystkie liczby są mniejsze bądź równe $K$.
 \end{Definicja}
 
 \begin{Lemat} \cite{fisk}
-Graf wielokąta prostego po triangulacji zawsze jest $3$-kolorowalny.
+Graf triangulacji wielokąta prostego jest $3$-kolorowalny.
 \end{Lemat}
 \begin{proof}
-	Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt jest przypadkiem bazowym -- zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu słabo dualnego dla grafu triangulacji danego wielokąta, który jest drzewem.
+	Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt (graf $K_3$) jest przypadkiem bazowym -- zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu  dualnego dla grafu triangulacji danego wielokąta, który jest drzewem. Grafem dualnym nazywamy \todo[inline]{definicja grafu dualnego}
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics{rysunki/dual.png}
 	    \caption{Wielokąt podzielony na trójkąty}
 	\end{figure} 
-	Z grafu dualnego usuwamy dowolny liść wraz z odpowiadającym mu ,,trójkątem'', kolorujemy wierzchołki grafu triangulacji, a następnie dodajemy trójkąt z powrotem nadając usuniętemu liściowi kolor inny niż sąsiadom.
-	\begin{figure}[ht!]
-	  \centering
-	    \includegraphics{rysunki/dual_kolor.png} 
-	    \includegraphics{rysunki/dual_caly_kolor.png}
-	    \caption{Pokolorowany wielokąt wraz z grafem dualnym}
-	\end{figure} 
-	Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym.
+	Z grafu dualnego usuwamy dowolny liść wraz z odpowiadającym mu ,,trójkątem'', kolorujemy wierzchołki grafu triangulacji (z założenia indukcyjnego jest to możliwe), a następnie dodajemy trójkąt z powrotem nadając usuniętemu liściowi kolor inny niż używają jego sąsiedzi.
+  \begin{figure}[ht!]
+    \centering
+      \includegraphics{rysunki/dual_kolor.png} 
+      \includegraphics{rysunki/dual_caly_kolor.png}
+      \caption{Pokolorowany graf triangulacji wraz z grafem dualnym}
+      \todo[inline]{przerywana linia usuniętego trójkąta}
+  \end{figure} 
 \end{proof}
+	Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym.
 
-\newpage\indent Ograniczenie $g(n) = \floor{\frac{n}{3}}$ nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku -- patrzy rysunek niżej.
+\indent Ograniczenie co najwyżej $\floor{\frac{n}{3}}$ nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku -- patrzy rysunek niżej.
 \begin{figure}[ht!]
   \centering
   \includegraphics{rysunki/co_trzeci.png}
@@ -131,22 +132,22 @@ Ciekawym rozwinięciem klasycznego zagadnienia galerii sztuki jest wprowadzenie 
 \indent Podobnie jak w przypadku standardowych wielokątów, również dla wariantu z dziurami, aby obliczyć potrzebną ilość strażników, wykorzystamy triangulację.
 
 \begin{Lemat} \cite{orourke}
-  Każdy wielokąt P z dziurami można podzielić na trójkaty.
+  Każdy wielokąt z dziurami można podzielić na trójkaty.
 \end{Lemat}
 
 \begin{Lemat}\label{t trójkątów triangulacja} \cite{orourke}
-  Każdy wielokąt P o \emph{h} dziurach oraz \emph{n} krawędziach poddany triangulacji, dzieli się na $t = n + 2h - 2$ trójkątów.
+  Każdy wielokąt P o \emph{h} dziurach oraz \emph{n} krawędziach poddany triangulacji dzieli się na $t = n + 2h - 2$ trójkątów.
 \end{Lemat}
 
-W dowodzie skorzystam z twierdzenia Eulera.
+W dowodzie powyższego lematu skorzystam z twierdzenia Eulera.
 \begin{Twierdzenie} \label{tw eulera} \cite{euler}
-  Niech G będzie spójnym grafem planarnym o N wierzchołkach, M krawędziach oraz F ścianach. Wówczas $N - M + F = 2$.
+  Niech G będzie spójnym grafem płaskim o N wierzchołkach, M krawędziach oraz F ścianach. Wówczas $N - M + F = 2$.
 \end{Twierdzenie}
 
-\begin{proof}
-	Korzystając z tw. Eulera, mamy N wierzchołków, $F = t + h + 1$ ścian (po jednej na każdy trójkąt oraz dziurę i ścianę zewnętrzną), oraz $E = \frac{3t+n}{2}$ krawędzi (trzy krawędzie na każdy trójkąt plus krawędzie zewnętrzne liczone podwójnie).  Wówczas $V - E + F = 2$, a więc $n - \frac{3t+n}{2} + t + h + 1 - 2$, z czego wynika, że $t = n + 2h - 2$.
+\begin{proof}[Dowód lematu]
+	Korzystając z twierdzenia Eulera mamy N wierzchołków, $F = t + h + 1$ ścian (po jednej na każdy trójkąt oraz dziurę i ścianę zewnętrzną), oraz $E = \frac{3t+n}{2}$ krawędzi (trzy krawędzie na każdy trójkąt plus krawędzie zewnętrzne liczone podwójnie).  Wówczas $V - E + F = 2$, a więc $n - \frac{3t+n}{2} + t + h + 1 = 2$, z czego wynika, że $t = n + 2h - 2$.
 \end{proof}
-Wiedząc, na ile trójkątów został podzielony wielokąt $P$, możemy przejść do twierdzenia określającego wymaganą ilość strażników.
+Wiedząc, na ile trójkątów został podzielony wielokąt $P$, możemy przejść do twierdzenia oszacowującego wymaganą liczbę strażników.
 
 
 \begin{Definicja} \cite{orourke}
@@ -157,9 +158,10 @@ Wiedząc, na ile trójkątów został podzielony wielokąt $P$, możemy przejś�
   Dla wielokąta o n wierzchołkach oraz h dziurach $\floor{\frac{n+2h}{3}}$ = $\ceil{\frac{t}{3}}$ strażników kombinatorycznych jest wystarczających, aby dominować każdą triangulację wielokąta.
 \end{Twierdzenie}
 
-\indent Główną ideą dowodu jest kolejne usuwanie dziur wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, poprzez łączenie ich ze ścianą zewnętrzną. Każda z dziur posiada krawędź w grafie triangulacji $T$, która łączy ją z inną dziurą lub z zewnętrzną krawędzią wielokąta P. ,,Przecięcie'' wzdłuż takiej krawędzi połączy dziurę ze ścianą zewnętrzną lub scali dwie dziury w jedną. W każdym z tych przypadków całkowita ilość dziur zmniejszy się o jeden. Trudność polega jedynie na wyborze krawędzi z $T$, które pozwolą uzyskać taki podział.
+\indent Główną ideą dowodu jest kolejne usuwanie dziur wielokąta, wzdłuż przekątnych dodanych podczas triangulacji, poprzez łączenie ich ze ścianą zewnętrzną. Każda z dziur posiada krawędź w grafie triangulacji $T$, która łączy ją z inną dziurą lub z zewnętrzną krawędzią wielokąta $P$. ,,Przecięcie'' wzdłuż takiej krawędzi połączy dziurę ze ścianą zewnętrzną lub scali dwie dziury w jedną. W każdym z tych przypadków całkowita ilość dziur zmniejszy się o jeden. Trudność polega jedynie na wyborze krawędzi z $T$, które pozwolą uzyskać taki podział, że otrzymany wielokat jest spójny.
 
-\indent Niech $T'$ będzie grafem słabo dualny triangulacji $T$ (rys. \ref{fig:triangulacja}). $T'$ jest grafem planarnym, co najwyżej stopnia trzy, posiadającym $h$ graniczących ze sobą scian $F_1, \ldots, F_h$, po jednej na każdą dziurę wielokąta P. Niech $F_0$ będzie ścianą zewnętrzną. Wybieramy dowolną ścianę $F_i$, która posiada przynajmniej jedną wspólną krawędź $e$ ze ścianą $F_0$. Taka krawędź istnieje, ponieważ w grafie $T$ musi istnieć przekątna łącząca krawędź zewnętrzną wielokąta $P$ z dowolną dziurą -- w grafie $T'$ jest to krawędź $e$. Usunięcie krawędzi $e$ z $T'$ scala $F_i$ z $F_0$, bez rozspójniania grafu.
+\indent Niech $T'$ będzie grafem dualnym triangulacji $T$ (rysunek \ref{fig:triangulacja}). $T'$ jest grafem planarnym, stopnia co najwyżej trzy, posiadającym $h$ graniczących ze sobą skończonych ścian $F_1, \ldots, F_h$, po jednej na każdą dziurę wielokąta $P$. Niech $F_0$ będzie ścianą zewnętrzną. Wybieramy dowolną ścianę $F_i$, która posiada przynajmniej jedną wspólną krawędź $e$ ze ścianą $F_0$. Taka krawędź istnieje, ponieważ w grafie $T$ musi istnieć przekątna łącząca krawędź zewnętrzną wielokąta $P$ z jakąś dziurą -- w grafie $T'$ jest to krawędź $e$. Usunięcie krawędzi $e$ z $T'$ scala $F_i$ z $F_0$, bez rozspójniania grafu.
+\todo{z kartkami}
 
 \begin{figure}[h!]
   \centering
@@ -220,7 +222,7 @@ Niech $F = \{S_1,\ldots,S_n\}$ będzie zbiorem $n$ rozłącznych odcinków, a $G
 \subsection{Ograniczenie dolne}
 \indent Aby uzyskać ograniczenie dolne, należy wskazać $n$-elementowy zbiór $F$, który wymaga $\floor{\frac{2n-3}{5}}$ strażników.
 \\\indent Niech $H$ będzie planarnym grafem kubicznym z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi rozpinają płaszczyznę\todo[inline]{Jak to wyjaśnić?}. Graf $H$ posiada $k$ wierzchołków i ma $\frac{3k}{2}$ krawędzi.
-\\\indent Zamienimy krawędzie zbioru $H$ na odcinki takie, że na każde $k - 3$ wewnętrzne wierzchołki przypada trójkątna ściana, w której umieszczamy mały odcinek (rys. \ref{fig:przeksztalcenie h}).
+\\\indent Zamienimy krawędzie zbioru $H$ na odcinki takie, że na każde $k - 3$ wewnętrzne wierzchołki przypada trójkątna ściana, w której umieszczamy mały odcinek (rysunek \ref{fig:przeksztalcenie h}).
 \begin{figure}[ht!]
  \centering
   \includegraphics{rysunki/dolna_granica.png}
@@ -413,7 +415,7 @@ Po tej operacji, każda ze ścian $F'_j$ w $F$ powiększa się w $S'$, a dodatko
 \chapter{Strażnicy na siatkach}
 \section{Siatki 2D}
 W 1986 roku Simeon Ntafos przedstawił koncept strażników strzegących specjalnej klasy wielokątów - siatek.
-Przez siatkę $P$ rozumiemy połączony zbiór poziomych oraz pionowych odcinków prostych (rys. \ref{fig:siatka 2d}). Możemy na nią spojrzeć jak na wielokąt prostokątny z dziurami, który składa się z bardzo cienkich korytarzy.
+Przez siatkę $P$ rozumiemy połączony zbiór poziomych oraz pionowych odcinków prostych (rysunek \ref{fig:siatka 2d}). Możemy na nią spojrzeć jak na wielokąt prostokątny z dziurami, który składa się z bardzo cienkich korytarzy.
 Widzialnością w siatce nazywamy sytuację, w której strażnik będący w punkcie $x$ widzi punkt $y$ jeżeli odcinek $xy$ należy do zbioru P (czyli jest korytarzem siatki).
  \begin{figure}[ht!]
    \centering
