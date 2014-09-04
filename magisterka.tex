@@ -422,55 +422,56 @@ Po tej operacji każda ze ścian $F'_j$ w $F$ powiększa się w $S'$, a dodatkow
 
 \chapter{Strażnicy na siatkach}
 \section{Siatki 2D}
-W 1986 roku Simeon Ntafos przedstawił koncept strażników strzegących specjalnej klasy wielokątów - siatek.
-Przez siatkę $P$ rozumiemy połączony zbiór poziomych oraz pionowych odcinków prostych (rysunek \ref{fig:siatka 2d}). Możemy na nią spojrzeć jak na wielokąt prostokątny z dziurami, który składa się z bardzo cienkich korytarzy.
-Widzialnością w siatce nazywamy sytuację, w której strażnik będący w punkcie $x$ widzi punkt $y$ jeżeli odcinek $xy$ należy do zbioru P (czyli jest korytarzem siatki).
+W 1986 roku Simeon Ntafos \cite{ntafos} przedstawił koncept strażników strzegących specjalnej klasy wielokątów -- siatek.
+Przez \emph{siatkę} $P$ rozumiemy spójny zbiór punktówy należących do poziomych oraz pionowych odcinków prostych (rysunek \ref{fig:siatka 2d}). Możemy na nią spojrzeć jak na wielokąt prostokątny z dziurami, który składa się z bardzo cienkich korytarzy.
+Strażnik będący w punkcie $x$ siatki $P$ \emph{widzi} punkt $y$ siatki $P$ jeżeli odcinek $xy$ należy do siatki $P$ (czyli zawiera się w korytarzu siatki).
  \begin{figure}[ht!]
    \centering
    \includegraphics[width=14cm,height=6cm]{rysunki/przykladowa_siatka.png}
-   \caption{Siatka strzeżona przez 6 strażników}
+   \caption{Siatka strzeżona przez 5 strażników}
    \label{fig:siatka 2d}
  \end{figure} 
 
 \begin{Twierdzenie}\cite{ntafos}
-	Minimalna ilość strażników potrzebna aby \emph{strzec siatkę} o $n$ odcinkach wymaga $n - m$strażników, gdzie $m$ to moc doskonałego skojarzenie w grafie przecięć, które można znaleźć w czasie $\theta(n^{2.5})$
+	Minimalna liczba strażników potrzebna, aby \emph{strzec siatkę} o $n$ odcinkach wynosi $n - m$, gdzie $m$ to moc najliczniejszego skojarzenia w grafie przecięć, które można znaleźć w czasie $\theta(n^{2.5})$
 \end{Twierdzenie}
-Ntafos zaproponował elegancki algorytm aby znaleźć minimalną ilość strażników potrzebną do strzeżenia siatki.
+Ntafos zaproponował elegancki algorytm, aby znaleźć minimalną liczbę strażników potrzebną do strzeżenia siatki.
 \begin{proof}
-Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w każdym korytarzu. Niech $G$ będzie grafem przecięć siatki. Każdy wierzchołek z grafu $G$ odpowiada odcinkowi a dwa wierzchołki są połączone krawędzią wtedy i tylko wtedy, jeżeli odpowiadające im odcinki przecinają się.
+Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w każdym korytarzu. Niech $G$ będzie grafem przecięć siatki, w którym każdy wierzchołek z grafu $G$ odpowiada odcinkowi, a dwa wierzchołki są połączone krawędzią wtedy i tylko wtedy, gdy odpowiadające im odcinki przecinają się.
  \begin{figure}[ht!]
    \centering
    \includegraphics{rysunki/graf_skojarzen.png}
-   \caption{Graf przecięć siatki. Skojarzenia oznaczono linią ciągłą.}
+   \caption{Graf przecięć siatki. Skojarzenie oznaczono linią ciągłą.}
    \label{fig:graf przeciec}
  \end{figure} 
- \\Skojarzeniem w grafie $G$ nazywamy zbiór krawędzi $M$ takich, że każda krawędź z $G$ jest incydentna co najwyżej z jedną krawędzią z $M$. Skojarzeniem doskonałym nazywamy takie skojarzenie, które ma maksymalną moc. W grafie przecięć \ref{fig:graf przeciec} skojarzenie to nic innego jak zbiór wszystkich przecięć korytarzy pionowych z poziomymi. Doskonałe skojarzenie dla dowolnego grafu o $V$ wierzchołkach można znaleźć w czasie O($V^{2.5}$) (Even 1979). Jako że graf $G$ jest dwudzielny ponieważ przecięcia występują tylko pomiędzy korytarzamia pionowymi i poziomymi problem znalezienia maksymalnego skojarzenia sprowadza się do problemu kojarzenia małżeństw, który da się rozwiązać w czasie O($V^{1/2}$E), gdzie $V$ to ilość wierzchołków a $E$ ilość krawędzi w grafie dwudzielnym (Even 1979). Dla siatki o $n$ odcinkach $V = n$ a maksymalna ilość krawędzi to $E = O(n^2)$ więc w najgorszym przypadku maksymalne skojarzenie znajdziemy w czasie $O(n^{2.5})$.
- \\\indent Aby strzec siatkę w całości, każdy odcinek wymaga strażnika a więc rozmieszczenie ich na przecięciach korytarzy pozwala strzec co najwyżej dwa odcinki. Stąd uzyskujemy minimalną ilość strażników wynoszącą $\ceil{\frac{n}{2}}$ dla siatki o $n$ odcinkach. Jeżeli graf posiada doskonałe skojarzenie o rozmiarze $\ceil{\frac{n}{2}}$ wtedy taka sama ilość strażników jest wystarczająca. Należy ich rozmieścić w każdym przecięciu korytarzy odpowiadającemu skojarzeniu w grafie. Jeżeli skojarzenie ma moc $m$, wtedy rozmieszczenie w odpowiadającym im przecięciach strzeże $2m$ odcinków. W każdym z pozostałych $n - 2m$ odcinków musi zostać umieszczony jeden strażnik, co w sumie daje nam $m + n - 2m = n - m$ strazników. Jest to jednocześnie dolne ograniczenie: jeżeli mniej niż $n - m$ strażników wystarcza, wtedy ponad $m$ strażników musi kryć dwa odcinki a to daje nam skojarzenie o rozmiarze większym niż $m$, co nie jest możliwe.
+ \todo{podobno gdzieś wcześniej była def. skojarzenia, pewnie pójdzie do def. początkowych}
+ \\ \emph{Skojarzeniem} w grafie $G$ nazywamy zbiór krawędzi $M$ takich, że każda krawędź z $G$ jest incydentna co najwyżej z jedną krawędzią z $M$. Najliczniejszym skojarzeniem nazywamy takie skojarzenie, które ma maksymalną moc. W grafie przecięć \ref{fig:graf przeciec} skojarzenie to nic innego jak zbiór wszystkich przecięć korytarzy pionowych z poziomymi. Najliczniejsze skojarzenie dla dowolnego grafu $G = (V,E)$ można znaleźć w czasie O($|V|^{2.5}$)\cite{even}. Jako że graf $G$ jest dwudzielny, ponieważ przecięcia występują tylko pomiędzy korytarzamia pionowymi i poziomymi, problem znalezienia najliczniejszego skojarzenia sprowadza się do problemu kojarzenia małżeństw, który da się rozwiązać w czasie $O(|V|^{1/2}|E|)$, gdzie $V$ to zbiór wierzchołków a $E$ to zbiór krawędzi w grafie dwudzielnym \cite{even}. Dla siatki o $n$ odcinkach $|V| = n$, a maksymalna ilość krawędzi to $|E| = O(n^2)$, więc w najgorszym przypadku najliczniejsze skojarzenie znajdziemy w czasie $O(n^{2.5})$.
+ \\\indent Aby strzec siatkę w całości, każdy odcinek wymaga strażnika, a więc rozmieszczenie ich na przecięciach korytarzy pozwala strzec co najwyżej dwa odcinki. Stąd uzyskujemy minimalną liczbę strażników wynoszącą $\ceil{\frac{n}{2}}$ dla siatki o $n$ odcinkach. Jeżeli graf posiada skojarzenie doskonałe o rozmiarze $\ceil{\frac{n}{2}}$ wtedy taka sama ilość strażników jest wystarczająca. Należy ich rozmieścić w każdym przecięciu korytarzy odpowiadającemu skojarzeniu w grafie. Jeżeli najliczniejsze skojarzenie ma moc $m$, wtedy rozmieszczenie w odpowiadających im przecięciach strzeże $2m$ odcinków. W każdym z pozostałych $n - 2m$ odcinków musi zostać umieszczony jeden strażnik, co w sumie daje nam $m + n - 2m = n - m$ strażników. Jest to jednocześnie dolne ograniczenie: jeżeli mniej niż $n - m$ strażników wystarcza, wtedy ponad $m$ strażników musi kryć dwa odcinki, a to daje nam skojarzenie o rozmiarze większym niż $m$, co nie jest możliwe.
 \end{proof}
 
  \section{Siatki 3D}
- 	Ntafos przedstawił również zagadnienie strzeżenia siatki w trzech wymiarach, które należy do klasy problemów NP-zupełnych. Dowód uzyskamy przez redukcję problemu pokrycia wierzchołkowego grafu co najwyżej trzeciego stopnia, który należy do klasy NPC (Garey i Johnson 1979).
+ 	Ntafos\cite{ntafos} przedstawił również zagadnienie strzeżenia siatki w trzech wymiarach, które należy do klasy problemów NP-zupełnych. Dowód opiera się na redukcji do problemu pokrycia wierzchołkowego grafu co najwyżej trzeciego stopnia, który należy do klasy problemów NP-zupełnych \cite{garey}.
 \begin{Definicja}
-	Pokryciem wierzchołkowym grafu $G = (V,E)$ nazywamy podzbiór $V_0 \subseteq V$ takich wierzchołków grafu, że każda krawędź z $G$ jest incydentna z przynajmniej jednym wierzchołkiem $V_0$.
+	\emph{Pokryciem wierzchołkowym} grafu $G = (V,E)$ nazywamy podzbiór $V_0 \subseteq V$ takich wierzchołków grafu, że każda krawędź z $G$ jest incydentna z przynajmniej jednym wierzchołkiem z $V_0$.
 \end{Definicja}
-Naszym celem jest stworzenie trójwymiarowej siatki $P$, którą możemy pokryć co najwyżej $g$ strażnikami wtedy i tylko wtedy jeżeli istnieje pokrycie wierzchołkowe $G$ przez co najwyżej $K$ wierzchołków.
-W tym celu etykietujemy wszystkie wierzchołki grafu $G$ kolejnymi liczbami $1,2,\ldots,n = |V|$. Następnie, przypisujemy wierzchołki punktom siatki wzdłuż prostej poprowadzonej pomiędzy punktami (0,0,0) i (1,1,1) tak, aby każdy wierzchołek $i$ otrzymał punkt siatki $v_i = (3i, 3i, 3i)$. Krawędzie $G$ reprezentowane są przez linie łączące węzły siatki. Jako że każdy wierzchołek grafu $G$ jest stopnia co najwyżej trzeciego, każdej incydentnej krawędzi możemy przypisać jeden z kierunków $(x,y,z)$.
-\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami $1,\ldots,i-1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź (i,j), i < j. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla i < j, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$ a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jedna z trzech osi $+x$, $+y$ lub $+z$ rozpoczynająca się w (3i, 3i, 3i) nie może zawierać żadnej ścieżki siatki $P$. Załóżmy, że oś $+x$ jest wolna. W takim wypadku połączmy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
+Naszym celem jest stworzenie trójwymiarowej siatki $P$, którą możemy pokryć co najwyżej $g(k)$ strażnikami wtedy i tylko wtedy, gdy istnieje pokrycie wierzchołkowe $G$ o mocy co najwyżej $K$.
+W tym celu etykietujemy wszystkie wierzchołki grafu $G = (V,E)$ kolejnymi liczbami $1,2,\ldots,n = |V|$. Następnie, przypisujemy wierzchołki punktom siatki wzdłuż prostej poprowadzonej przez punkty (0,0,0) i (1,1,1) tak, aby każdy wierzchołek $i$ otrzymał punkt siatki $v_i = (3i, 3i, 3i)$. Krawędzie $G$ reprezentowane są przez odcinki łączące węzły siatki. Jako że każdy wierzchołek grafu $G$ jest stopnia co najwyżej trzy, każdej incydentnej krawędzi możemy przypisać jeden z kierunków $(x,y,z)$.
+\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami $1,\ldots,i-1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź ${i,j}, i < j$. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla $i < j$, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$, a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jedna z trzech osi $+x$, $+y$ lub $+z$ rozpoczynająca się w $(3i, 3i, 3i)$ nie zawiera ścieżki dotyhczasowej siatki $P$. Załóżmy, że oś $+x$ jest wolna. W takim wypadku łączymy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
 \begin{itemize}
-	\item $(3i, 3i, 3i) -> (3j, 3i, 3i)$
-	\item $(3j, 3i, 3i) -> (3j, 3j, 3i)$
-	\item $(3j, 3j, 3i) -> (3j, 3j, 3j)$
+	\item $(3i, 3i, 3i) \rightarrow (3j, 3i, 3i)$
+	\item $(3j, 3i, 3i) \rightarrow (3j, 3j, 3i)$
+	\item $(3j, 3j, 3i) \rightarrow (3j, 3j, 3j)$
 \end{itemize}
-Oczywiście, powyższe odcinki nie mogą przecinąć się z żadnymi już istniejącymi ścieżkami. Przykład takiego połączenia widać na rysunku \ref{fig:nowe sciezki}, w przypadku gdy wolna jest oś $+x$, $+y$ lub $+z$.
+Oczywiście, powyższe odcinki nie mogą przecinać się z żadnymi już istniejącymi ścieżkami. Przykład takiego połączenia widać na rysunku \ref{fig:nowe sciezki} w przypadku, gdy wolna jest oś $+x$, $+y$ lub $+z$.
 \begin{figure}[ht!]
   \centering
   a)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_x.png}
   b)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_y.png}
   c)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_z.png}
-  \caption{Nowo powstałe ścieżki w przypadku wolnych osi $+x$, $+y$ lub $+z$}
+  \caption{Nowo powstałe ścieżki w przypadku wolnych osi $+x$, $+y$ lub $+z$.}
   \label{fig:nowe sciezki}
 \end{figure} 
-\\\indent Zajmiemy się teraz przypadkiem, w którym fragment ścieżki pomiędzy węzłami $v_i$ i $v_j$ nakłada się ze ścieżką łącząca $v_j$ z $v_j$ wzdłuż osi $-z$, dla $k < i < j$. W takiej sytuacji przynajmniej jedna z osi $-x$ lub $-y$ musi być wolna. Jeżeli jest to oś $-x$ zmieniamy ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}a, jeżeli $-y$ wtedy musimy poprawić ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}b. Analogicznych operacji dokonamy jeżeli zajęta będzie oś $-x$ lub $-y$.
+\\\indent Zajmiemy się teraz przypadkiem, w którym fragment ścieżki pomiędzy węzłami $v_i$ i $v_j$ nakłada się ze ścieżką łącząca $v_k$ z $v_j$ wzdłuż osi $-z$, dla $k < i < j$. W takiej sytuacji przynajmniej jedna z osi $-x$ lub $-y$ musi być wolna. Jeżeli jest to oś $-x$, zmieniamy ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}(a), jeżeli $-y$, to wtedy musimy poprawić ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}(b). Analogicznych operacji dokonamy jeżeli zajęta będzie oś $-x$ i $-y$.
 \begin{figure}[ht!]
   \centering
   a)\includegraphics[width=6cm,height=5cm]{rysunki/zajete_z.png}
@@ -478,29 +479,30 @@ Oczywiście, powyższe odcinki nie mogą przecinąć się z żadnymi już istnie
   \caption{Omijanie zajętej ścieżki w przypadku wolnej osi $-x$ oraz $-y$}
   \label{fig:nakladanie}
 \end{figure} 
-Tak powstała konstrukcja składa się z dziewięciu krawędzi. W przypadku, gdy zajdzie potrzeba ominięcia jeszcze jednej krawędzi uzyskamy ścieżkę składającą się z 15 odcinków.
+Tak powstała krawędź składa się z dziewięciu odcinków. W przypadku, gdy zajdzie potrzeba ominięcia jeszcze jednej krawędzi uzyskamy ścieżkę składającą się z 15 odcinków (szczegóły konstrukcji w \cite{ntafos}).
 \todo{Rysunek?}
-\\\indent Po stworzeniu siatki wg powyższego przepisu uzyskamy w sumie $e$ krawędzi grafu $G$ składających się ze ścieżki $e_3$ złożonej z 3 odcinków, ścieżki $e_9$ z 9 odcinków oraz ścieżki $e_{15}$ z 15 odcinków co daje nam $e = e_3 + e_9 + e_{15}$.
+\\\indent Po stworzeniu siatki wg powyższego opisu uzyskamy w sumie $e = e_3 + e_9 + e_{15}$ krawędzi grafu $G$, gdzie, odpowiednio, $e_3$  jest liczbą krawędzi, którym odpowiadają ścieżki złożone z 3 odcinków, $e_9$ -- z 9 odcinków oraz $e_{15}$ -- z 15 odcinków..
 
 \begin{Lemat}\cite{orourke}
-	Pokrycie wierzchołkowe grafu \emph{G} o rozmiarze \emph{K} istnieje wtedy i tylko wtedy jeżeli istnieje pokrycie siatki \emph{P} wg powyższego algorytmu przez \emph{g = K + $e_3$ + 4$e_9$ + 7$e_{15}$} strażników.
+	Pokrycie wierzchołkowe grafu $G$ o rozmiarze $K$ istnieje wtedy i tylko wtedy, gdy istnieje pokrycie siatki $P$ powstałej wg powyższej konstrukcji przez $g = K + e_3 + 4e_9 + 7e_{15}$ strażników.
 \end{Lemat}
 \begin{proof} 
-	Załóżmy, że istnieje pokrycie wierzchołkowe $C$ grafu $G$ o rozmiarze $K$. Następnie, rozmieśćmy strażnika w każdym przecięciu siatki $P$ która odpowiada wierzchołkowi w $C$.
-	Niech $p_3$ będzie ścieżką złożoną z 3 odcinków w $P$ pomiędzy $v_i$ a $v_j$. Ponieważ $C$ jest pokryciem wierzchołkowym, przynajmniej w jednym z węzłów $v_i$ lub $v_j$ znajduje się strażnik a więc potrzebujemy jeszcze jednego strażnika aby strzec $p_3$. Podobna sytuacja występuje dla ścieżki $p_9$ pomiędzy $v_i$ oraz $v_j$. Jeden z węzłów $v_i$ lub $v_j$ jest już strzeżony więc dodatkowo potrzebujemy 4 strażników. Dla ścieżki $p_{15}$ potrzebujemy 7 dodatkowych strażników, co w rezultacie daje nam $K + e_3 + 4e_9 + 7e_{15}$ strażników.
-	\\\indent Załóżmy teraz, że aby strzec siatkę $P$ wystarczy $K + e_3 + 4e_9 + 7e_{15}$ strażników. Każda z trzy elementowych ścieżek $e_3$ wymaga jednego strażnika w wewnętrznym rogu. Ścieżka złożona z dziewięciu odcinków wymaga czterech strażników rozmieszczonych w wewnętrznych rogach a piętnastowa odcinkowa - siedmiu. Stąd uzyskujemy sumę $e_3$ + 4$e_9$ + 7$e_{15}$ strażników rozmieszczonych w miejscach innych niż punkty siatki, którym odpowiadają wierzchołki grafu $G$. Pozostało nam jeszcze $K$ strażników, których możemy umieścić tylko w punktach siatki odpowiadających wierzchołkom grafu $G$. Załóżmy więc, że strażnicy rozmieszczeni w tych punktach nie należą do pokrycia wierzchołkowego $G$. W takim wypadku krawędź $(i, j)$ z $G$ nie jest incydentna z żadnym wierzchołkiem należącym do pokrycia wierzchołkowego a więc odpowiadająca jej ścieżka w siatce $P$ nie posiada strażników zarówno w $v_i$ ani w $v_j$. Wiemy jednak, że aby pokryć np. ścieżkę trójelementową jeden strażnik w wewnętrznym rogu jest w stanie strzec tylko dwa z trzech odcinków. Analogiczna sytuacja występuje dla ścieżek o długości dziewięciu oraz piętnastu odcinków, w których, odpowiednio, czterech i siedmiu strażników jest w stanie strzec co najwyżej osiem i czternaście z dziewięciu oraz piętnastu odcinków. Stąd wnioskujemy, że jeżeli $K$ strażników nie stanowi pokrycia wierzchołkowego to nie możemy pokryć siatki $P$ przez $K + e_3 + 4e_9 + 7e_{15}$ strażników a więc $K$ strażników musi być pokryciem wierzchołkowym o rozmiarze co najwyżej $K$. 
+	Załóżmy, że istnieje pokrycie wierzchołkowe $C$ grafu $G$ o rozmiarze $K$. Następnie, rozmieśćmy strażnika w każdym przecięciu siatki $P$, które odpowiada wierzchołkowi w $C$.
+	Niech $p_3$ będzie ścieżką złożoną z 3 odcinków w $P$ pomiędzy $v_i$ a $v_j$. Ponieważ $C$ jest pokryciem wierzchołkowym, przynajmniej w jednym z węzłów $v_i$ lub $v_j$ znajduje się strażnik, a więc potrzebujemy jeszcze jednego strażnika, aby strzec całą $p_3$. Podobna sytuacja występuje dla 1-elementowej ścieżki $p_9$ pomiędzy $v_i$ oraz $v_j$. Jeden z węzłów $v_i$ lub $v_j$ jest już strzeżony więc dodatkowo potrzebujemy 4 strażników. Dla 15-elementowej ścieżki $p_{15}$ potrzebujemy 7 dodatkowych strażników, co w rezultacie daje nam $K + e_3 + 4e_9 + 7e_{15}$ strażników.
+
+	\\\indent Załóżmy teraz, że aby strzec siatkę $P$ wystarczy $K + e_3 + 4e_9 + 7e_{15}$ strażników. Każda z 3-elementowych ścieżek wymaga jednego strażnika w wewnętrznym rogu. Ścieżka złożona z dziewięciu odcinków wymaga czterech strażników rozmieszczonych w wewnętrznych rogach, a 15-odcinkowa -- siedmiu. Stąd uzyskujemy sumę $e_3$ + 4$e_9$ + 7$e_{15}$ strażników rozmieszczonych w miejscach innych niż punkty siatki, którym odpowiadają wierzchołki grafu $G$. Pozostało nam jeszcze $K$ strażników, których możemy umieścić tylko w punktach siatki odpowiadających wierzchołkom grafu $G$. Załóżmy więc, że strażnicy rozmieszczeni w tych punktach nie tworzą pokrycia wierzchołkowego grafu $G$. W takim wypadku krawędź ${i, j}$ z $G$ nie jest incydentna z żadnym wierzchołkiem należącym do pokrycia wierzchołkowego, a więc odpowiadająca jej ścieżka w siatce $P$ nie posiada strażników zarówno w $v_i$ ani w $v_j$. Wiemy jednak, że aby pokryć np. ścieżkę 3-elementową, jeden strażnik w wewnętrznym ,,rogu'' jest w stanie strzec tylko dwa z trzech odcinków. Analogiczna sytuacja występuje dla ścieżek złożonych z dziewięciu oraz piętnastu odcinków, w których, odpowiednio, czterech i siedmiu strażników jest w stanie strzec co najwyżej osiem i czternaście z dziewięciu oraz piętnastu odcinków. Stąd wnioskujemy, że jeżeli owych pozostałych, $K$ strażników nie stanowi pokrycia wierzchołkowego, to nie możemy pokryć siatki $P$ przez $K + e_3 + 4e_9 + 7e_{15}$ strażników. 
 \end{proof}
 
 \begin{Twierdzenie}\cite{ntafos}
-	Zagadnienie strzeżenia trójwymiarowej siatki przez minimalną ilość strażników należy do klasy problemów NP-zupełnych.
+	Zagadnienie strzeżenia trójwymiarowej siatki przez minimalną liczbę strażników należy do klasy problemów NP-zupełnych.
 \end{Twierdzenie}
 \begin{proof} 
-	Ponieważ strażnicy mogą być rozmieszczeni tylko na skrzyżowania siatki lub w jej rogach, których jest skończona liczba rozwiązanie możemy zgadnąć oraz sprawdzić w czasie wielomianowym. Problem pokrycia wierzchołkowego należy do klasy NP-zupełnej a więc zagadnienie zredukowanie do tego problemu również należy do klasy NP-zupełnej.
+	Ponieważ strażnicy mogą być rozmieszczeni tylko na skrzyżowaniach siatki lub w jej rogach, których jest skończona (wielomianowa) liczba rozwiązanie możemy zgadnąć oraz sprawdzić w czasie wielomianowym. Problem pokrycia wierzchołkowego należy do klasy problemów NP-zupełnych a więc zagadnienie zredukowanie do tego problemu również należy do klasy problemów NP-zupełnych.
 \end{proof}
 
 \chapter{Problem pościgu i ucieczki w grafie}
 \section{Gra w złodzieja i policjanta}
-Mając dany graf $G$, zbiór reguł $S$, liczbę całkowita $k$, oraz dwa warunki $T_1, T_2$, gra zaczyna się od rozmieszczenia przez gracza pierwszego (policjanta) nie więcej niż $k$ żetonów na wierzchołkach grafu $G$. Gracz numer dwa (złodziej) rozmieszcza jeden żeton na dowolnym wierzchołku $G$. Następnie gracze przesuwają swoje żetony, zgodnie z regułami $S$, dopóki nie zajdzie jeden z warunków $T_i$. Jeżeli końcowa konfiguracja spełnia warunek $T_1$ - wygrywa policjant, w przeciwnym wypadku wygrywa złodziej. W klasycznej wersji gry, obaj gracze znają rozmieszczenie wszystkich żetonów a jedynym warunkiem końcowym jest aby żeton gracza pierwszego oraz drugiego znajdował się na tym samym wierzchołku grafu G.
+Mając dany graf $G$, zbiór reguł $S$, liczbę całkowita $k$, oraz dwa warunki $T_1, T_2$, gra zaczyna się od rozmieszczenia przez gracza pierwszego (policjanta) nie więcej niż $k$ żetonów na wierzchołkach grafu $G$. Gracz numer dwa (złodziej) rozmieszcza jeden żeton na dowolnym wierzchołku $G$. Następnie gracze przesuwają swoje żetony, zgodnie z regułami $S$, dopóki nie zajdzie jeden z warunków $T_i$. Jeżeli końcowa konfiguracja spełnia warunek $T_1$ - wygrywa policjant, w przeciwnym wypadku wygrywa złodziej. W klasycznej wersji gry, obaj gracze znają rozmieszczenie wszystkich żetonów a jedynym warunkiem końcowym jest aby żeton gracza pierwszego oraz drugiego znajdował się na tym samym wierzchołku grafu $G$.
 Reguły $S$ wyglądają następująco:
 \begin{enumerate}
   \item Gracze wykonują ruchy na przemian
@@ -512,7 +514,7 @@ Problem ma praktyczne zastosowanie na przykład w planowaniu ruchu robotów, kie
 
 Zagadnienie pościgu i ucieczki w grafie, opiera się na przeszukiwaniu grafu w taki sposób aby po wykonaniu $n$ kroków, policjant zauważył złodzieja (tzn. znajdował się w tym samym wierszu lub w tej samej kolumnie) lub, w trudniejszym wariancie, znajdował się w tym samym wierzchołku co złodziej. Taką sytuację uznajemy za zwycięstwo goniącego, w przeciwnym wypadku zwycięża złodziej. Obaj uczestnicy poruszają się tylko po wierszach i kolumnach siatki z ograniczoną prędkością.
 
-Najprostszym przykładem gry, w której zawsze zwycięża policjant jest drzewo oraz współczynnik k = 1. W takim przypadku policjant w każdym kolejnym ruchu zbliża się do drugiego gracza, który w żadnym momencie nie jest w stanie go minąć, co zawsze prowadzi do zwycięstwa goniącego.
+Najprostszym przykładem gry, w której zawsze zwycięża policjant jest drzewo oraz współczynnik $k = 1$. W takim przypadku policjant w każdym kolejnym ruchu zbliża się do drugiego gracza, który w żadnym momencie nie jest w stanie go minąć, co zawsze prowadzi do zwycięstwa goniącego.
 
 \subsection{Wariant Sugiharu i Suzuki}
 W tym rozdziale zajmę się innym wariantem gry, przedstawionym przez Sugiharu i Suzuki, w którym warunkiem zwycięstwa policjanta jest zauważenie złodzieja a gra odbywa się na grafie $G$ przypominającym prostokątną siatkę.
@@ -655,6 +657,8 @@ $N$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \bibitem{erdosszekeres} Classic Papers in Combinatorics Modern Birkhäuser Classics 1987, pp 49-56 A Combinatorial Problem in Geometry P. Erdös, G. Szckeres
  \bibitem{fabilamonroy} R. Fabila-Monroy, A. R. Vargas, and J. Urrutia. On modem illumination problems.In XIII Encuentros de Geometria Computacional, Zaragoza, Spain, June 2009.
  \bibitem{borodin} O.V.Borodin, Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs (in Russian), Met. Diskret. Anal. 41 (1984) 12-26.
+ \bibitem{even} Even, S. 1979. Graph Algorithms. Computer Science Press, Potomac, MD.
+ \bibitem{garey} M. Garey i D. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness (1979)
 \end{biblist}
 \end{bibdiv}
 
