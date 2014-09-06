@@ -490,7 +490,7 @@ Tak powstała krawędź składa się z dziewięciu odcinków. W przypadku, gdy z
 	Załóżmy, że istnieje pokrycie wierzchołkowe $C$ grafu $G$ o rozmiarze $K$. Następnie, rozmieśćmy strażnika w każdym przecięciu siatki $P$, które odpowiada wierzchołkowi w $C$.
 	Niech $p_3$ będzie ścieżką złożoną z 3 odcinków w $P$ pomiędzy $v_i$ a $v_j$. Ponieważ $C$ jest pokryciem wierzchołkowym, przynajmniej w jednym z węzłów $v_i$ lub $v_j$ znajduje się strażnik, a więc potrzebujemy jeszcze jednego strażnika, aby strzec całą $p_3$. Podobna sytuacja występuje dla 1-elementowej ścieżki $p_9$ pomiędzy $v_i$ oraz $v_j$. Jeden z węzłów $v_i$ lub $v_j$ jest już strzeżony więc dodatkowo potrzebujemy 4 strażników. Dla 15-elementowej ścieżki $p_{15}$ potrzebujemy 7 dodatkowych strażników, co w rezultacie daje nam $K + e_3 + 4e_9 + 7e_{15}$ strażników.
 
-	\\\indent Załóżmy teraz, że aby strzec siatkę $P$ wystarczy $K + e_3 + 4e_9 + 7e_{15}$ strażników. Każda z 3-elementowych ścieżek wymaga jednego strażnika w wewnętrznym rogu. Ścieżka złożona z dziewięciu odcinków wymaga czterech strażników rozmieszczonych w wewnętrznych rogach, a 15-odcinkowa -- siedmiu. Stąd uzyskujemy sumę $e_3$ + 4$e_9$ + 7$e_{15}$ strażników rozmieszczonych w miejscach innych niż punkty siatki, którym odpowiadają wierzchołki grafu $G$. Pozostało nam jeszcze $K$ strażników, których możemy umieścić tylko w punktach siatki odpowiadających wierzchołkom grafu $G$. Załóżmy więc, że strażnicy rozmieszczeni w tych punktach nie tworzą pokrycia wierzchołkowego grafu $G$. W takim wypadku krawędź ${i, j}$ z $G$ nie jest incydentna z żadnym wierzchołkiem należącym do pokrycia wierzchołkowego, a więc odpowiadająca jej ścieżka w siatce $P$ nie posiada strażników zarówno w $v_i$ ani w $v_j$. Wiemy jednak, że aby pokryć np. ścieżkę 3-elementową, jeden strażnik w wewnętrznym ,,rogu'' jest w stanie strzec tylko dwa z trzech odcinków. Analogiczna sytuacja występuje dla ścieżek złożonych z dziewięciu oraz piętnastu odcinków, w których, odpowiednio, czterech i siedmiu strażników jest w stanie strzec co najwyżej osiem i czternaście z dziewięciu oraz piętnastu odcinków. Stąd wnioskujemy, że jeżeli owych pozostałych, $K$ strażników nie stanowi pokrycia wierzchołkowego, to nie możemy pokryć siatki $P$ przez $K + e_3 + 4e_9 + 7e_{15}$ strażników. 
+	\indent Załóżmy teraz, że aby strzec siatkę $P$ wystarczy $K + e_3 + 4e_9 + 7e_{15}$ strażników. Każda z 3-elementowych ścieżek wymaga jednego strażnika w wewnętrznym rogu. Ścieżka złożona z dziewięciu odcinków wymaga czterech strażników rozmieszczonych w wewnętrznych rogach, a 15-odcinkowa -- siedmiu. Stąd uzyskujemy sumę $e_3$ + 4$e_9$ + 7$e_{15}$ strażników rozmieszczonych w miejscach innych niż punkty siatki, którym odpowiadają wierzchołki grafu $G$. Pozostało nam jeszcze $K$ strażników, których możemy umieścić tylko w punktach siatki odpowiadających wierzchołkom grafu $G$. Załóżmy więc, że strażnicy rozmieszczeni w tych punktach nie tworzą pokrycia wierzchołkowego grafu $G$. W takim wypadku krawędź ${i, j}$ z $G$ nie jest incydentna z żadnym wierzchołkiem należącym do pokrycia wierzchołkowego, a więc odpowiadająca jej ścieżka w siatce $P$ nie posiada strażników zarówno w $v_i$ ani w $v_j$. Wiemy jednak, że aby pokryć np. ścieżkę 3-elementową, jeden strażnik w wewnętrznym ,,rogu'' jest w stanie strzec tylko dwa z trzech odcinków. Analogiczna sytuacja występuje dla ścieżek złożonych z dziewięciu oraz piętnastu odcinków, w których, odpowiednio, czterech i siedmiu strażników jest w stanie strzec co najwyżej osiem i czternaście z dziewięciu oraz piętnastu odcinków. Stąd wnioskujemy, że jeżeli owych pozostałych, $K$ strażników nie stanowi pokrycia wierzchołkowego, to nie możemy pokryć siatki $P$ przez $K + e_3 + 4e_9 + 7e_{15}$ strażników. 
 \end{proof}
 
 \begin{Twierdzenie}\cite{ntafos}
@@ -502,54 +502,55 @@ Tak powstała krawędź składa się z dziewięciu odcinków. W przypadku, gdy z
 
 \chapter{Problem pościgu i ucieczki w grafie}
 \section{Gra w złodzieja i policjanta}
-Mając dany graf $G$, zbiór reguł $S$, liczbę całkowita $k$, oraz dwa warunki $T_1, T_2$, gra zaczyna się od rozmieszczenia przez gracza pierwszego (policjanta) nie więcej niż $k$ żetonów na wierzchołkach grafu $G$. Gracz numer dwa (złodziej) rozmieszcza jeden żeton na dowolnym wierzchołku $G$. Następnie gracze przesuwają swoje żetony, zgodnie z regułami $S$, dopóki nie zajdzie jeden z warunków $T_i$. Jeżeli końcowa konfiguracja spełnia warunek $T_1$ - wygrywa policjant, w przeciwnym wypadku wygrywa złodziej. W klasycznej wersji gry, obaj gracze znają rozmieszczenie wszystkich żetonów a jedynym warunkiem końcowym jest aby żeton gracza pierwszego oraz drugiego znajdował się na tym samym wierzchołku grafu $G$.
-Reguły $S$ wyglądają następująco:
+Mając dany graf $G$, zbiór reguł $S$, liczbę całkowitą $k$, oraz dwa warunki $T_1 i T_2$, gra zaczyna się od rozmieszczenia przez gracza pierwszego (policjanta, ozn. $A$) nie więcej niż $k$ żetonów na wierzchołkach grafu $G$. Gracz numer dwa (złodziej, ozn. $Z$) rozmieszcza jeden żeton na dowolnym wierzchołku $G$. Następnie gracze przesuwają swoje żetony, zgodnie z regułami ze zbioru $S$, dopóki nie zajdzie jeden z warunków $T_i$. Jeżeli końcowa konfiguracja spełnia warunek $T_1$ -- wygrywa gracz $A$ (policjant), w przeciwnym wypadku wygrywa gracz $Z$ (złodziej). W klasycznej wersji gry obaj gracze znają rozmieszczenie wszystkich żetonów, a jedynym warunkiem końcowym jest, aby żeton gracza $A$ oraz $Z$ znajdował się na tym samym wierzchołku grafu $G$.
+Reguły $S$ wyglądają następująco.
 \begin{enumerate}
   \item Gracze wykonują ruchy na przemian
-  \item Gracz pierwszy w swojej kolejce może odmówić ruchu lub przesunąć wzdłuż krawędzi jeden ze swoich żetonów na wierzchołek sąsiedni z aktualnie zajmowanym
-  \item Gracz drugi w swojej kolecje może odmówić ruchu lub przesunąć wzdłuż krawędzi swój żeton na wolny wierzchołek, sąsiedni z wierzchołkiem aktualnie zajmowanym
+  \item Gracz $A$ w swojej kolejce może odmówić ruchu lub przesunąć wzdłuż krawędzi jeden ze swoich żetonów na wierzchołek sąsiedni z aktualnie zajmowanym.
+  \item Gracz $Z$ w swojej kolejce może odmówić ruchu lub przesunąć wzdłuż krawędzi swój żeton na wolny wierzchołek sąsiedni z wierzchołkiem aktualnie zajmowanym.
 \end{enumerate}
 
-Problem ma praktyczne zastosowanie na przykład w planowaniu ruchu robotów, kiedy ważnym jest aby nie następowały kolizje lub poważniejsze zderzenia.
+Problem ma praktyczne zastosowanie na przykład w planowaniu ruchu robotów, kiedy ważnym jest, aby nie następowały kolizje lub poważniejsze zderzenia.
 
-Zagadnienie pościgu i ucieczki w grafie, opiera się na przeszukiwaniu grafu w taki sposób aby po wykonaniu $n$ kroków, policjant zauważył złodzieja (tzn. znajdował się w tym samym wierszu lub w tej samej kolumnie) lub, w trudniejszym wariancie, znajdował się w tym samym wierzchołku co złodziej. Taką sytuację uznajemy za zwycięstwo goniącego, w przeciwnym wypadku zwycięża złodziej. Obaj uczestnicy poruszają się tylko po wierszach i kolumnach siatki z ograniczoną prędkością.
+Zagadnienie pościgu i ucieczki w kracie, opiera się na przeszukiwaniu grafu \todo[inline]{nie w grafie, inaczej napisać} w taki sposób, aby po wykonaniu $n$ kroków policjant zauważył złodzieja (tzn. znajdował się w tym samym wierszu lub w tej samej kolumnie) lub, w trudniejszym wariancie, znajdował się w tym samym wierzchołku co złodziej. Taką sytuację uznajemy za zwycięstwo goniącego, w przeciwnym wypadku zwycięża złodziej. Obaj uczestnicy poruszają się tylko po wierszach i kolumnach siatki z ograniczoną prędkością.
 
-Najprostszym przykładem gry, w której zawsze zwycięża policjant jest drzewo oraz współczynnik $k = 1$. W takim przypadku policjant w każdym kolejnym ruchu zbliża się do drugiego gracza, który w żadnym momencie nie jest w stanie go minąć, co zawsze prowadzi do zwycięstwa goniącego.
+Najprostszym przykładem gry w postaci ogólnej, w której zawsze zwycięża policjant, jest drzewo oraz współczynnik $k = 1$. W takim przypadku policjant w każdym kolejnym ruchu zbliża się do drugiego gracza, który w żadnym momencie nie jest w stanie go minąć, co zawsze prowadzi do zwycięstwa goniącego.
 
 \subsection{Wariant Sugiharu i Suzuki}
-W tym rozdziale zajmę się innym wariantem gry, przedstawionym przez Sugiharu i Suzuki, w którym warunkiem zwycięstwa policjanta jest zauważenie złodzieja a gra odbywa się na grafie $G$ przypominającym prostokątną siatkę.
-Przez siatkę rozumiemy graf $G_{n,m}$, gdzie $n$ to liczba wierzchołków a $m$ liczba krawędzi, z których każda ma długość jeden. Zakładamy również, że graf jest rozpięty na płaszczyźnie z punktem poczatkowym $v_{0,0}$ w lewym górnym wierzchołku.
+W tym rozdziale zajmę się wariantem gry przedstawionym przez Sugiharu i Suzuki \cite{sugiharu}, w którym warunkiem zwycięstwa policjanta jest zauważenie złodzieja, a gra odbywa się na grafie $G$ przypominającym prostokątną kratę.
+Przez kratę rozumiemy graf $G_{n,m}$, gdzie $n$ to liczba wierzchołków, a $m$ liczba krawędzi, z których każda ma długość jeden. Zakładamy również, że graf jest rozpięty na płaszczyźnie z punktem poczatkowym $v_{0,0}$ w lewym górnym wierzchołku.
+\todo{narysować $G_{3,5}$}
 \begin{Definicja}
-  Gracz A \emph{jest widoczny} dla gracza B wtedy i tylko wtedy, gdy obaj znajdują się w tej samej kolumnie lub w tym samym wierszu siatki, niezależnie od odległości która ich dzieli.
+  Gracz $A$ \emph{jest widoczny} dla gracza $Z$ wtedy i tylko wtedy, gdy obaj znajdują się w tej samej kolumnie lub w tym samym wierszu kraty, niezależnie od odległości która ich dzieli.
 \end{Definicja}
 
-Gracz przesuwają swoje żetony tylko po krawędziach grafu a szybkość ruchu jest określona przed rozpoczęciem gry.
-W tym wariancie gry, gracze nie mają całkowitej wiedzy o pozycjach, które zajmują. Tylko złodziej posiada wszystkie informacje o miejscach, które zajmuje policjant. Ścigający za to nie wie nic o pozycji uciekającego, dopóki nie zostanie on zauważony. Dodatkowo, ruchy pierwszego gracza są z góry określone, zanim gra w ogóle się rozpocznie.
-Zasady $S$ wyglądają następująco:
+Gracz przesuwają swoje żetony tylko po krawędziach grafu, a szybkość ruchu jest określona przed rozpoczęciem gry.
+W tym wariancie gry gracze nie mają całkowitej wiedzy o pozycjach, które zajmują. Tylko złodziej posiada wszystkie informacje o miejscach, które zajmuje policjant. Ścigający za to nie wie nic o pozycji uciekającego, dopóki nie zostanie on zauważony. Dodatkowo, ruchy gracza $A$ są z góry określone, zanim gra w ogóle się rozpocznie.
+Zasady $S$ wyglądają następująco.
 \begin{enumerate}
-  \item Gracze poruszają się w czasie rzeczywistym
-  \item Prędkość ścigającego jest stała i wynosi $s_n$
-  \item Uciekający porusza się z prędkością co najwyżej $s_c$
+  \item Gracze poruszają się w czasie rzeczywistym.
+  \item Prędkość ścigającego jest stała i wynosi $S_n$.
+  \item Uciekający porusza się z prędkością co najwyżej $S_c$.
 \end{enumerate}
 
-Warunki kończące grę:
+Warunki kończące grę są następujące.
 \begin{enumerate}
-  \item Złodziej został zauważony przez policjanta
-  \item Uciekający zawsze jest w stanie zapobiec zwycięstwu policjanta
+  \item Złodziej został zauważony przez policjanta.
+  \item Uciekający zawsze jest w stanie zapobiec zwycięstwu policjanta.
 \end{enumerate}
 
 Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całkowicie deterministyczna i zależy od parametrów początkowych gry. Naszym celem jest określenie warunków, w których zawsze zwycięża gracz pierwszy. 
 
 \begin{Twierdzenie} \cite{poscig}
-	Jeżeli $S_n$ $\le$ n + 1, policjant zawsze wygrywa dla stałej $S_c$ = n + 1.
+	Jeżeli $S_n \le n + 1$, policjant zawsze wygrywa dla stałej $S_c = n + 1$.
 \end{Twierdzenie}
 \begin{proof}
-	Aby dowieść powyższego twierdzenia skorzystamy z następującego algorytmu
+	Aby dowieść powyższego twierdzenia, skorzystamy z następującego algorytmu.
 	\begin{enumerate}
-		\item Gracz pierwszy porusza się w dół kolumną $j$, startując w wierzchołku $(0,j)$, przechodząc przez wierzchołek $(n, j)$ a kończąc ruch w $(n, j + 1)$. Pokonanie takiej trasy zajmuje jedną jednostkę czasu.
-		\item Następnie, przesuwa się w górę kolumną $j + 1$, kończąc ruch w wierzchołku $(0,j)$. Pokonanie takiej ścieżki również zajmuje jedną jednostkę czasu.
-		\item Powtarzamy ruch nr 1
-		\item Wykonuje ruch w górę kolumną $j + 1$, kończąc go w wierzchołku $(0,j + 1)$, tracąc $\frac{n}{n+1}$ jednostki czasu.
+		\item Gracz pierwszy porusza się w dół kolumną $k$, startując w wierzchołku $(0,k)$, przechodząc przez wierzchołek $(n, k)$ a kończąc ruch w $(n, k + 1)$. Pokonanie takiej trasy zajmuje jedną jednostkę czasu.
+		\item Następnie, przesuwa się w górę kolumną $k + 1$, kończąc ruch w wierzchołku $(0,k)$. Pokonanie takiej ścieżki również zajmuje jedną jednostkę czasu.
+		\item Powtarzamy ruch nr 1.
+		\item Wykonuje ruch w górę kolumną $k + 1$, kończąc go w wierzchołku $(0,k + 1)$, tracąc $\frac{n}{n+1}$ jednostki czasu.
 	\end{enumerate}
 	\begin{figure}[ht!]
 	  \centering
@@ -557,9 +558,9 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \caption{Trasa pokonana przez gracza pierwszego w wyniku algorytmu}
 	\end{figure} 
 
-	Czas, którego potrzebował gracz pierwszy aby wykonać powyższy schemat wynosi $t_{j+1}$ = $t_j$ + 3 + $\frac{n}{n+1}$.
-	Zakładamy, że po wykonaniu powyższych ruchów, gracz numer dwa albo został już zauważony, co kończy grę, lub znajduje się w części siatki ograniczonej przez wierzchołki [(0,0), (n, j + 1)].
-	\indent Jako że gra toczy się dalej, gracz numer dwa nie może znajdować się w pierwszym wierszu ani $j-tej$ kolumnie ponieważ wtedy byłby widoczny dla policjanta. W czasie $t_j$ drugi gracz znajduje się w części siatki ograniczonej przez wierzchołki $[(0,j), (n, j + 1)]$ i próbuje się przedostać do części $[(0,0), (n, j + 1)]$
+	Czas $t_{k+1}$, którego potrzebował gracz pierwszy, aby wykonać powyższy schemat wynosi $t_{k+1} = t_k + 3 + \frac{n}{n+1}$.
+	Załóżmy, że po wykonaniu powyższych ruchów gracz $Z$ albo został już zauważony, co kończy grę, lub znajduje się w części siatki ograniczonej przez wierzchołki $[(0,0), (n, k + 1)]$. \todo[inline]{tutaj jakiś zonk, sprawdzić z \cite{poscig}
+	\indent Jako że gra toczy się dalej, gracz $Z$ nie może znajdować się w pierwszym wierszu ani $k-tej$ kolumnie, ponieważ wtedy byłby widoczny dla policjanta. W czasie $t_k$ gracz $Z$ znajduje się w części kraty ograniczonej przez wierzchołki $[(0,k), (n, k + 1)]$ i próbuje się przedostać do części $[(0,0), (n, k + 1)]$ \todo[inline]{tutaj też jakiś zylc}
 
 	\begin{figure}[ht!]
 	  \centering
@@ -567,19 +568,19 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \caption{Złodziej znajduje się w części siatki zaznaczonej linią przerywaną}
 	\end{figure} 
 
-	\indent W czasie, kiedy policjant przemieszcza się kolumną $j$, złodziej może zbliżać się do niej wierszem $i$. Policjant dotrze do wierzchołka $(i,j)$ po czasie $\frac{i}{n+1}$ a więc do tego momentu złodziej musi znajdować się powyżej (lub poniżej) wiersza $i$. Wynika z tego, że w momencie kiedy gracz nr jeden kończy pierwszy ruch, drugi gracz znajduje się w odległości $\frac{1-i}{n+1} - \epsilon$ pomiędzy kolumną (i,j + 1) a kolumną (i,j). Obrazuje to rysunek \ref{fig:pierwszy krok}.
+	\indent W czasie, kiedy policjant przemieszcza się kolumną $k$, złodziej może zbliżać się do niej wierszem $j$. Policjant dotrze do wierzchołka $(j,k)$ po czasie $\frac{i}{n+1}$ a więc do tego momentu złodziej musi znajdować się powyżej (lub poniżej) wiersza $j$. Wynika z tego, że w momencie kiedy gracz $A$ kończy pierwszy ruch, gracz $Z$ znajduje się w odległości $\frac{1-j}{n+1} - \epsilon$ pomiędzy kolumną $(j,k + 1)$ a kolumną $(j,k)$. Obrazuje to rysunek \ref{fig:pierwszy krok}.
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=5cm]{rysunki/poscig_1.png}
 	  \caption{Pierwszy etap pościgu.}
 	  \label{fig:pierwszy krok}
 	\end{figure}
-	\\\indent Pierwszy gracz ponownie przekroczy wiersz $i$ w drugim kroku algorytmy po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu, drugi gracz musi przejść cały wiersz i znaleźć się w kolumnie $j$. Żeby tego dokonać musi przemieścić się o $\frac{i}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $i < \frac{n}{2}$.
-	\\\indent Pomiędzy momentem kiedy policjant przekracza wiersz $i$ w kroku drugim a przejściem do wierzchołka (0,j) mija $\frac{i}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_j$. Złodziej startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $i$ nie ma wystarczajaco dużo czasu aby przesunąć się do wiersza $i - 1$ lub $i + 1$ ponieważ nie może rozpocząć ruchu dopóki pierwszy gracz nie przekroczy wiersza $i$. Więc w momencie, kiedy ścigający kończy ruch nr dwa, drugi gracz musi znajdować się w odległości nie większej niż $\frac{i}{n+1} - \gamma$ od $(i,j)$. Jako że $i < \frac{n}{2}$.
+	\\\indent Gracz G ponownie przekroczy wiersz $j$ w drugim kroku algorytmu po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu gracz Z musi przejść cały wiersz $j$ znaleźć się w kolumnie $k$. Żeby tego dokonać musi przemieścić się o $\frac{j}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $j < \frac{n}{2}$.
+	\\\indent Pomiędzy momentem, kiedy policjant przekracza wiersz $j$ w kroku drugim a przejściem do wierzchołka $(0,k)$ mija $\frac{j}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_k$. Złodziej startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $j$ nie ma wystarczajaco dużo czasu aby przesunąć się do wiersza $j - 1$ lub $j + 1$ ponieważ nie może rozpocząć ruchu dopóki pierwszy gracz nie przekroczy wiersza $j$. Więc w momencie, kiedy ścigający kończy ruch nr 2, gracz $Z$ musi znajdować się w odległości nie większej niż $\frac{j}{n+1} - \gamma$ od $(k,j)$. Jako że $j < \frac{n}{2}$.
 	\begin{center}
-	$\frac{i}{n+1} - \gamma < 1 - \frac{i}{n+1}$
+	$\frac{j}{n+1} - \gamma < 1 - \frac{j}{n+1}$
 	\end{center}
-	Widać to na poniższym rysunku.
+	Widać to na poniższym rysunku. \todo[inline]{za dużo niejasności, przeformułować}
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=5cm]{rysunki/poscig_2.png}
@@ -588,7 +589,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \label{fig:drugi krok}
 	\end{figure}
 
-	\indent Pierwszy gracz osiąga (i,j) w kroku trzecim po upływie kolejnych $\frac{i}{n+1}$ jednostek. W tym samym czasie drugi gracz nie jest w stanie osiągnąć kolumny $j - 1$ ani wrócić do $j + 1$ a więc zostaje zauważony.
+	\indent Gracz $A$ osiąga $(j,k)$ w kroku trzecim po upływie kolejnych $\frac{j}{n+1}$ jednostek. W tym samym czasie gracz $Z$ nie jest w stanie osiągnąć kolumny $k - 1$ ani wrócić do $k + 1$ a więc zostaje zauważony.
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=5cm]{rysunki/poscig_4.png}
@@ -597,7 +598,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \label{fig:ostatni etap poscigu}
 	\end{figure} 
 
-	\indent Ponieważ policjant widzi przez całą długość wiersza/kolumny, takie samo rozumowanie będzie miało zastosowanie jeżeli złodziej będzie rozpoczynał swój ruch z każdej kolumny $k > j + 1$. W ten sposób jeżeli pierwszy gracz rozpocznie grę w punkcie (0,0) oraz wszystkie założenia początkowe będą spełnione zawsze zakończy grę sukcesem w czasie nie większym niż $t_n$.
+	\indent Ponieważ policjant widzi przez całą długość wiersza/kolumny, takie samo rozumowanie będzie miało zastosowanie jeżeli złodziej będzie rozpoczynał swój ruch z każdej kolumny $k > j + 1$. W ten sposób jeżeli gracz A rozpocznie grę w punkcie $(0,0)$ oraz wszystkie założenia początkowe będą spełnione zawsze zakończy grę sukcesem w czasie nie większym niż $t_n$. \todo{wspomnieć o innych wariantach z odnośnikami}
 \end{proof} 
 \summary
 Kiedy Klee po raz pierwszy sformułował problem galerii sztuki na pewno nie spodziewał się jak wielka ilość zagadnień zrodzi się z tego stosunkowo prostego pomysłu.
@@ -659,6 +660,7 @@ $N$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \bibitem{borodin} O.V.Borodin, Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs (in Russian), Met. Diskret. Anal. 41 (1984) 12-26.
  \bibitem{even} Even, S. 1979. Graph Algorithms. Computer Science Press, Potomac, MD.
  \bibitem{garey} M. Garey i D. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness (1979)
+ \bibitem{sugiharu} K. Sugihara  and I. Suzuki,  On a pursuit-evasion  problem related  to motion  coordination  of mobile robots,  in: Proc. 21~1 Hawuii  Internat.  Conf  on System  Sciences,  Kailua- Kona, Hawaii  (1988) 218-226.
 \end{biblist}
 \end{bibdiv}
 
