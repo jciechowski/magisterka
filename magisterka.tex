@@ -84,8 +84,9 @@ Ostatni rozdział łączy w sobie klasyczny problem galerii sztuki oraz elementy
 \chapter{Klasyczny problem galerii sztuki}
 
 \section{Twierdzenie Chv\'atala}
-Zgodnie z twierdzeniem Chv\'atala \cite{chvatal} \label{tw chvatala}, ilość strażników potrzebnych do strzeżenia wielokąta prostego $P$ wynosi $g(P) \le \floor{\frac{n}{3}}$, gdzie $g(P)$ jest funkcją opisującą ilość strażników wystarczających, aby zawsze strzec określony $n$-kąt. Inaczej mówiąc, $g(P)$ strażników zawsze wystarcza a czasami jest potrzebnych aby pokryć $n$-kąt.
-\\Przedstawię dowód Fiska \cite{fisk} powyższego twierdzenia, który jest znacznie prostszy od indukcyjnej wersji Chv\'atala, a który bazuje na trójkolorowaniu grafu. 
+Zgodnie z twierdzeniem Chv\'atala \cite{chvatal} \label{tw chvatala}, minimalna liczba strażników potrzebnych do strzeżenia wielokąta prostego o $n$ wierzchołkach wynosi co najwyżej $\floor{\frac{n}{3}}$.
+Z drugiej strony, istnieją $n$-kąty, które wymagają dokładnie $\floor{\frac{n}{3}}$.
+\\Przedstawię poniżej dowód Fiska \cite{fisk} powyższego twierdzenia, który jest znacznie prostszy od indukcyjnej wersji Chv\'atala \cite{chvatal}, a który bazuje na $3$-kolorowaniu odpowiedniego grafu triangulacji. 
 
 Pierwszym krokiem jest triangulacja wielokąta $P$, przez dodanie wewnętrznych, nieprzecinających się przekątnych między wierzchołkami, do momentu gdy nie będzie można już dodać więcej przekątnych. 
 Dowód na to, że każdy wielokąt prosty można podzielić na trójkąty, znajduje się w dodatku \ref{triangulacja}.
@@ -99,24 +100,24 @@ Za wierzchołki i krawędzie grafu triangulacji, przyjmujemy odpowiednio wierzch
 Graf triangulacji wielokąta prostego jest $3$-kolorowalny.
 \end{Lemat}
 \begin{proof}
-	Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt (graf $K_3$) jest przypadkiem bazowym -- zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu  dualnego dla grafu triangulacji danego wielokąta, który jest drzewem. Grafem dualnym nazywamy \todo[inline]{definicja grafu dualnego}
+	Dowód polega na indukcji po ilości trójkątów wielokąta po triangulacji. Trójkąt (graf $K_3$) jest przypadkiem bazowym -- zawsze można go pokolorować trzema kolorami. Następnym krokiem jest stworzenie grafu  dualnego dla grafu triangulacji danego wielokąta, który to jest drzewem. Grafem dualnym nazywamy \todo[inline]{definicja grafu dualnego}
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics{rysunki/dual.png}
-	    \caption{Wielokąt podzielony na trójkąty}
+	    \caption{Wielokąt podzielony na trójkąty.}
 	\end{figure} 
-	Z grafu dualnego usuwamy dowolny liść wraz z odpowiadającym mu ,,trójkątem'', kolorujemy wierzchołki grafu triangulacji (z założenia indukcyjnego jest to możliwe), a następnie dodajemy trójkąt z powrotem nadając usuniętemu liściowi kolor inny niż używają jego sąsiedzi.
+	Z grafu dualnego usuwamy dowolny liść wraz z odpowiadającym mu ,,trójkątem'', kolorujemy wierzchołki grafu triangulacji (z założenia indukcyjnego jest to możliwe), a następnie dodajemy trójkąt z powrotem nadając usuniętemu liściowi kolor inny niż używają jego dwaj sąsiedzi.
   \begin{figure}[ht!]
     \centering
       \includegraphics{rysunki/dual_kolor.png} 
       \includegraphics{rysunki/dual_caly_kolor.png}
-      \caption{Pokolorowany graf triangulacji wraz z grafem dualnym}
+      \caption{Pokolorowany graf triangulacji wraz z grafem dualnym.}
       \todo[inline]{przerywana linia usuniętego trójkąta}
   \end{figure} 
 \end{proof}
 	Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym.
 
-\indent Ograniczenie co najwyżej $\floor{\frac{n}{3}}$ nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku -- patrzy rysunek niżej.
+\indent Ograniczenie ,,co najwyżej $\floor{\frac{n}{3}}$'' nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku -- patrzy rysunek niżej.
 \begin{figure}[ht!]
   \centering
   \includegraphics{rysunki/co_trzeci.png}
@@ -559,7 +560,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	\end{figure} 
 
 	Czas $t_{k+1}$, którego potrzebował gracz pierwszy, aby wykonać powyższy schemat wynosi $t_{k+1} = t_k + 3 + \frac{n}{n+1}$.
-	Załóżmy, że po wykonaniu powyższych ruchów gracz $Z$ albo został już zauważony, co kończy grę, lub znajduje się w części siatki ograniczonej przez wierzchołki $[(0,0), (n, k + 1)]$. \todo[inline]{tutaj jakiś zonk, sprawdzić z \cite{poscig}
+	Załóżmy, że po wykonaniu powyższych ruchów gracz $Z$ albo został już zauważony, co kończy grę, lub znajduje się w części siatki ograniczonej przez wierzchołki $[(0,0), (n, k + 1)]$. \todo[inline]{tutaj jakiś zonk, sprawdzić z \cite{poscig}}
 	\indent Jako że gra toczy się dalej, gracz $Z$ nie może znajdować się w pierwszym wierszu ani $k-tej$ kolumnie, ponieważ wtedy byłby widoczny dla policjanta. W czasie $t_k$ gracz $Z$ znajduje się w części kraty ograniczonej przez wierzchołki $[(0,k), (n, k + 1)]$ i próbuje się przedostać do części $[(0,0), (n, k + 1)]$ \todo[inline]{tutaj też jakiś zylc}
 
 	\begin{figure}[ht!]
@@ -575,7 +576,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \caption{Pierwszy etap pościgu.}
 	  \label{fig:pierwszy krok}
 	\end{figure}
-	\\\indent Gracz G ponownie przekroczy wiersz $j$ w drugim kroku algorytmu po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu gracz Z musi przejść cały wiersz $j$ znaleźć się w kolumnie $k$. Żeby tego dokonać musi przemieścić się o $\frac{j}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $j < \frac{n}{2}$.
+	\\\indent Gracz $G$ ponownie przekroczy wiersz $j$ w drugim kroku algorytmu po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu gracz $Z$ musi przejść cały wiersz $j$ znaleźć się w kolumnie $k$. Żeby tego dokonać musi przemieścić się o $\frac{j}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $j < \frac{n}{2}$.
 	\\\indent Pomiędzy momentem, kiedy policjant przekracza wiersz $j$ w kroku drugim a przejściem do wierzchołka $(0,k)$ mija $\frac{j}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_k$. Złodziej startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $j$ nie ma wystarczajaco dużo czasu aby przesunąć się do wiersza $j - 1$ lub $j + 1$ ponieważ nie może rozpocząć ruchu dopóki pierwszy gracz nie przekroczy wiersza $j$. Więc w momencie, kiedy ścigający kończy ruch nr 2, gracz $Z$ musi znajdować się w odległości nie większej niż $\frac{j}{n+1} - \gamma$ od $(k,j)$. Jako że $j < \frac{n}{2}$.
 	\begin{center}
 	$\frac{j}{n+1} - \gamma < 1 - \frac{j}{n+1}$
