@@ -226,12 +226,14 @@ Niech $F = \{S_1,\ldots,S_n\}$ będzie zbiorem $n$ rozłącznych odcinków, a $G
 \indent Aby uzyskać ograniczenie dolne, należy wskazać $n$-elementowy zbiór $F$, który wymaga $\floor{\frac{2n-3}{5}}$ strażników.
 \\\indent Niech $H$ będzie planarnym grafem kubicznym z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi są liniowo niezależne \cite{topp}. Graf $H$ posiada $k$ wierzchołków i $\frac{3k}{2}$ krawędzi.
 \\\indent Zamieńmy krawędzie zbioru $H$ na odcinki tak, że na każdy $k - 3$ wewnętrznych wierzchołów przypada trójkątna ściana, w której umieszczamy mały odcinek (rysunek \ref{fig:przeksztalcenie h}).
+
 \begin{figure}[ht!]
  \centering
   \includegraphics{rysunki/dolna_granica.png}
   \caption{Przekształcenie grafu H.}
   \label{fig:przeksztalcenie h}
 \end{figure} 
+
 Odrzucamy trzy krawędzie zewnętrznej ściany $H$, a następnie rozłączamy każdy wierzchołek w jego bliskim sąsiedztwie tak, aby utworzyć zbiór $n = \frac{3k}{n} - 3 + k  - 3$ odcinków (rysunek \ref{fig:przeksztalcenie h}). Żadne dwa z $k - 3$ małych odcinków nie są widoczne z jednego punktu więc $k - 3$ punktów jest potrzebnych, aby strzec taki zbiór. Możemy łatwo sprawdzić, że $k - 3$ punktów jest również wystarczające. Równość $k - 3 = \floor{\frac{2n - 3}{5}}$ kończy dowód twierdzenia \ref{straznicy strzezenie}.
 
 \section{Oświetlanie odcinków}\label{oświetlanie odcinków}
@@ -642,28 +644,109 @@ $N$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
 % %Załącznik…
 \begin{bibdiv}
 \begin{biblist}
- \bibitem{orourke} J. O'Rourke, Art gallery theorems and algorithms (1987)
- \bibitem{chvatal} V. Chv\'atal, A combinatorial theorem in plane geometry, Journal of Combinatorial Theory 18, s. 39-41 (1975)
- \bibitem{guarding walls} A. Laurentini, Guarding the walls of an art gallery, The Visual Computer (1999)
- \bibitem{czyzowicz} J. Czyzowicz, E. Rivera-Campo, N. Santoro, J. Urrutia i J. Zaks, Guarding rectangular art galleries. Discrete Applied Math, s. 149–157 (1994)
- \bibitem{illumination} J. Urrutia, Art gallery and illumination problems (2004)
- \bibitem{knadajniki} B. Ballinger, N. Benbernou, P. Bose, M. Damian, E. Demaine,V. Dujmovi\`c, R. Flatland, F. Hurtado, J. Iacono, A. Lubiw, P. Morin, V. Sacristán, D. Souvaine i R. Uehara, Coverage with k-transmittes in the presence of obstacles (?)
- \bibitem{poscig} R. Dawes, Some pursuit - evasion problems on grid
- \bibitem{fisk} S. Fisk, A short proof of Chv\'atal's watchman theorem, Journal of Combinatorial Theory 24, s. 374 (1977)
- \bibitem{tutte} W. Tutte, "The Factorization of Linear Graphs." Journal of the London Mathematical Society 22, s. 107-111 (1947)
- \bibitem{ntafos} S. Ntafos, On gallery watchmen in grids, Information Processing Letters Volume 23, Issue 2, s. 99–102 (1986)
- \bibitem{avis} D. Avis i G. Toussaint, An efficient algorithm for decomposing a polygon into star-shaped polygons, Pattern Recognition vol 13, issue 6, s. 395-398 (1981)
- \bibitem{euler} R. C. i H. Robbins, What is Mathematics?: An Elementary Approach to Ideas and Methods, s. 239-240 (1978)
- \bibitem{nishizeki} T. Nishizeki. Precise proofs of some lemmas in the paper “Lower bounds on the cardinality of the maximum matchings of planar graphs,” Carnegie-Mellon tech. report (1977)
- \bibitem{sciany}  F. Hurtado, O. Serra, and J. Urrutia. Hiding points in arrangements of segments, Discrete Mathematics Volume 162, s. 187–197  (1996)
- \bibitem{erdosszekeres}  P. Erdös, G. Szekeres, Classic Papers in Combinatorics Modern Birkhäuser Classics 1987, pp 49-56 A Combinatorial Problem in Geometry
- \bibitem{fabilamonroy} R. Fabila-Monroy, A. R. Vargas, and J. Urrutia. On modem illumination problems.In XIII Encuentros de Geometria Computacional, Zaragoza, Spain, Czerwiec 2009.
- \bibitem{borodin} O.V.Borodin, Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs (in Russian), Met. Diskret. Anal. 41 (1984) s. 12-26.
- \bibitem{even} S. Even, 1979. Graph Algorithms. Computer Science Press, Potomac, MD.
- \bibitem{garey} M. Garey i D. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness (1979)
- \bibitem{sugiharu} K. Sugihara  and I. Suzuki,  On a pursuit-evasion  problem related  to motion  coordination  of mobile robots,  in: Proc. 21~1 Hawuii  Internat.  Conf  on System  Sciences,  Kailua- Kona,   Hawaii  (1988) s. 218-226.
- \bibitem{appel} K. Appel i W. Haken, Every planar map is four colorable, Illinois J. Math. Volume 21, Issue 3 (1977), s. 429-490. 
- \bibitem{topp} J. Topp, Algebra Liniowa, Politechnika Gdańska 2005, s. 131
+ \bibitem{orourke}
+ J. \ O'Rourke.
+ \newblock{Art gallery theorems and algorithms (1987)}
+
+ \bibitem{chvatal} 
+  V. \ Chv\'atal. 
+  \newblock{A combinatorial theorem in plane geometry.}
+  \newblock{{\em Journal of Combinatorial Theory} 18, str. 39-41 (1975).}
+
+ \bibitem{guarding walls} 
+  A. \ Laurentini.
+  \newblock{Guarding the walls of an art gallery.} 
+  \newblock{The Visual Computer (1999)}
+
+ \bibitem{czyzowicz} 
+ J. \ Czyzowicz, E. \ Rivera-Campo N. \ Santoro, J. \ Urrutia i J. \ Zaks. 
+ \newblock{Guarding rectangular art galleries.} 
+ \newblock{{\em Discrete Applied Math} str. 149–157 (1994).}
+
+ \bibitem{illumination} 
+ J. \ Urrutia. 
+ \newblock{Art gallery and illumination problems (2004).}
+
+ \bibitem{knadajniki} 
+ B. \ Ballinger, N. \ Benbernou, P. \ Bose, M. \ Damian, E. \ Demaine, V. \ Dujmovi\`c, R. \ Flatland, F. \ Hurtado, J. \ Iacono, A. \ Lubiw, P. \ Morin, V. \ Sacristán, D. \ Souvaine i R. \ Uehara. 
+ \newblock{Coverage with k-transmittes in the presence of obstacles (?).}
+
+ \bibitem{poscig} 
+ R. \ Dawes. 
+ \newblock{Some pursuit - evasion problems on grid.}
+
+ \bibitem{fisk} 
+ S. \ Fisk. 
+ \newblock{A short proof of Chv\'atal's watchman theorem.} 
+ \newblock{{\em Journal of Combinatorial Theory} 24, str. 374 (1977).}
+
+ \bibitem{tutte} 
+ W. \ Tutte. 
+ \newblock{The Factorization of Linear Graphs.} 
+ \newblock{{\em Journal of the London Mathematical Society} 22, str. 107-111 (1947).}
+
+ \bibitem{ntafos} 
+ S. \ Ntafos. 
+ \newblock{On gallery watchmen in grids}
+ \newblock{{\em Information Processing Letters} 23(3), str. 99–102 (1986).}
+
+ \bibitem{avis} 
+ D. \ Avis i G. \ Toussaint.
+ \newblock{An efficient algorithm for decomposing a polygon into star-shaped polygons.}
+ \newblock{{\em Pattern Recognition} 13(6), str. 395-398 (1981).}
+
+ \bibitem{euler} 
+ R. \ Courant i H. \ Robbins.
+ \newblock{What is Mathematics?: An Elementary Approach to Ideas and Methods, str. 239-240 (1978).}
+
+ \bibitem{nishizeki} 
+ T. \ Nishizeki.
+ \newblock{Precise proofs of some lemmas in the paper “Lower bounds on the cardinality of the maximum matchings of planar graphs”.}
+ \newblock{Carnegie-Mellon tech. report (1977).}
+
+ \bibitem{sciany}  
+ F. \ Hurtado, O. \ Serra i J. \ Urrutia. 
+ \newblock{Hiding points in arrangements of segments.}
+ \newblock{{\em Discrete Mathematics} 162, str. 187–197 (1996).}
+
+ \bibitem{erdosszekeres}  
+ P. \ Erdös, G. \ Szekeres.
+ \newblock{Classic Papers in Combinatorics Modern Birkhäuser Classics.}
+ \newblock{{\em A Combinatorial Problem in Geometry} str. 49-56 (1987).}
+
+ \bibitem{fabilamonroy} 
+ R. \ Fabila-Monroy, A. R. \ Vargas i J. \ Urrutia.
+ \newblock{On modem illumination problems.}
+ \newblock{XIII Encuentros de Geometria Computacional (2009).}
+
+ \bibitem{borodin} 
+ O.V. \ Borodin.
+ \newblock{Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs.}
+ \newblock{{\em Metody Diskretnogo Analiza} 41,  str. 12-26  (1984).}
+
+ \bibitem{even} 
+ S. \ Even.
+ \newblock{Graph Algorithms.}
+ \newblock{Computer Science Press, Potomac, MD. (1979).}
+
+ \bibitem{garey} 
+ M. \ Garey i D. \ Johnson.
+\newblock{Computers and Intractability: A Guide to the Theory of NP-Completeness (1979).}
+
+ \bibitem{sugiharu} 
+ K. \ Sugihara, I. \ Suzuki.
+ \newblock{On a pursuit-evasion problem related to motion coordination of mobile robots.}
+ \newblock{Proc. 21~1 Hawuii  Internat.  Conf  on System  Sciences,  Kailua- Kona,  Hawaii  str. 218-226 (1988).}
+
+ \bibitem{appel} 
+ K. \ Appel, W. \ Haken.
+ \newblock{Every planar map is four colorable.}
+ \newblock{{\em Illinois J. Math} 21(3), str. 429-490 (1977).} 
+
+ \bibitem{topp} 
+ J. \ Topp. 
+ \newblock{Algebra Liniowa.}
+ \newblock{Politechnika Gdańska, str. 131 (2005).}
 \end{biblist}
 \end{bibdiv}
 
