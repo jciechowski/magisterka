@@ -630,117 +630,123 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
     \centering
     \includegraphics[height=5cm]{rysunki/triangulacja_1.png}
     \includegraphics[height=5cm]{rysunki/triangulacja_2.png}
-    \caption{Triangulacja.}
+    \caption{Trójkąty.}
   \end{figure} 
 	
 	\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o $n - 1$ wierzchołkach, na którym wykonujemy krok indukcyjny, otrzymując $1 + (n - 1) -2 = n - 2$ trókątów.
-	\\\indent W przypadku drugim znajdujemy punkt $t$ w trójkącie $uvw$, który znajduje się najdalej od prostej $uw$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ jest wewnętrzną przekątną, tzn. $\overline{vT} \in P$, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n - m + 2$ wierzchołkach, gdzie $3 \le m \le n-1$, na których wykonujemy krok indukcjyjny: z założenia indukcyjnego podział wielokąta skłąda się z $(m - 2) + ((n - m + 2) -2) = n - 2$ trójkątow.
+	\\\indent W przypadku drugim znajdujemy punkt $t$ w trójkącie $uvw$, który znajduje się najdalej od prostej $uw$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ jest wewnętrzną przekątną, tzn. $\overline{vt} \in P$, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n - m + 2$ wierzchołkach, gdzie $3 \le m \le n-1$, na których wykonujemy krok indukcjyjny: z założenia indukcyjnego podział wielokąta skłąda się z $(m - 2) + ((n - m + 2) -2) = n - 2$ trójkątow.
 \end{proof}
 
 \begin{thebibliography}{99}
- \bibitem{orourke}
- J. \ O'Rourke.
- \newblock{Art gallery theorems and algorithms (1987)}
 
- \bibitem{chvatal} 
-  V. \ Chv\'atal. 
-  \newblock{A combinatorial theorem in plane geometry.}
-  \newblock{{\em Journal of Combinatorial Theory} 18, str. 39-41 (1975).}
-
- \bibitem{guarding walls} 
-  A. \ Laurentini.
-  \newblock{Guarding the walls of an art gallery.} 
-  \newblock{The Visual Computer (1999)}
-
- \bibitem{czyzowicz} 
- J. \ Czyzowicz, E. \ Rivera-Campo N. \ Santoro, J. \ Urrutia i J. \ Zaks. 
- \newblock{Guarding rectangular art galleries.} 
- \newblock{{\em Discrete Applied Math} str. 149–157 (1994).}
-
- \bibitem{illumination} 
- J. \ Urrutia. 
- \newblock{Art gallery and illumination problems (2004).}
-
- \bibitem{knadajniki} 
- B. \ Ballinger, N. \ Benbernou, P. \ Bose, M. \ Damian, E. \ Demaine, V. \ Dujmovi\`c, R. \ Flatland, F. \ Hurtado, J. \ Iacono, A. \ Lubiw, P. \ Morin, V. \ Sacristán, D. \ Souvaine i R. \ Uehara. 
- \newblock{Coverage with k-transmittes in the presence of obstacles (?).}
-
- \bibitem{poscig} 
- R. \ Dawes. 
- \newblock{Some pursuit - evasion problems on grid.}
-
- \bibitem{fisk} 
- S. \ Fisk. 
- \newblock{A short proof of Chv\'atal's watchman theorem.} 
- \newblock{{\em Journal of Combinatorial Theory} 24, str. 374 (1977).}
-
- \bibitem{tutte} 
- W. \ Tutte. 
- \newblock{The Factorization of Linear Graphs.} 
- \newblock{{\em Journal of the London Mathematical Society} 22, str. 107-111 (1947).}
-
- \bibitem{ntafos} 
- S. \ Ntafos. 
- \newblock{On gallery watchmen in grids}
- \newblock{{\em Information Processing Letters} 23(3), str. 99–102 (1986).}
+ \bibitem{appel} 
+ K. \ Appel i W. \ Haken.
+ \newblock{Every planar map is four colorable.}
+ \newblock{{\em Illinois Journal of Mathematics} 21(3), str. 429-490 (1977).} 
 
  \bibitem{avis} 
  D. \ Avis i G. \ Toussaint.
  \newblock{An efficient algorithm for decomposing a polygon into star-shaped polygons.}
  \newblock{{\em Pattern Recognition} 13(6), str. 395-398 (1981).}
 
- \bibitem{euler} 
- R. \ Courant i H. \ Robbins.
- \newblock{What is Mathematics?: An Elementary Approach to Ideas and Methods, str. 239-240 (1978).}
-
- \bibitem{nishizeki} 
- T. \ Nishizeki.
- \newblock{Precise proofs of some lemmas in the paper “Lower bounds on the cardinality of the maximum matchings of planar graphs”.}
- \newblock{Carnegie-Mellon tech. report (1977).}
-
- \bibitem{sciany}  
- F. \ Hurtado, O. \ Serra i J. \ Urrutia. 
- \newblock{Hiding points in arrangements of segments.}
- \newblock{{\em Discrete Mathematics} 162, str. 187–197 (1996).}
-
- \bibitem{erdosszekeres}  
- P. \ Erdös, G. \ Szekeres.
- \newblock{Classic Papers in Combinatorics Modern Birkhäuser Classics.}
- \newblock{{\em A Combinatorial Problem in Geometry} str. 49-56 (1987).}
-
- \bibitem{fabilamonroy} 
- R. \ Fabila-Monroy, A. R. \ Vargas i J. \ Urrutia.
- \newblock{On modem illumination problems.}
- \newblock{XIII Encuentros de Geometria Computacional (2009).}
-
+ \bibitem{knadajniki} 
+ B. \ Ballinger, N. \ Benbernou, P. \ Bose, M. \ Damian, E. \ Demaine, V. \ Dujmovi\`c, R. \ Flatland, F. \ Hurtado, J. \ Iacono, A. \ Lubiw, P. \ Morin, V. \ Sacristán, D. \ Souvaine i R. \ Uehara. 
+ \newblock{Coverage with $k$-transmittes in the presence of obstacles.}
+ \newblock{COCOA'10 Proceedings of the 4th international conference on Combinatorial optimization and applications - Volume Part II (2010)}
+ 
  \bibitem{borodin} 
  O.V. \ Borodin.
  \newblock{Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs.}
  \newblock{{\em Metody Diskretnogo Analiza} 41,  str. 12-26  (1984).}
+
+ \bibitem{chvatal} 
+  V. \ Chv\'atal. 
+  \newblock{A combinatorial theorem in plane geometry.}
+  \newblock{{\em Journal of Combinatorial Theory} 18, str. 39-41 (1975).}
+
+ \bibitem{euler} 
+ R. \ Courant i H. \ Robbins.
+ \newblock{What is Mathematics?: An Elementary Approach to Ideas and Methods.}
+ \newblock{Oxford University Press, str. 239-240 (1978).}
+
+ \bibitem{czyzowicz} 
+ J. \ Czyzowicz, E. \ Rivera-Campo N. \ Santoro, J. \ Urrutia i J. \ Zaks. 
+ \newblock{Guarding rectangular art galleries.} 
+ \newblock{{\em Discrete Applied Mathematics} str. 149–157 (1994).}
+
+ \bibitem{poscig} 
+ R. \ Dawes. 
+ \newblock{Some pursuit - evasion problems on grid.}
+ \newblock{{\em Information Processing Letters} 58(1), str. 5-9 (1996)}
+
+ \bibitem{erdosszekeres}  
+ P. \ Erdös i G. \ Szekeres.
+ \newblock{A combinatorial problem in Geometry.}
+ \newblock{{\em Compositio Mathematica 2.} str. 463-470 (1935)}
 
  \bibitem{even} 
  S. \ Even.
  \newblock{Graph Algorithms.}
  \newblock{Computer Science Press, Potomac, MD. (1979).}
 
+ \bibitem{fabilamonroy} 
+ R. \ Fabila-Monroy, A. R. \ Vargas i J. \ Urrutia.
+ \newblock{On modem illumination problems.}
+ \newblock{XIII Encuentros de Geometria Computacional (2009).}
+
+ \bibitem{fisk} 
+ S. \ Fisk. 
+ \newblock{A short proof of Chv\'atal's watchman theorem.} 
+ \newblock{{\em Journal of Combinatorial Theory} 24, str. 374 (1977).}
+
  \bibitem{garey} 
  M. \ Garey i D. \ Johnson.
-\newblock{Computers and Intractability: A Guide to the Theory of NP-Completeness (1979).}
+ \newblock{Computers and Intractability: A Guide to the Theory of NP-Completeness.}
+ \newblock{W.H. Freeman (1979).}
+
+ \bibitem{sciany}  
+ F. \ Hurtado, O. \ Serra i J. \ Urrutia. 
+ \newblock{Hiding points in arrangements of segments.}
+ \newblock{{\em Discrete Mathematics} 162, str. 187-197 (1996).}
+
+ \bibitem{guarding walls} 
+  A. \ Laurentini.
+  \newblock{Guarding the walls of an art gallery.} 
+  \newblock{The Visual Computer (1999).}
+
+ \bibitem{nishizeki} 
+ T. \ Nishizeki.
+ \newblock{Precise proofs of some lemmas in the paper “Lower bounds on the cardinality of the maximum matchings of planar graphs”.}
+ \newblock{Carnegie-Mellon Tech. Report (1977).}
+
+ \bibitem{ntafos} 
+ S. \ Ntafos. 
+ \newblock{On gallery watchmen in grids.}
+ \newblock{{\em Information Processing Letters} 23(3), str. 99–102 (1986).}
+ 
+ \bibitem{orourke}
+ J. \ O'Rourke.
+ \newblock{Art gallery theorems and algorithms (1987).}
 
  \bibitem{sugiharu} 
- K. \ Sugihara, I. \ Suzuki.
+ K. \ Sugihara i I. \ Suzuki.
  \newblock{On a pursuit-evasion problem related to motion coordination of mobile robots.}
- \newblock{Proc. 21~1 Hawuii  Internat.  Conf  on System  Sciences,  Kailua- Kona,  Hawaii  str. 218-226 (1988).}
-
- \bibitem{appel} 
- K. \ Appel, W. \ Haken.
- \newblock{Every planar map is four colorable.}
- \newblock{{\em Illinois J. Math} 21(3), str. 429-490 (1977).} 
+ \newblock{Proceedings of the Twenty-First Annual Hawaii International Conference (1988).}
 
  \bibitem{topp} 
  J. \ Topp. 
  \newblock{Algebra Liniowa.}
- \newblock{Politechnika Gdańska, str. 131 (2005).}
+ \newblock{Politechnika Gdańska (2005).}
+
+ \bibitem{tutte} 
+ W. \ Tutte. 
+ \newblock{The factorization of linear graphs.} 
+ \newblock{{\em Journal of the London Mathematical Society} 22, str. 107-111 (1947).}
+
+ \bibitem{illumination} 
+ J. \ Urrutia. 
+ \newblock{Art gallery and illumination problems (2004).}
+
 \end{thebibliography}
 
 % spis rysunków
