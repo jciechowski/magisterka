@@ -1,4 +1,4 @@
-\documentclass[brudnopis]{xmgr}
+\documentclass{xmgr}
 \usepackage{amsrefs}
 \usepackage{mathtools}
 \usepackage{amsfonts}
@@ -38,7 +38,7 @@
 \maketitle
 
 \introduction
-Problem galerii sztuki wprowadził Victor Klee w 1973, odpowiadając na prośbę Vaska Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee, było znalezienie minimalnej ilości strażników wystarczających, aby strzec wnętrze pomieszczenia galerii sztuki w kształcie $n$-kąta. Niedługo potem Chv\'atal zaproponował rozwiązanie tego problemu, które szybko zostało nazwane ,,Teorią galerii sztuki Chv\'atala''. Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń. W pracy zajmę się rodziną problemów dotyczących odcinków na płaszczyźnie. 
+Problem galerii sztuki wprowadził Victor Klee w 1973, odpowiadając na prośbę Vaska Chv\'atala o interesujący problem geometryczny. Zagadnieniem, które zaproponował Klee, było znalezienie minimalnej liczby strażników wystarczających, aby strzec wnętrze pomieszczenia galerii sztuki w kształcie $n$-kąta. Niedługo potem Chv\'atal zaproponował rozwiązanie tego problemu, które szybko zostało nazwane ,,Teorią galerii sztuki Chv\'atala''. Od tamtego dnia problem doczekał się wielu różnych wariacji oraz przekształceń. W pracy zajmę się rodziną problemów dotyczących odcinków na płaszczyźnie. 
 
 Jednym z takich zagadnień jest strzeżenie zbioru odcinków, które wymaga, aby strzeżony odcinek był widziany przez strażnika przynajmniej w jednym punkcie. Można to zobrazować przez stacjonarnych strażników, którzy rozmieszczeni w odpowiednich punktach zawsze widzą na przykład obraz, przez co uniemożliwiają zdjęcie go ze ściany. Innym ciekawym podejściem do sprawy strzeżenia odcinków jest ich oświetlanie, które  rozumiemy przez takie umieszczenie źródła światła, aby każdy punkt należący do odcinka był widoczny z takiego źródła. Rozwiązaniem problemu jest zbiór źródeł światła, które w całości oświetlają każdy odcinek należący do zbioru. 
 
@@ -59,24 +59,19 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics{rysunki/wielokat_prosty.png}
+  \includegraphics[height=3.5cm]{rysunki/wielokat_prosty.png}
     \caption{Wielokąt prosty.}
 \end{figure} 
 
 \begin{Definicja}{Graf prosty}
 
-  Para $G = (V,E)$, gdzie $V$ jest niepustym skończonym zbiorem wierzchołków a $E$ jest skończonym zbiorem krawędzi, tj. różnych 2-elementowych podzbiorów $V$.
-\end{Definicja}
-
-\begin{Definicja}{Graf spójny}
-
-  Graf, którego nie można przedstawić jako sumy dwóch grafów.
+  Para $G = (V,E)$, gdzie $V$ jest niepustym skończonym zbiorem wierzchołków, a $E$ jest skończonym zbiorem krawędzi, tj. różnych 2-elementowych podzbiorów $V$.
 \end{Definicja}
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[height=3cm]{rysunki/spojny_graf_prosty.png}
-    \caption{Spójny graf prosty.}
+  \includegraphics[height=2.2cm]{rysunki/spojny_graf_prosty.png}
+    \caption{Graf prosty.}
 \end{figure} 
 
 \begin{Definicja}{Graf dwudzielny}
@@ -92,19 +87,29 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
 \begin{figure}[ht!]
   \centering
   \includegraphics[height=2.5cm]{rysunki/graf_dwudzielny_skojarzenie.png}
-    \caption{Graf dwudzielny o maksymalnym skojarzeniu. Skojarzenie jest oznaczone linią czerwoną.}
+    \caption{Graf dwudzielny o maksymalnym skojarzeniu. Skojarzenie oznaczone jest linią czerwoną.}
 \end{figure} 
 
-\begin{Definicja}{Maksymalna składowa spójności}
+\begin{Definicja}{Spójność grafu}
   
-  \emph{Maksymalną składową spójności} grafu $G=(V,E)$ nazywamy podgraf grafu $G$, który nie zawiera się w żadnym innym podgrafie spójnym.
+  Graf $G = (V,E)$ jest \emph{niespójny} wtedy i tylko wtedy, gdy istnieją niepuste i rozłączne podzbiory $V_1, V_2 \subseteq V$ takie, że $V = V_1 \cup V_2$ i każda z krawędzi grafu $G$ łączy wierzchołki należące równocześnie do $V_1$ lub równocześnie do $V_2$. Graf $G = (V,E)$ jest \emph{spójny} wtedy i tylko wtedy, jeśli nie jest niespójny.
+\end{Definicja}
+
+\begin{Definicja}{Składowa spójności}
+
+  Spójny podgraf grafu $G = (V,E)$ jest jego \emph{składową} spójności wtedy i tylko wtedy, gdy każdy jego nadgraf właściwy będący podgrafem $G$ jest grafem niespójnym.
+\end{Definicja}
+
+\begin{Definicja}{Nadgraf}
+
+  Graf $H = (V(H), E(H))$ jest \emph{nadgrafem} grafu $G = (V(G), E(G))$ wtedy i tylko wtedy, gdy $V(G) \subseteq V(H)$ i $E(G) \subseteq E(H)$. Nadgraf $H$ jest nadgrafem \emph{właściwym}, jeśli $H \neq G$.
 \end{Definicja}
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[height=2.5cm]{rysunki/graf_dwie_skladowe.png}
-    \caption{Graf o dwóch składowych spójności. Maksymalna składowa spójności zawiera trzy wierzchołki.}
-\end{figure} 
+  \includegraphics{rysunki/niespojny_graf.png}
+  \caption{Niespójny graf o dwóch składowych spójności.}
+\end{figure}
 
 \begin{Definicja}{Strażnik w wielokącie}
 
@@ -113,7 +118,7 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics{rysunki/straznik_wielokat.png}
+  \includegraphics[height=3cm]{rysunki/straznik_wielokat.png}
     \caption{Strażnik w wielokącie.}
 \end{figure} 
 
@@ -124,8 +129,9 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
 
 \begin{figure}[ht!]
   \centering
-  \includegraphics[height=4.5cm]{rysunki/straznik_na_plaszczyznie.png}
+  \includegraphics[height=3cm]{rysunki/straznik_na_plaszczyznie.png}
     \caption{Strażnik $p$ strzeże punktu $q$, ale nie strzeże punktu $y$.}
+    %\vspace{5in}
 \end{figure} 
 
 \chapter{Klasyczny problem galerii sztuki}
@@ -163,7 +169,7 @@ Graf triangulacji wielokąta prostego jest $3$-kolorowalny.
       \label{fig:graf_triangulacji}
   \end{figure} 
 \end{proof}
-	Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym. Zauważmy, że kolor ten występuje co najwyżej $\floor{\frac{n}{3}}$ razy. Każdy trójkąt posiada wierzchołek w tym kolorze a więc każdy z trójkątów jest strzeżony, tym samym i cała galeria.
+	Strażników rozmieszczamy w tych wierzchołkach, których kolor jest najrzadziej używanym. Zauważmy, że kolor ten występuje co najwyżej $\floor{\frac{n}{3}}$ razy. Każdy trójkąt posiada wierzchołek w tym kolorze, a więc każdy z trójkątów jest strzeżony, tym samym i cała galeria.
 
 \indent Ograniczenie ,,co najwyżej $\floor{\frac{n}{3}}$'' nie oznacza, że wystarczy rozmieścić strażnika w co trzecim wierzchołku -- patrzy rysunek niżej.
 \begin{figure}[ht!]
@@ -186,16 +192,16 @@ Ciekawym rozwinięciem klasycznego problemu galerii sztuki jest wprowadzenie dzi
 \end{Lemat}
 
 \begin{Lemat}\label{t trójkątów triangulacja} \cite{orourke}
-  Każdy wielokąt $P$ o $h$ dziurach oraz $n$ krawędziach poddany triangulacji dzieli się na $t = n + 2h - 2$ trójkątów.
+  Każdy wielokąt $P$ o $h$ dziurach oraz $n$ krawędziach poddany triangulacji dzieli się na $t = n + 2h-2$ trójkątów.
 \end{Lemat}
 
 W dowodzie powyższego lematu skorzystam z twierdzenia Eulera.
 \begin{Twierdzenie} \label{tw eulera} \cite{euler}
-  Niech $G$ będzie spójnym grafem płaskim o $N$ wierzchołkach, $M$ krawędziach oraz $F$ ścianach. Wówczas $N - M + F = 2$.
+  Niech $G$ będzie spójnym grafem płaskim o $N$ wierzchołkach, $M$ krawędziach oraz $F$ ścianach. Wówczas $N-M + F = 2$.
 \end{Twierdzenie}
 
 \begin{proof}[Dowód lematu]
-	Korzystając z twierdzenia Eulera mamy $N$ wierzchołków, $F = t + h + 1$ ścian (po jednej na każdy trójkąt oraz dziurę i ścianę zewnętrzną) oraz $E = \frac{3t+n}{2}$ krawędzi (trzy krawędzie na każdy trójkąt plus krawędzie zewnętrzne liczone podwójnie).  Wówczas $V - E + F = 2$, a więc $n - \frac{3t+n}{2} + t + h + 1 = 2$, z czego wynika, że $t = n + 2h - 2$.
+	Korzystając z twierdzenia Eulera mamy $N$ wierzchołków, $F = t + h + 1$ ścian (po jednej na każdy trójkąt oraz dziurę i ścianę zewnętrzną) oraz $E = \frac{3t+n}{2}$ krawędzi (trzy krawędzie na każdy trójkąt plus krawędzie zewnętrzne liczone podwójnie).  Wówczas $V-E + F = 2$, a więc $n-\frac{3t+n}{2} + t + h + 1 = 2$, z czego wynika, że $t = n + 2h-2$.
 \end{proof}
 Wiedząc, na ile trójkątów został podzielony wielokąt $P$, możemy przejść do twierdzenia oszacowującego wymaganą liczbę strażników.
 
@@ -237,7 +243,7 @@ Aby strzec dowolny zbiór $n$ rozłącznych odcinków prostych czasami potrzeba 
 \subsection{Ograniczenie górne}
 Rozpatrzmy zbiór $F =\{S_1,\ldots,S_n\}$ rozłącznych odcinków prostych na płaszczyźnie oraz graf $G(F)$ zawierający $n$ wierzchołków $v_1$,\ldots,$v_n$ takich, że $v_i$ jest sąsiedni z $v_j$ wtedy i tylko wtedy, gdy istnieje punkt $x$ na płaszczyźnie, który widzi przynajmniej jeden punkt na każdym z odcinków $S_i$ i $S_j$, tzn. $x$ strzeże oba odcinki $S_i$ oraz $S_j$ (rysunek \ref{fig:zbior odcinkow rozlacznych}).
 
-Aby udowodnić twierdzenie \ref{straznicy strzezenie}, na początku wykażemy, że dla każdego zbioru $F$ rozłącznych odcinków prostych, których jest parzysta liczba $n$, odpowiednio zdefiniowany graf $G(F)$ ma skojarzenie \emph{doskonałe}, tzn. takie skojarzenie $M$, że każdy z wierzchołków grafu jest incydentny do jakiejś krawędzi z $M$.
+Aby udowodnić twierdzenie \ref{straznicy strzezenie}, na początku wykażemy, że dla każdego zbioru $F$ rozłącznych odcinków prostych, których jest parzysta liczba $n$, odpowiednio zdefiniowany graf $G(F)$ ma \emph{skojarzenie doskonałe}, tzn. takie skojarzenie $M$, że każdy z wierzchołków grafu jest incydentny do jakiejś krawędzi z $M$.
 
 \begin{figure}[ht!]
  \centering
@@ -266,11 +272,11 @@ Niech $F = \{S_1,\ldots,S_n\}$ będzie zbiorem $n$ rozłącznych odcinków, a $G
 
 Rozważmy dowolny podzbiór $H$ zbioru $F$ oraz niech $S$ będzie zbiorem wierzchołków grafu $G(F)$ reprezentujących elementy $H$. Pokażemy, że liczba składowych spójności grafu $G(F) \setminus S$ wynosi co najwyżej |$S$| = |$H$|.
 \\\indent Najpierw usuwamy z płaszczyzny wszystkie odcinki, które nie należą do $H$. Następnie, jeden po drugim, przedłużamy elementy $H$ dopóki nie przetną innego elementu $H$, wcześniej przedłużonego odcinka lub nie staną się prostymi bądź półprostymi. Niech $\pi$ oznacza podział płaszczyzny indukowany przez przedłużone elementy zbioru $H$. Zauważmy, że $\pi$ zawiera dokładnie $|H| + 1$ ścian. 
-\\\indent Zgodnie z lematem \ref{podgraf indukowany}, liczba składowych spójności grafu $G(F) \setminus S$ jest co najwyżej równa liczbie ścian podziału $\pi$, czyli $|H| + 1$. Można ponadto wykazać, że występują przynajmniej dwie sąsiednie ściany z $\pi$ takie, że odcinki, które je przecinają, należą do tej samej składowej spójności w grafie $G(F) \setminus S$. Stąd wniosek, że $o (G(F) \setminus S)$ wynosi co najwyżej $|H| = |S|$, co implikuje, że $G(F)$ ma doskonałe skojarzenie $M$. Na tej podstawie możemy stwierdzić, że wystarczy co najwyżej $\ceil{\frac{n}{2}}$ punktów, aby strzec $F$ -- po jednym na każdą krawędź skojarzenia $M$.
+\\\indent Zgodnie z lematem \ref{podgraf indukowany}, liczba składowych spójności grafu $G(F) \setminus S$ jest co najwyżej równa liczbie ścian podziału $\pi$, czyli $|H| + 1$. Można ponadto wykazać, że występują przynajmniej dwie sąsiednie ściany z $\pi$ takie, że odcinki, które je przecinają, należą do tej samej składowej spójności w grafie $G(F) \setminus S$. Stąd wniosek, że $o (G(F) \setminus S)$ wynosi co najwyżej $|H| = |S|$, co implikuje, że $G(F)$ ma skojarzenie doskonałe $M$. Na tej podstawie możemy stwierdzić, że wystarczy co najwyżej $\ceil{\frac{n}{2}}$ punktów, aby strzec $F$ -- po jednym na każdą krawędź skojarzenia $M$.
 \subsection{Ograniczenie dolne}
 \indent Aby uzyskać ograniczenie dolne, należy wskazać $n$-elementowy zbiór $F$, który wymaga $\floor{\frac{2n-3}{5}}$ strażników.
-\\\indent Niech $H$ będzie kubicznym grafem płaskim z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi są liniowo niezależne \cite{topp}. Graf $H$ posiada $k$ wierzchołków i $\frac{3k}{2}$ krawędzi.
-\\\indent Zamieńmy krawędzie zbioru $H$ na odcinki oraz rozłączmy każdy wierzchołek w jego bliskim sąsiedztwie tak, że na każdy z $k - 3$ wewnętrznych wierzchołków przypada trójkątny obszar, w którym umieszczamy mały odcinek tak, aby utworzyć zbiór $n = \frac{3k}{2} - 3 + k  - 3$ odcinków (rysunek \ref{fig:przeksztalcenie h}). Żadne dwa z $k - 3$ małych odcinków nie są widoczne z jednego punktu, więc $k - 3$ punktów jest potrzebnych, aby strzec taki zbiór. Możemy łatwo sprawdzić, że $k - 3$ punktów jest również wystarczające. Równość $k - 3 = \floor{\frac{2n - 3}{5}}$ kończy dowód twierdzenia \ref{straznicy strzezenie}.
+\\\indent Niech $H$ będzie kubicznym grafem płaskim z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi są liniowo niezależne \cite{topp} (krawędzie są reprezentowane jako odcinki proste). Graf $H$ posiada $k$ wierzchołków i $\frac{3k}{2}$ krawędzi.
+\\\indent Zamieńmy krawędzie zbioru $H$ na odcinki oraz rozłączmy każdy wierzchołek w jego bliskim sąsiedztwie tak, że na każdy z $k-3$ wewnętrznych wierzchołków przypada trójkątny obszar, w którym umieszczamy mały odcinek tak, aby utworzyć zbiór $n = \frac{3k}{2}-3 + k -3$ odcinków (rysunek \ref{fig:przeksztalcenie h}). Żadne dwa z $k-3$ małych odcinków nie są widoczne z jednego punktu, więc $k-3$ punktów jest potrzebnych, aby strzec taki zbiór. Możemy łatwo sprawdzić, że $k-3$ punktów jest również wystarczające. Równość $k-3 = \floor{\frac{2n-3}{5}}$ kończy dowód twierdzenia \ref{straznicy strzezenie}.
 
 \begin{figure}[ht!]
  \centering
@@ -286,7 +292,7 @@ Kolejną wariacją strzeżenia odcinków jest ich oświetlanie. Tym razem, aby s
 \end{Definicja} Należy zwrócić uwagę na fakt, że punkt na odcinku może zostać oświetlony przez promień padający na niego z dowolnej strony odcinka.
 
 \begin{Twierdzenie} \cite{illumination}
- Dowolny zbiór $F$ składający się z $n$ rozłącznych odcinków możemy oświetlić przy użyciu co najwyżej $\ceil{\frac{2n}{3}} - 3$ źródeł światła
+ Dowolny zbiór $F$ składający się z $n$ rozłącznych odcinków możemy oświetlić przy użyciu co najwyżej $\ceil{\frac{2n}{3}}-3$ źródeł światła.
 \end{Twierdzenie}
 
 \begin{proof}
@@ -308,10 +314,10 @@ Zauważmy, że elementy rodziny $H$ są styczne z przynajmniej trzema innymi ele
 \begin{figure}[ht!]
  \centering
   \includegraphics[height=4cm]{rysunki/skojarzenia_zrodla_swiatla.png}
-  \caption{Graf G oraz źródła światła}
+  \caption{Graf G oraz źródła światła.}
 \end{figure}
 Tak stworzony graf jest planarny oraz 2-spójny. Jako że każdy zbiór rodziny $H$ jest styczny z co najmniej trzema innymi zbiorami, stopień każdego wierzchołka grafu $G$ wynosi co najmniej trzy. Zgodnie z twierdzeniem Nishizeki \cite{nishizeki} dla grafu $G$ istnieje skojarzenie $M$ o mocy co najmniej $\ceil{\frac{(n+3)+4}{3}} = \ceil{\frac{n+1}{3}}  + 2$. Dla każdej pary elementów $S_i$ i $S_j$ skojarzonych w $M$ przez krawędź $G$ należy teraz umieścić źródło światła w punkcie ich styczności. W tak wyznaczonym punkcie światło będzie oświetlać odcinki $L_i$ oraz $L_j$ zawierające się, odpowiednio, w $S_i$ oraz $S_j$. Jako że skojarzenie $M$ ma przynajmniej $\ceil{\frac{n+1}{3}} + 2$ elementów, $2(\ceil{\frac{n+1}{3}} + 2)$ elementy ze zbioru $F$ pokryte zostaną przez $\ceil{\frac{n+1}{3}} + 2$ świateł. W każdym z pozostałych elementów, które nie miały skojarzenia, musimy dodatkowo rozmieścić po jednym źródle. W rezultacie uzyskujemy:
-$(\ceil{\frac{n+1}{3}} + 2) + ((n + 3) - 2\ceil{\frac{n+1}{3}}) = n + 5 - \ceil{\frac{n+1}{3}} \le \ceil{\frac{2n}{3}} - 3$.
+$(\ceil{\frac{n+1}{3}} + 2) + ((n + 3)-2\ceil{\frac{n+1}{3}}) = n + 5-\ceil{\frac{n+1}{3}} \le \ceil{\frac{2n}{3}}-3$.
 \end{proof}
 
 \subsection{Ograniczenie dolne}
@@ -321,7 +327,7 @@ $(\ceil{\frac{n+1}{3}} + 2) + ((n + 3) - 2\ceil{\frac{n+1}{3}}) = n + 5 - \ceil{
 Po raz pierwszy problem ten przedstawili Hurtado, Serra oraz Urrutia \cite{sciany}. Zdefiniowali oni problem w następujący sposób.
 
 \begin{Definicja}\label{ukrywanie definicja}
- Zbiór $P$ punktów nazywamy \emph{ukrytym} w stosunku do zbioru $F$ rozłącznych odcinków, jeżeli żadne dwa punkty ze zbioru $P$ nie widzą się nawzajem w sensie \ref{straznik na plaszczyznie}, ze zbiorem przeszkód $F$.
+ Zbiór $P$ punktów nazywamy \emph{ukrytym} w stosunku do zbioru $F$ rozłącznych odcinków, jeżeli żadne dwa punkty ze zbioru $P$ nie widzą się nawzajem w sensie definicji \ref{straznik na plaszczyznie}, ze zbiorem przeszkód $F$.
 \end{Definicja}
 
 Dla tak zdefiniowanego problemu, korzystając z twierdzenia Erd{\H o}sa i Szekeresa \cite{erdosszekeres}, uzyskali oni oszacowanie dolne przez $\sqrt{n}$.
@@ -330,7 +336,7 @@ Dla tak zdefiniowanego problemu, korzystając z twierdzenia Erd{\H o}sa i Szeker
   Dowolna rodzina $n$ rozłącznych odcinków posiada zbiór punktów ukrytych o mocy co najmniej $\sqrt{n}$.
 \end{Twierdzenie}
 
-Rozpatrzmy zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś OX tworzy rozłączny zbiór. Przez $\alpha_i$ oznaczmy nachylenie odcinka $L_i, i = 1,\ldots,n$ w stosunku do osi OX.
+Rozpatrzmy zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś OX tworzy rozłączny zbiór. Przez $\alpha_i$ oznaczmy nachylenie odcinka $L_i, \linebreak i = 1,\ldots,n$, w stosunku do osi OX.
 \begin{Lemat}\label{zbior ukryty} \cite{illumination}
   Jeżeli $\alpha_1 < \alpha_2 < \ldots < \alpha_n$, to $F$ posiada ukryty zbiór $\mbox{rozmiaru $n$}$.
 \end{Lemat}
@@ -349,7 +355,7 @@ Rozpatrzmy zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś
 \chapter{$K$-nadajniki}
 
 \section{Pokrycie płaszczyzny z przeszkodami}\label{sec:knadajniki}
-	Ilość sieci Wi-Fi cały czas rośnie, zarówno w naszych domach jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer \cite{fabilamonroy} zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z oryginalnym problemem galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy \emph{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco: \emph{Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną $k > 0$ oraz dany obszar, jak wiele nadajników jest czasami potrzebnych a zawsze wystarczających, aby pokryć cały obszar?}  
+	Ilość sieci Wi-Fi cały czas rośnie, zarówno w naszych domach, jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer \cite{fabilamonroy} zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z oryginalnym problemem galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy \emph{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco: \emph{Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną $k > 0$ oraz dany obszar, jak wiele nadajników jest czasami potrzebnych, a zawsze wystarczających, aby pokryć cały obszar?}  
 \\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem galerii sztuki (strażnicy, którzy nie widzą przez ściany).
 \\\indent W wypadku, gdy wymagamy strzeżenia całej płaszczyzny, zakładamy, że nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
 \subsection{Odcinki prostopadłe}
@@ -381,10 +387,10 @@ W pierwszym kroku przedłużamy wszystkie odcinki sekwencyjnie, dopóki się nie
 \end{Lemat}
 
 \begin{proof}
-  Załóżmy, że 0-nadajnik w punkcie $p$ pokrywa punkt $q$ na płaszczyźnie ze zbiorem przeszkód $S \setminus I$. Odcinek $\overline{pq}$ nie może przecinać dwóch lub więcej odcinków ze zbioru $I$, ponieważ wtedy takie odcinki nie byłyby niezależne. Jednocześnie, odcinek $\overline{pq}$ nie przecina żadnego odcinka ze zbioru $S \setminus I$, a więc 1-nadajnik w punkcie $p$ pokrywa $q$ na płaszczyźnie ze zbiorem \mbox{przeszkód $S$.}
+  Załóżmy, że 0-nadajnik w punkcie $p$ pokrywa punkt $q$ na płaszczyźnie ze zbiorem przeszkód $S \setminus I$. Odcinek $\overline{pq}$ nie może przecinać dwóch lub więcej odcinków ze zbioru $I$, ponieważ wtedy takie odcinki nie byłyby niezależne. Jednocześnie odcinek $\overline{pq}$ nie przecina żadnego odcinka ze zbioru $S \setminus I$, a więc 1-nadajnik w punkcie $p$ pokrywa $q$ na płaszczyźnie ze \linebreak zbiorem przeszkód $S$.
 \end{proof}
 
-\indent Aby uzyskać możliwie liczny zbiór niezależny w $G(S)$, kolorujemy wierzchołki grafu $G(S)$, a następnie wybieramy najliczniejszą klasę kolorów. Zauważmy, że ściany powstałe przez przedłużenie odcinków w zbiorze $S$ są prostokątne (gdyby były trójkątne, to graf $G(S)$ byłby planarny a więc 4-kolorowalny). 
+\indent Aby uzyskać możliwie liczny zbiór niezależny w $G(S)$, kolorujemy wierzchołki grafu $G(S)$, a następnie wybieramy najliczniejszą klasę kolorów. Zauważmy, że ściany powstałe przez przedłużenie odcinków w zbiorze $S$ są prostokątne (gdyby były trójkątne, to graf $G(S)$ byłby planarny, a więc 4-kolorowalny). 
 Tak powstały graf jest 1-planarny oraz 6-kolorowalny \cite{borodin}.
 
 \begin{Definicja}
@@ -411,19 +417,13 @@ Tak powstały graf jest 1-planarny oraz 6-kolorowalny \cite{borodin}.
 \end{figure} 
 
 \section{Podział gilotynowy}
-Podział gilotynowy $S$ płaszczyzny $\mathbb{R}^2$ otrzymujemy przez dodanie kolejno $s_1,\ldots,s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany tworząc nowy podział $S_i$. Za ścianę $S_0$ przyjmujemy całą płaszczyznę. Zauważmy, że ściany podziału gilotynowego są wypukłe.
+Podział gilotynowy $S$ płaszczyzny $\mathbb{R}^2$ otrzymujemy przez dodanie kolejno $s_1,\ldots,s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany, tworząc nowy podział $S_i$. Za ścianę $S_0$ przyjmujemy całą płaszczyznę. Zauważmy, że ściany podziału gilotynowego są wypukłe.
 
 \begin{Lemat}\label{sasiednie sciany strzega F} \cite{knadajniki}
   Niech $F$ będzie ścianą podziału gilotynowego $S$. Jeżeli każda inna ściana, która współdzieli krawędź ze ścianą $F$, posiada wewnątrz 1-nadajnik, to taki zbiór nadajników pokrywa całą ścianę $F$.
 \end{Lemat}
 \begin{proof}
 \indent Rozpatrzmy odcinek $s_i$, którego dodanie tworzy ścianę $F$. Przed dodaniem odcinka $s_i$ podział $S_{i-1}$ zawierał jedną ścianę, która została podzielona na dwie części $F$ oraz $F'$ przez $s_i$. 
-% \begin{figure}[ht!]
-%    \centering
-%    \label{podzial F przez s_i}
-%    \includegraphics[width=9cm,height=6cm]{rysunki/podzial_F.png}
-%    \caption{Ściana $F$ oraz $F'$ po dodaniu odcinka $s_i$.}
-% \end{figure} 
 
 W dalszym procesie ściana $F$ nie będzie już dzielona, ale możemy podzielić ścianę $F'$ uzyskując kolejne ściany $F'_1, \ldots, F'_k$, takie, że $F'_j \subseteq F'$ oraz $F'_j$ dzieli część odcinka $s_i$ ze ścianą $F$ dla każdego $j \in \{1,\ldots,k\}$ (rysunek \ref{fig:podzial F' na kolejne ściany}).
 
@@ -472,7 +472,7 @@ Strażnik będący w punkcie $x$ siatki $P$ \emph{widzi} punkt $y$ siatki $P$, j
  \end{figure} 
 
 \begin{Twierdzenie} \cite{ntafos}
-	Minimalna liczba strażników potrzebna, aby strzec siatkę o $n$ odcinkach wynosi $n - m$, gdzie $m$ to moc najliczniejszego skojarzenia w grafie przecięć siatki, które można znaleźć w czasie $\theta(n^{2.5})$.
+	Minimalna liczba strażników potrzebna, aby strzec siatki o $n$ odcinkach wynosi $n-m$, gdzie $m$ to moc najliczniejszego skojarzenia w grafie przecięć siatki, które można znaleźć w czasie $\theta(n^{2.5})$.
 \end{Twierdzenie}
 
 Ntafos zaproponował elegancki algorytm, aby znaleźć minimalną liczbę strażników potrzebną do strzeżenia siatki.
@@ -488,7 +488,7 @@ Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w ka
  \end{figure} 
 
  Najliczniejsze skojarzenie dla dowolnego grafu $G = (V,E)$ można znaleźć w czasie O($|V|^{2.5}$) \cite{even}. Jako że graf $G(P)$ jest dwudzielny, ponieważ przecięcia występują tylko pomiędzy korytarzami pionowymi i poziomymi, problem znalezienia najliczniejszego skojarzenia sprowadza się do problemu kojarzenia małżeństw, który da się rozwiązać w czasie $O(|V|^{1/2}|E|)$, gdzie $V$ to zbiór wierzchołków, a $E$ to zbiór krawędzi w grafie dwudzielnym \cite{even}. Dla siatki o $n$ odcinkach mamy $|V| = n$, a maksymalna ilość krawędzi to $|E| = O(n^2)$, więc w najgorszym przypadku najliczniejsze skojarzenie znajdziemy w czasie $O(n^{2.5})$.
- \\\indent Aby strzec siatkę w całości, każdy odcinek wymaga strażnika, a więc rozmieszczenie ich na przecięciach korytarzy pozwala strzec co najwyżej dwa odcinki. Stąd uzyskujemy minimalną liczbę strażników wynoszącą $\ceil{\frac{n}{2}}$ dla siatki o $n$ odcinkach. Jeżeli graf posiada skojarzenie doskonałe o rozmiarze $\ceil{\frac{n}{2}}$, wtedy taka sama ilość strażników jest wystarczająca. Należy ich rozmieścić w każdym przecięciu korytarzy odpowiadającemu skojarzeniu w grafie. Jeżeli najliczniejsze skojarzenie ma moc $m$, wtedy rozmieszczenie w odpowiadających im przecięciach strzeże $2m$ odcinków. W każdym z pozostałych $n - 2m$ odcinków musi zostać umieszczony jeden strażnik, co w sumie daje nam $m + n - 2m = n - m$ strażników. Jest to jednocześnie dolne ograniczenie: jeżeli mniej niż $n - m$ strażników wystarcza, wtedy więcej niż $m$ strażników musi kryć po dwa odcinki każdy, a to daje nam skojarzenie o rozmiarze większym niż $m$, co nie jest możliwe.
+ \\\indent Aby strzec siatkę w całości, każdy odcinek wymaga strażnika, a więc rozmieszczenie ich na przecięciach korytarzy pozwala strzec co najwyżej dwa odcinki. Stąd uzyskujemy minimalną liczbę strażników wynoszącą $\ceil{\frac{n}{2}}$ dla siatki o $n$ odcinkach. Jeżeli graf posiada skojarzenie doskonałe o rozmiarze $\ceil{\frac{n}{2}}$, wtedy taka sama ilość strażników jest wystarczająca. Należy ich rozmieścić w każdym przecięciu korytarzy odpowiadającemu skojarzeniu w grafie. Jeżeli najliczniejsze skojarzenie ma moc $m$, wtedy rozmieszczenie w odpowiadających im przecięciach strzeże $2m$ odcinków. W każdym z pozostałych $n-2m$ odcinków musi zostać umieszczony jeden strażnik, co w sumie daje nam $m + n-2m = n-m$ strażników. Jest to jednocześnie dolne ograniczenie: jeżeli mniej niż $n-m$ strażników wystarcza, wtedy więcej niż $m$ strażników musi kryć po dwa odcinki każdy, a to daje nam skojarzenie o rozmiarze większym niż $m$, co nie jest możliwe.
 \end{proof}
 
  \section{Siatki 3D}
@@ -498,7 +498,7 @@ Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w ka
 \end{Definicja}
 Naszym celem jest stworzenie trójwymiarowej siatki $P$, którą możemy pokryć co najwyżej $g(K)$ strażnikami wtedy i tylko wtedy, gdy istnieje pokrycie wierzchołkowe $G$ o mocy co najwyżej $K$.
 W tym celu etykietujemy wszystkie wierzchołki grafu $G = (V,E)$ kolejnymi liczbami $1,2,\ldots,n = |V|$. Następnie przypisujemy wierzchołki punktom siatki wzdłuż prostej poprowadzonej przez punkty $(0,0,0)$ i $(1,1,1)$ tak, aby każdy wierzchołek $i$ otrzymał punkt siatki $v_i = (3i, 3i, 3i)$. Krawędzie $G$ reprezentowane są przez odcinki łączące węzły siatki. Jako że każdy wierzchołek grafu $G$ jest stopnia co najwyżej trzy, każdej incydentnej krawędzi możemy przypisać jeden z kierunków $(x,y,z)$.
-\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami \linebreak $1,\ldots,i - 1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź $\{i,j\}, i < j$. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla $i < j$, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$, a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jedna z trzech osi $+x$, $+y$ lub $+z$ rozpoczynająca się w $(3i, 3i, 3i)$ nie zawiera ścieżki dotychczas skonstruowanej siatki $P$. Załóżmy, że oś $+x$ jest wolna. W takim wypadku łączymy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
+\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami \linebreak $1,\ldots,i-1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź $\{i,j\}, i < j$. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla $i < j$, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$, a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jedna z trzech osi $+x$, $+y$ lub $+z$ rozpoczynająca się w $(3i, 3i, 3i)$ nie zawiera ścieżki dotychczas skonstruowanej siatki $P$. Załóżmy, że oś $+x$ jest wolna. W takim wypadku łączymy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
 \begin{itemize}
 	\item $(3i, 3i, 3i) \rightarrow (3j, 3i, 3i)$;
 	\item $(3j, 3i, 3i) \rightarrow (3j, 3j, 3i)$;
@@ -519,7 +519,7 @@ Oczywiście powyższe odcinki nie mogą przecinać się z żadnymi już istniej�
   \centering
   a)\includegraphics[width=6cm,height=5cm]{rysunki/zajete_z.png}
   b)\includegraphics[width=6cm,height=5cm]{rysunki/zajete_z2.png}
-  \caption{Omijanie zajętej ścieżki w przypadku wolnej osi $-x$ oraz $-y$}
+  \caption{Omijanie zajętej ścieżki w przypadku wolnej osi $-x$ oraz $-y$.}
   \label{fig:nakladanie}
 \end{figure} 
 
@@ -554,9 +554,9 @@ Reguły $S$ wyglądają następująco.
   \item Gracz $Z$ w swojej kolejce może odmówić ruchu lub przesunąć wzdłuż krawędzi swój żeton na wolny wierzchołek sąsiedni z wierzchołkiem aktualnie zajmowanym.
 \end{enumerate}
 
-Problem ma praktyczne zastosowanie na przykład w planowaniu ruchu robotów, kiedy ważnym jest, aby nie następowały kolizje lub poważniejsze zderzenia.
+Problem ma praktyczne zastosowanie na przykład w planowaniu ruchu robotów, kiedy ważne jest, aby nie następowały kolizje lub poważniejsze zderzenia.
 
-Zagadnienie pościgu i ucieczki w kracie (definicja w podrozdziale \ref{sugiharu}) opiera się na przeszukiwaniu jej w taki sposób, aby po wykonaniu $n$ kroków policjant zauważył złodzieja (tzn. znajdował się w tym samym wierszu lub w tej samej kolumnie) lub, w trudniejszym wariancie, znajdował się w tym samym wierzchołku co złodziej. Taką sytuację uznajemy za zwycięstwo goniącego, w przeciwnym wypadku zwycięża złodziej. Obaj uczestnicy poruszają się tylko po wierszach i kolumnach siatki z ograniczoną prędkością.
+Zagadnienie pościgu i ucieczki w kracie (definicja w podrozdziale \ref{sugiharu}) opiera się na przeszukiwaniu jej w taki sposób, aby po wykonaniu $n$ kroków policjant zauważył złodzieja (tzn. znajdował się w tym samym wierszu lub w tej samej kolumnie) lub, w trudniejszym wariancie, znajdował się w tym samym wierzchołku, co złodziej. Taką sytuację uznajemy za zwycięstwo goniącego, w przeciwnym wypadku zwycięża złodziej. Obaj uczestnicy poruszają się tylko po wierszach i kolumnach siatki z ograniczoną prędkością.
 
 Najprostszym przykładem gry w postaci ogólnej, w której zawsze zwycięża policjant, jest drzewo oraz współczynnik $k = 1$. W takim przypadku policjant w każdym kolejnym ruchu zbliża się do drugiego gracza, który w żadnym momencie nie jest w stanie go minąć, co zawsze prowadzi do zwycięstwa goniącego.
 
@@ -618,7 +618,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
     \label{fig:miejsceucieczki}
 	\end{figure} 
 
-	\indent W czasie, kiedy policjant przemieszcza się kolumną $k$, złodziej może zbliżać się do niej wierszem $j$. Policjant dotrze do wierzchołka $(j,k)$ po czasie $\frac{j}{n+1}$, a więc do tego momentu złodziej musi znajdować się powyżej (lub poniżej) wiersza $j$. Wynika z tego, że w momencie, kiedy gracz $A$ kończy pierwszy ruch, gracz $Z$ znajduje się w odległości $\frac{1-j}{n+1} - \epsilon$ pomiędzy wierzchołkiem $(j,k + 1)$ a wierzchołkiem $(j,k)$. Obrazuje to rysunek \ref{fig:pierwszy krok}.
+	\indent W czasie, kiedy policjant przemieszcza się kolumną $k$, złodziej może zbliżać się do niej wierszem $j$. Policjant dotrze do wierzchołka $(j,k)$ po czasie $\frac{j}{n+1}$, a więc do tego momentu złodziej musi znajdować się powyżej (lub poniżej) wiersza $j$. Wynika z tego, że w momencie, kiedy gracz $A$ kończy pierwszy ruch, gracz $Z$ znajduje się w odległości $\frac{1-j}{n+1}-\epsilon$ pomiędzy wierzchołkiem $(j,k + 1)$ a wierzchołkiem $(j,k)$. Obrazuje to rysunek \ref{fig:pierwszy krok}.
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=7cm]{rysunki/poscig_1.png}
@@ -626,7 +626,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \label{fig:pierwszy krok}
 	\end{figure}
 	\\\indent Gracz $A$ ponownie przekroczy wiersz $j$ w drugim kroku algorytmu po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu gracz $Z$ musi przejść cały wiersz i znaleźć się w kolumnie $k$. Żeby tego dokonać, musi przemieścić się o $\frac{j}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $j < \frac{n}{2}$.
-	\\\indent Pomiędzy momentem, kiedy policjant przekracza wiersz $j$ w kroku drugim, a przejściem do wierzchołka $(0,k)$, mija $\frac{j}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_k$. Złodziej startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $j$ nie ma wystarczająco dużo czasu, aby przesunąć się do wiersza $j - 1$ lub $j + 1$, ponieważ nie może rozpocząć ruchu dopóki pierwszy gracz nie przekroczy wiersza $j$. Więc w momencie, kiedy ścigający kończy ruch nr 2, gracz $Z$ musi znajdować się w odległości nie większej niż $\frac{j}{n+1} - \gamma$ od $(k,j)$. 
+	\\\indent Pomiędzy momentem, kiedy policjant przekracza wiersz $j$ w kroku drugim, a przejściem do wierzchołka $(0,k)$, mija $\frac{j}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_k$. Złodziej, startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $j$, nie ma wystarczająco dużo czasu, aby przesunąć się do wiersza $j-1$ lub $j + 1$, ponieważ nie może rozpocząć ruchu, dopóki pierwszy gracz nie przekroczy wiersza $j$. Więc w momencie, kiedy ścigający kończy ruch nr 2, gracz $Z$ musi znajdować się w odległości nie większej niż $\frac{j}{n+1}-\gamma$ od $(k,j)$. 
 
 	Widać to na poniższym rysunku. 
 	\begin{figure}[ht!]
@@ -637,7 +637,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	  \label{fig:drugi krok}
 	\end{figure}
 
-	\indent Gracz $A$ osiąga $(j,k)$ w kroku trzecim po upływie kolejnych $\frac{j}{n+1}$ jednostek. W tym samym czasie gracz $Z$ nie jest w stanie osiągnąć kolumny $k - 1$ ani wrócić do $k + 1$, a więc zostaje zauważony.
+	\indent Gracz $A$ osiąga $(j,k)$ w kroku trzecim po upływie kolejnych $\frac{j}{n+1}$ jednostek. W tym samym czasie gracz $Z$ nie jest w stanie osiągnąć kolumny $k-1$ ani wrócić do $k + 1$, a więc zostaje zauważony.
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=7cm]{rysunki/poscig_4.png}
@@ -654,11 +654,11 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 Avis i Toussaint \cite{avis} korzystając z metody przedstawionej przez Fiska \cite{fisk}, którą opisałem w rozdziale \ref{sec:klasyczny}, uzyskali algorytm, który w czasie $O(n \log n)$ znajduje zbiór strażników o mocy co najwyżej $\floor{\frac{n}{3}}$ w dowolnym wielokącie prostym. Opisany w dalszej części rozdziału problem dla wielokątów z dziurami wymaga co najwyżej $\floor{\frac{n+2h}{3}}$ = $\ceil{\frac{t}{3}}$ strażników.
 
 W rozdziale \ref{sec:strzezenie odcinkow} opisałem zagadnienie strzeżenia zbioru odcinków rozłącznych.
-Aby strzec dowolny zbiór $n$ rozłącznych odcinków prostych, zawsze wystarcza $\ceil{\frac{n}{2}}$ a czasami potrzeba $\floor{\frac{2n-3}{5}}$ strażników. W dalszej części rozdziału omówiłem inny wariant strzeżenia zbioru -- oświetlanie. Aby oświetlić dowolny zbiór odcinków potrzebujemy nie więcej niż $\ceil{\frac{2n}{3}} - 3$ źródeł światła. Ograniczenie dolne jest wciąż problemem otwartym. Na koniec zająłem  się problemem znajdowania zbioru ukrytego, który dla dowolnej rodziny $n$ rozłącznych odcinków posiada moc co najmniej $\sqrt{n}$.
+Aby strzec dowolny zbiór $n$ rozłącznych odcinków prostych, zawsze wystarcza $\ceil{\frac{n}{2}}$, a czasami potrzeba $\floor{\frac{2n-3}{5}}$ strażników. W dalszej części rozdziału omówiłem inny wariant strzeżenia zbioru -- oświetlanie. Aby oświetlić dowolny zbiór odcinków potrzebujemy nie więcej niż $\ceil{\frac{2n}{3}}-3$ źródeł światła. Ograniczenie dolne jest wciąż problemem otwartym. Na koniec zająłem  się problemem znajdowania zbioru ukrytego, który dla dowolnej rodziny $n$ rozłącznych odcinków posiada moc co najmniej $\sqrt{n}$.
 
 W kolejnym rozdziale opisałem $K$-nadajniki, a dokładnie pokrycie płaszczyzny z przeszkodami oraz podział gilotynowy. Aby pokryć płaszczyznę z $n$ rozłącznymi odcinkami prostopadłymi zawsze wystarcza $\ceil{\frac{5n+6}{12}}$ $1$-nadajników, a $\ceil{\frac{n+1}{4}}$ jest czasami koniecznych. Natomiast dowolny podział gilotynowy można strzec przez co najwyżej $\floor{\frac{n+1}{2}} 1$-nadajników.
 
-Następnie omówiłem zagadnienie strażników na siatkach. Aby strzec siatkę w dwóch wymiarach potrzebnych jest dokładnie $n - m$ strażników, gdzie $m$ to moc najliczniejszego skojarzenia grafu przecięć siatki. Znalezienie minimalnej liczby strażników koniecznej, aby strzec siatki w trzech wymiarach, jest zagadnieniem należącym do klasy problemów NP-trudnych.
+Następnie omówiłem zagadnienie strażników na siatkach. Aby strzec siatkę w dwóch wymiarach potrzebnych jest dokładnie $n-m$ strażników, gdzie $m$ to moc najliczniejszego skojarzenia grafu przecięć siatki. Znalezienie minimalnej liczby strażników koniecznej, aby strzec siatki w trzech wymiarach, jest zagadnieniem należącym do klasy problemów NP-trudnych.
 
 W ostatnim rozdziale zająłem się problemem pościgu i ucieczki w grafie. Przedstawiłem wariant klasyczny oraz zaproponowany przez Sugiharu i Suzuki. Postępując zgodnie z przedstawionym algorytmem policjant, poruszający się z prędkością $S_n = n + 1$, zawsze jest w stanie dostrzec złodzieja, którego prędkość nie przekracza $S_c \leq 1$. 
 
@@ -676,7 +676,7 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
 \end{Lemat}
 \begin{proof}
 	Dowód przez indukcję po $n$.
-	\\Jeżeli $n$ = 3, to wielokąt jest już podzielony $3 - 2 = 1$ trójkąt.
+	\\Jeżeli $n$ = 3, to wielokąt jest już podzielony $3-2 = 1$ trójkąt.
 	Załóżmy, że $n \ge 3$ i rozpatrzmy skrajny lewy wierzchołek $v$ oraz jego sąsiadów $u$ i $w$.
 	W pierwszym przypadku odcinek $\overline{uw}$ jest wewnętrzną przekątną, a w drugim część krawędzi wielokąta $P$ leży wewnątrz trójkąta $uvw$.
 
@@ -687,8 +687,8 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
     \caption{Oba przypadki podziału części wielokąta.}
   \end{figure} 
 	
-	\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o $n - 1$ wierzchołkach, na którym wykonujemy krok indukcyjny, otrzymując $1 + (n - 1) -2 = n - 2$ trójkątów.
-	\\\indent W przypadku drugim znajdujemy punkt $t$ w trójkącie $uvw$, który znajduje się najdalej od prostej przechodzącej przez odcinek $\overline{uw}$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ jest wewnętrzną przekątną, tzn. $\overline{vt} \subset P$, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n - m + 2$ wierzchołkach, gdzie $3 \le m \le n-1$, na których wykonujemy krok indukcyjny: z założenia indukcyjnego podział wielokąta składa się z $(m - 2) + ((n - m + 2) -2) = n - 2$ trójkątów.
+	\indent W pierwszym przypadku przekątna $\overline{u w}$ dzieli wielokąt na trójkąt oraz wielokąt prosty o $n-1$ wierzchołkach, na którym wykonujemy krok indukcyjny, otrzymując $1 + (n-1) -2 = n-2$ trójkątów.
+	\\\indent W przypadku drugim znajdujemy punkt $t$ w trójkącie $uvw$, który znajduje się najdalej od prostej przechodzącej przez odcinek $\overline{uw}$, a następnie łączymy go z punktem $v$. Odcinek $\overline{v t}$ jest wewnętrzną przekątną, tzn. $\overline{vt} \subset P$, która dzieli wielokąt na dwa proste wielokąty o $m$ oraz $n-m + 2$ wierzchołkach, gdzie $3 \le m \le n-1$, na których wykonujemy krok indukcyjny: z założenia indukcyjnego podział wielokąta składa się z $(m-2) + ((n-m + 2) -2) = n-2$ trójkątów.
 \end{proof}
 
 \begin{thebibliography}{99}
@@ -697,67 +697,67 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
 \bibitem{aigner}
  M. \ Aigner i M. \ Fromme.
  \newblock{A game of cops and robbers.}
-\newblock{{\em Discrete Applied Mathematics} 8, str. 1 - 12 (1984).}
+\newblock{{\em Discrete Applied Mathematics} 8, str. 1-12 (1984).}
 
  \bibitem{appel} 
  K. \ Appel i W. \ Haken.
  \newblock{Every planar map is four colorable.}
- \newblock{{\em Illinois Journal of Mathematics} 21(3), str. 429 - 490 (1977).} 
+ \newblock{{\em Illinois Journal of Mathematics} 21(3), str. 429-490 (1977).} 
 
  \bibitem{avis} 
  D. \ Avis i G. \ Toussaint.
  \newblock{An efficient algorithm for decomposing a polygon into star-shaped polygons.}
- \newblock{{\em Pattern Recognition} 13(6), str. 395 - 398 (1981).}
+ \newblock{{\em Pattern Recognition} 13(6), str. 395-398 (1981).}
 
  \bibitem{mobileguards} 
  D. \ Avis i G. \ Toussaint.
  \newblock{An optimal algorithm for determining the visibility of a polygon from an edge.}
- \newblock{{\em IEEE Trans. Comput. } C-30, str. 910–914 (1981).}
+ \newblock{{\em IEEE Transactions on Computers} 30, str. 910-914 (1981).}
 
  \bibitem{knadajniki} 
  B. \ Ballinger, N. \ Benbernou, P. \ Bose, M. \ Damian, E. \ Demaine, V. \ Dujmovi\`c, R. \ Flatland, F. \ Hurtado, J. \ Iacono, A. \ Lubiw, P. \ Morin, V. \ Sacristán, D. \ Souvaine i R. \ Uehara. 
- \newblock{Coverage with $k$-transmittes in the presence of obstacles.}
- \newblock{COCOA'10 Proceedings of the 4th international conference on Combinatorial optimization and applications - Volume Part II (2010).}
+ \newblock{Coverage with $k$-transmitters in the presence of obstacles.}
+ \newblock{{\em Journal of Combinatorial Optimization} 25(2), str. 208-233 (2013) }
  
  \bibitem{randompursuit}
-  B. \ Bollob\'as, G. \ Kun i I. \ Leader
-  \newblock{Cops and robbers in a random graph}
-  \newblock{{\em Journal of Combinatorial Theory} 103(2), str. 226 - 236 (2013)}
+  B. \ Bollob\'as, G. \ Kun i I. \ Leader.
+  \newblock{Cops and robbers in a random graph.}
+  \newblock{{\em Journal of Combinatorial Theory} 103(2), str. 226-236 (2013)}
 
  \bibitem{borodin} 
- O.V. \ Borodin.
+ O. V. \ Borodin.
  \newblock{Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs.}
- \newblock{{\em Metody Diskretnogo Analiza} 41,  str. 12 - 26  (1984).}
+ \newblock{{\em Metody Diskretnogo Analiza} 41,  str. 12-26  (1984).}
 
  \bibitem{chvatal} 
   V. \ Chv\'atal. 
   \newblock{A combinatorial theorem in plane geometry.}
-  \newblock{{\em Journal of Combinatorial Theory} 18, str. 39 - 41 (1975).}
+  \newblock{{\em Journal of Combinatorial Theory} 18, str. 39-41 (1975).}
 
  \bibitem{euler} 
  R. \ Courant i H. \ Robbins.
  \newblock{What is Mathematics?: An Elementary Approach to Ideas and Methods.}
- \newblock{Oxford University Press, str. 239 - 240 (1978).}
+ \newblock{Oxford University Press, str. 239-240 (1978).}
 
  \bibitem{czyzowicz} 
- J. \ Czyzowicz, E. \ Rivera-Campo N. \ Santoro, J. \ Urrutia i J. \ Zaks. 
+ J. \ Czyzowicz, E. \ Rivera-Campo, N. \ Santoro, J. \ Urrutia i J. \ Zaks. 
  \newblock{Guarding rectangular art galleries.} 
- \newblock{{\em Discrete Applied Mathematics} 50(2), str. 149 – 157 (1994).}
+ \newblock{{\em Discrete Applied Mathematics} 50(2), str. 149-157 (1994).}
 
  \bibitem{poscig} 
  R. \ Dawes. 
- \newblock{Some pursuit - evasion problems on grid.}
- \newblock{{\em Information Processing Letters} 58(1), str. 5 - 9 (1996)}
+ \newblock{Some pursuit--evasion problems on grid.}
+ \newblock{{\em Information Processing Letters} 58(1), str. 5-9 (1996).}
 
  \bibitem{erdosszekeres}  
  P. \ Erdös i G. \ Szekeres.
  \newblock{A combinatorial problem in geometry.}
- \newblock{{\em Compositio Mathematica 2.} str. 463 - 470 (1935)}
+ \newblock{{\em Compositio Mathematica 2,} str. 463-470 (1935)}
 
  \bibitem{even} 
  S. \ Even.
  \newblock{Graph Algorithms.}
- \newblock{Computer Science Press, Potomac, MD. (1979).}
+ \newblock{Computer Science Press, Potomac, MD (1979).}
 
  \bibitem{fabilamonroy} 
  R. \ Fabila-Monroy, A. R. \ Vargas i J. \ Urrutia.
@@ -772,17 +772,17 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \bibitem{garey} 
  M. \ Garey i D. \ Johnson.
  \newblock{Computers and Intractability: A Guide to the Theory of NP-Completeness.}
- \newblock{W.H. Freeman (1979).}
+ \newblock{W. H. Freeman (1979).}
 
  \bibitem{sciany}  
  F. \ Hurtado, O. \ Serra i J. \ Urrutia. 
  \newblock{Hiding points in arrangements of segments.}
- \newblock{{\em Discrete Mathematics} 162, str. 187 - 197 (1996).}
+ \newblock{{\em Discrete Mathematics} 162, str. 187-197 (1996).}
 
  \bibitem{guarding walls} 
   A. \ Laurentini.
   \newblock{Guarding the walls of an art gallery.} 
-  \newblock{The Visual Computer (1999).}
+  \newblock{{\em The Visual Computer} 15(6), str. 265-278 (1999).}
 
  \bibitem{nishizeki} 
  T. \ Nishizeki.
@@ -792,21 +792,22 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \bibitem{ntafos} 
  S. \ Ntafos. 
  \newblock{On gallery watchmen in grids.}
- \newblock{{\em Information Processing Letters} 23(3), str. 99 – 102 (1986).}
+ \newblock{{\em Information Processing Letters} 23(3), str. 99-102 (1986).}
  
 \bibitem{periscope}
-S. \ Ntafos i L. Gewali
+S. \ Ntafos i L. Gewali.
 \newblock{Covering grids and orthogonal polygons with periscope guards.}
-\newblock{{\em Computational geometry} 2(6), str. 309 - 334 (1993).}
+\newblock{{\em Computational geometry} 2(6), str. 309-334 (1993).}
 
  \bibitem{orourke}
  J. \ O'Rourke.
- \newblock{Art gallery theorems and algorithms (1987).}
+ \newblock{Art Gallery Theorems and Algorithms.}
+ \newblock{Oxford University Press (1987).}
 
  \bibitem{sugiharu} 
  K. \ Sugihara i I. \ Suzuki.
  \newblock{On a pursuit-evasion problem related to motion coordination of mobile robots.}
- \newblock{Proceedings of the Twenty-First Annual Hawaii International Conference (1988).}
+ \newblock{Proceedings of the Twenty-First Annual Hawaii International Conference On System Sciences, str. 218-226 (1988).}
 
  \bibitem{topp} 
  J. \ Topp. 
@@ -816,16 +817,16 @@ S. \ Ntafos i L. Gewali
  \bibitem{tutte} 
  W. \ Tutte. 
  \newblock{The factorization of linear graphs.} 
- \newblock{{\em Journal of the London Mathematical Society} 22, str. 107 - 111 (1947).}
+ \newblock{{\em Journal of the London Mathematical Society} 22, str. 107-111 (1947).}
 
  \bibitem{illumination} 
- J. \ Urrutia i J. Sack. 
+ J. \ Urrutia
+ \newblock{Art gallery and illumination problems.}
  \newblock{Handbook of computational geometry.}
- \newblock{North-Holland, str. 973 - 1027 (2000).}
+ \newblock{Elsevier Science, str. 973-1027 (2000).}
 
 \end{thebibliography}
 
-% spis rysunków
 \listoffigures
 
 \oswiadczenie
