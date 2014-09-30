@@ -1,3 +1,4 @@
+%!TEX program = xelatex
 \documentclass{xmgr}
 \usepackage{amsrefs}
 \usepackage{mathtools}
@@ -7,6 +8,12 @@
 \usepackage{todonotes}
 \usepackage{placeins}
 \usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+     colorlinks   = true,
+     citecolor    = black,
+     linkcolor    = black
+}
 
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
@@ -16,14 +23,13 @@
 \theoremstyle{definition}
 \newtheorem{Definicja}{Definicja} 
 
-\wersja   {wersja wstępna [\ymdtoday]}
-
 \author   {Jakub Ciechowski}
 \nralbumu {186471}
 \email    {jakubciechowski@gmail.com}
 
-\title    {Problem galerii sztuki \newline dla odcinków na płaszczyźnie}
-\date     {\ymdtoday}
+\title    {\hspace{0.8cm} Problem galerii sztuki \newline dla odcinków na płaszczyźnie}
+
+\date     {2014}
 \miejsce  {Gdańsk}
 
 \opiekun  {dr hab. Paweł Żyliński}
@@ -31,7 +37,7 @@
 \begin{document}
 
 \begin{abstract}
- W pierwszej części przedstawiam klasyczny problem galerii sztuki wraz z dowodem na oszacowanie liczby strażników potrzebnych do strzeżenia wielokąta prostego o $n$ wierzchołkach oraz wielokąta o $h$ dziurach. W kolejnym rozdziale prezentuję dowód na ograniczenie górne oraz dolne dla strzeżenia oraz oświetlenia $n$ odcinków prostych na płaszczyźnie. Następnie przedstawiam problem zbioru ukrytego w zbiorze rozłącznych odcinków. Kolejnym omówionym zagadnieniem są $k$-nadajniki, dla których mając liczbę naturalną $k > 0$ oraz dany obszar przedstawiam dowód dla wystarczającej oraz koniecznej liczby $1$-nadajników. W dalszej części rozdziału omawiam problem podziału gilotynowego wielokąta wraz z ograniczeniem górnym. Następnym zagadnieniem są siatki w dwóch oraz trzech wymiarach wraz z dowodem na minimalną liczbę strażników w siatkach 2D oraz że problem rozmieszczenia strażników w siatkach 3D należy do klasy problemów NP-zupełnych. Na koniec zajmuję się zagadnieniem problemu pościgu i ucieczki w kracie $n \times n$, w szczególności omawiam algorytm Dawesa.
+ W pierwszej części przedstawiam klasyczny problem galerii sztuki wraz z dowodem na oszacowanie liczby strażników potrzebnych do strzeżenia wielokąta prostego o $n$ wierzchołkach oraz wielokąta o $h$ dziurach. W kolejnym rozdziale prezentuję dowód na ograniczenie górne oraz dolne dla strzeżenia oraz oświetlenia $n$ odcinków prostych na płaszczyźnie. Następnie przedstawiam problem zbioru ukrytego w zbiorze rozłącznych odcinków. Kolejnym omówionym zagadnieniem są $k$-nadajniki, dla których mając liczbę naturalną $k$ oraz dany obszar przedstawiam dowód dla wystarczającej oraz koniecznej liczby $1$-nadajników. W dalszej części rozdziału omawiam problem podziału gilotynowego wielokąta wraz z ograniczeniem górnym. Następnym zagadnieniem są siatki w dwóch oraz trzech wymiarach wraz z dowodem na minimalną liczbę strażników w siatkach 2D oraz że problem rozmieszczenia strażników w siatkach 3D należy do klasy problemów NP-zupełnych. Na koniec zajmuję się zagadnieniem problemu pościgu i ucieczki w kracie $n \times n$, w szczególności omawiam algorytm Dawesa.
 \end{abstract}
 \keywords{problem galerii sztuki, strzeżenie odcinków, problem iluminacji, $k$-nadajniki, strażnicy w siatkach, pościg i ucieczka w grafie}
 
@@ -90,6 +96,11 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
     \caption{Graf dwudzielny o maksymalnym skojarzeniu. Skojarzenie oznaczone jest linią czerwoną.}
 \end{figure} 
 
+\begin{Definicja}{Nadgraf}
+
+  Graf $H = (V(H), E(H))$ jest \emph{nadgrafem} grafu $G = (V(G), E(G))$ wtedy i tylko wtedy, gdy $V(G) \subseteq V(H)$ i $E(G) \subseteq E(H)$. Nadgraf $H$ jest nadgrafem \emph{właściwym}, jeśli $H \neq G$.
+\end{Definicja}
+
 \begin{Definicja}{Spójność grafu}
   
   Graf $G = (V,E)$ jest \emph{niespójny} wtedy i tylko wtedy, gdy istnieją niepuste i rozłączne podzbiory $V_1, V_2 \subseteq V$ takie, że $V = V_1 \cup V_2$ i każda z krawędzi grafu $G$ łączy wierzchołki należące równocześnie do $V_1$ lub równocześnie do $V_2$. Graf $G = (V,E)$ jest \emph{spójny} wtedy i tylko wtedy, jeśli nie jest niespójny.
@@ -98,11 +109,6 @@ W tym rozdziale znajdują się definicje podstawowych pojęć wymaganych w dalsz
 \begin{Definicja}{Składowa spójności}
 
   Spójny podgraf grafu $G = (V,E)$ jest jego \emph{składową} spójności wtedy i tylko wtedy, gdy każdy jego nadgraf właściwy będący podgrafem $G$ jest grafem niespójnym.
-\end{Definicja}
-
-\begin{Definicja}{Nadgraf}
-
-  Graf $H = (V(H), E(H))$ jest \emph{nadgrafem} grafu $G = (V(G), E(G))$ wtedy i tylko wtedy, gdy $V(G) \subseteq V(H)$ i $E(G) \subseteq E(H)$. Nadgraf $H$ jest nadgrafem \emph{właściwym}, jeśli $H \neq G$.
 \end{Definicja}
 
 \begin{figure}[ht!]
@@ -275,7 +281,7 @@ Rozważmy dowolny podzbiór $H$ zbioru $F$ oraz niech $S$ będzie zbiorem wierzc
 \\\indent Zgodnie z lematem \ref{podgraf indukowany}, liczba składowych spójności grafu $G(F) \setminus S$ jest co najwyżej równa liczbie ścian podziału $\pi$, czyli $|H| + 1$. Można ponadto wykazać, że występują przynajmniej dwie sąsiednie ściany z $\pi$ takie, że odcinki, które je przecinają, należą do tej samej składowej spójności w grafie $G(F) \setminus S$. Stąd wniosek, że $o (G(F) \setminus S)$ wynosi co najwyżej $|H| = |S|$, co implikuje, że $G(F)$ ma skojarzenie doskonałe $M$. Na tej podstawie możemy stwierdzić, że wystarczy co najwyżej $\ceil{\frac{n}{2}}$ punktów, aby strzec $F$ -- po jednym na każdą krawędź skojarzenia $M$.
 \subsection{Ograniczenie dolne}
 \indent Aby uzyskać ograniczenie dolne, należy wskazać $n$-elementowy zbiór $F$, który wymaga $\floor{\frac{2n-3}{5}}$ strażników.
-\\\indent Niech $H$ będzie kubicznym grafem płaskim z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi są liniowo niezależne \cite{topp} (krawędzie są reprezentowane jako odcinki proste). Graf $H$ posiada $k$ wierzchołków i $\frac{3k}{2}$ krawędzi.
+\\\indent Niech $H$ będzie kubicznym grafem płaskim z trójkątną ścianą zewnętrzną, w której wszystkie wierzchołki, poza zewnętrznymi, spełniają założenie, że wektory wychodzące z wierzchołków wzdłuż krawędzi są liniowo niezależne \cite{topp} (każdy planarny graf prosty można przedstawić w taki sposób, że krawędzie grafu są reprezentowane jako odcinki proste \cite{fary}). Graf $H$ posiada $k$ wierzchołków i $\frac{3k}{2}$ krawędzi.
 \\\indent Zamieńmy krawędzie zbioru $H$ na odcinki oraz rozłączmy każdy wierzchołek w jego bliskim sąsiedztwie tak, że na każdy z $k-3$ wewnętrznych wierzchołków przypada trójkątny obszar, w którym umieszczamy mały odcinek tak, aby utworzyć zbiór $n = \frac{3k}{2}-3 + k -3$ odcinków (rysunek \ref{fig:przeksztalcenie h}). Żadne dwa z $k-3$ małych odcinków nie są widoczne z jednego punktu, więc $k-3$ punktów jest potrzebnych, aby strzec taki zbiór. Możemy łatwo sprawdzić, że $k-3$ punktów jest również wystarczające. Równość $k-3 = \floor{\frac{2n-3}{5}}$ kończy dowód twierdzenia \ref{straznicy strzezenie}.
 
 \begin{figure}[ht!]
@@ -292,7 +298,7 @@ Kolejną wariacją strzeżenia odcinków jest ich oświetlanie. Tym razem, aby s
 \end{Definicja} Należy zwrócić uwagę na fakt, że punkt na odcinku może zostać oświetlony przez promień padający na niego z dowolnej strony odcinka.
 
 \begin{Twierdzenie} \cite{illumination}
- Dowolny zbiór $F$ składający się z $n$ rozłącznych odcinków możemy oświetlić przy użyciu co najwyżej $\ceil{\frac{2n}{3}}-3$ źródeł światła.
+ Dowolny zbiór $F$ składający się z $n$ rozłącznych odcinków możemy oświetlić przy użyciu co najwyżej $\ceil{\frac{2n}{3}}$ źródeł światła.
 \end{Twierdzenie}
 
 \begin{proof}
@@ -317,7 +323,7 @@ Zauważmy, że elementy rodziny $H$ są styczne z przynajmniej trzema innymi ele
   \caption{Graf G oraz źródła światła.}
 \end{figure}
 Tak stworzony graf jest planarny oraz 2-spójny. Jako że każdy zbiór rodziny $H$ jest styczny z co najmniej trzema innymi zbiorami, stopień każdego wierzchołka grafu $G$ wynosi co najmniej trzy. Zgodnie z twierdzeniem Nishizeki \cite{nishizeki} dla grafu $G$ istnieje skojarzenie $M$ o mocy co najmniej $\ceil{\frac{(n+3)+4}{3}} = \ceil{\frac{n+1}{3}}  + 2$. Dla każdej pary elementów $S_i$ i $S_j$ skojarzonych w $M$ przez krawędź $G$ należy teraz umieścić źródło światła w punkcie ich styczności. W tak wyznaczonym punkcie światło będzie oświetlać odcinki $L_i$ oraz $L_j$ zawierające się, odpowiednio, w $S_i$ oraz $S_j$. Jako że skojarzenie $M$ ma przynajmniej $\ceil{\frac{n+1}{3}} + 2$ elementów, $2(\ceil{\frac{n+1}{3}} + 2)$ elementy ze zbioru $F$ pokryte zostaną przez $\ceil{\frac{n+1}{3}} + 2$ świateł. W każdym z pozostałych elementów, które nie miały skojarzenia, musimy dodatkowo rozmieścić po jednym źródle. W rezultacie uzyskujemy:
-$(\ceil{\frac{n+1}{3}} + 2) + ((n + 3)-2\ceil{\frac{n+1}{3}}) = n + 5-\ceil{\frac{n+1}{3}} \le \ceil{\frac{2n}{3}}-3$.
+$(\ceil{\frac{n+1}{3}} + 2) + (n + 3-2(\ceil{\frac{n+1}{3}} + 2)) = n + 1-\ceil{\frac{n+1}{3}} \le \ceil{\frac{2n}{3}}$.
 \end{proof}
 
 \subsection{Ograniczenie dolne}
@@ -336,7 +342,7 @@ Dla tak zdefiniowanego problemu, korzystając z twierdzenia Erd{\H o}sa i Szeker
   Dowolna rodzina $n$ rozłącznych odcinków posiada zbiór punktów ukrytych o mocy co najmniej $\sqrt{n}$.
 \end{Twierdzenie}
 
-Rozpatrzmy zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś OX tworzy rozłączny zbiór. Przez $\alpha_i$ oznaczmy nachylenie odcinka $L_i, \linebreak i = 1,\ldots,n$, w stosunku do osi OX.
+Rozpatrzmy najpierw zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś OX tworzy rozłączny zbiór. Przez $\alpha_i$ oznaczmy nachylenie odcinka $L_i, \linebreak i = 1,\ldots,n$, w stosunku do osi OX.
 \begin{Lemat}\label{zbior ukryty} \cite{illumination}
   Jeżeli $\alpha_1 < \alpha_2 < \ldots < \alpha_n$, to $F$ posiada ukryty zbiór $\mbox{rozmiaru $n$}$.
 \end{Lemat}
@@ -350,12 +356,12 @@ Rozpatrzmy zbiór $F = \{L_1,\ldots,L_n\}$ odcinków takich, że ich rzut na oś
    \caption{Zbiór pięciu odcinków o rosnącym nachyleniu, który posiada zbiór ukryty o rozmiarze równym 5.}
    \label{fig:5 zbior ukryty}
 \end{figure}
-\indent Przejdźmy teraz do właściwego dowodu twierdzenia \ref{moc zbioru ukrytego tw}. Rozpatrzmy rodzinę $n$ rozłącznych odcinków. Wybierzmy punkt $p_i$ na każdym z odcinków $L_i$ w taki sposób, aby odcięte $x_1,\ldots, x_n$ punktów dla $p_1,\ldots,p_n$ były różne. Możemy założyć bez straty ogólności, że $x_1$ $<$ $x_2$ $<$ \ldots $<$ $x_n$. Następnie dla każdego $L_i$ wybierzmy odcinek $L'_i$ zawierający się w nim, ze środkiem w punkcie $p_i$, w taki sposób, że rzuty $L'_i,\ldots,L'_n$ na oś OX, tworzą zbiór rozłączny. Rozważmy teraz ciąg nachyleń $L'_1$, \ldots, $L'_n$. Taki ciąg zawiera podciąg rosnący lub malejący o rozmiarze co najmniej $\sqrt{n}$ \cite{illumination}, co biorąc pod uwagę lemat \ref{zbior ukryty}, kończy dowód twierdzenia \ref{moc zbioru ukrytego tw}.
+\indent Przejdźmy teraz do właściwego dowodu twierdzenia \ref{moc zbioru ukrytego tw}. Rozpatrzmy dowolną rodzinę $n$ rozłącznych odcinków. Wybierzmy punkt $p_i$ na każdym z odcinków $L_i$ w taki sposób, aby odcięte $x_1,\ldots, x_n$ punktów dla $p_1,\ldots,p_n$ były różne. Możemy założyć bez straty ogólności, że $x_1$ $<$ $x_2$ $<$ \ldots $<$ $x_n$. Następnie dla każdego $L_i$ wybierzmy odcinek $L'_i$ zawierający się w nim, ze środkiem w punkcie $p_i$, w taki sposób, że rzuty $L'_i,\ldots,L'_n$ na oś OX, tworzą zbiór rozłączny. Rozważmy teraz ciąg nachyleń $L'_1$, \ldots, $L'_n$. Taki ciąg zawiera podciąg rosnący lub malejący o rozmiarze co najmniej $\sqrt{n}$ \cite{illumination}, co biorąc pod uwagę lemat \ref{zbior ukryty}, kończy dowód twierdzenia \ref{moc zbioru ukrytego tw}.
 
 \chapter{$K$-nadajniki}
 
 \section{Pokrycie płaszczyzny z przeszkodami}\label{sec:knadajniki}
-	Ilość sieci Wi-Fi cały czas rośnie, zarówno w naszych domach, jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer \cite{fabilamonroy} zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z oryginalnym problemem galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy \emph{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco: \emph{Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną $k > 0$ oraz dany obszar, jak wiele nadajników jest czasami potrzebnych, a zawsze wystarczających, aby pokryć cały obszar?}  
+	Ilość sieci Wi-Fi cały czas rośnie, zarówno w naszych domach, jak i w miejscach ogólnodostępnych. Fabila-Monroy oraz Aichholzer \cite{fabilamonroy} zainspirowani postępującą technologią przedstawili nowy problem, ściśle związany z oryginalnym problemem galerii sztuki. Opracowany przez nich wariant, nazywany ,,oświetleniem modemowym'', definiuje strażnika jako bezprzewodowy $k-$\emph{nadajnik} o nieskończonym zasięgu oraz możliwości przebicia $k$ ,,ścian''. Ściany są zazwyczaj reprezentowane przez odcinki na płaszczyźnie. Problem zdefiniowali następująco: \emph{Mając dany zbiór przeszkód na płaszczyźnie, liczbę naturalną $k$ oraz dany obszar, ile $k-$nadajników jest czasami potrzebnych, a zawsze wystarczających, aby pokryć cały obszar?}  
 \\\indent Warto zauważyć, że zagadnienie dla 0-nadajników to klasyczny problem galerii sztuki (strażnicy, którzy nie widzą przez ściany).
 \\\indent W wypadku, gdy wymagamy strzeżenia całej płaszczyzny, zakładamy, że nadajnik możemy umieścić wewnątrz ściany, co pozwala nadawać po jej obu stronach.
 \subsection{Odcinki prostopadłe}
@@ -408,7 +414,7 @@ Tak powstały graf jest 1-planarny oraz 6-kolorowalny \cite{borodin}.
   Jeżeli $S$ jest zbiorem przedłużonych odcinków prostopadłych, to $G(S)$ jest $1$-planarny.
 \end{Lemat}
 
-\indent Aby uzyskać ograniczenie górne, kolorujemy graf $G(S)$ sześcioma kolorami. Najliczniejsza klasa kolorów ma więc nie mniej niż $\frac{n}{6}$ elementów oraz tworzy zbiór niezależny $I$. Pozostały zbiór $S \setminus I$ posiada $\frac{5n}{6}$ odcinków, a więc zgodnie z rezultatem Czyzowicza wystarczy co najwyżej $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników, rozmieszczonych na odcinkach zbioru $S \setminus I$. Następnie, zgodnie z lematem \ref{0-1-nadajniki}, zwiększamy moc rozmieszczonych nadajników o jeden, co pozwala strzec całą płaszczyznę ze zbiorem przeszkód $S$.
+\indent Aby uzyskać ograniczenie górne, kolorujemy graf $G(S)$ sześcioma kolorami. Najliczniejsza klasa kolorów ma więc nie mniej niż $\frac{n}{6}$ elementów oraz tworzy zbiór niezależny $I$. Pozostały zbiór $S \setminus I$ posiada co najwyżej $\frac{5n}{6}$ odcinków, a więc zgodnie z rezultatem Czyzowicza wystarczy co najwyżej $\ceil{\frac{\frac{5n}{6} + 1}{2}}$ = $\ceil{\frac{5n+6}{12}}$ 0-nadajników, rozmieszczonych na odcinkach zbioru $S \setminus I$. Następnie, zgodnie z lematem \ref{0-1-nadajniki}, zwiększamy moc rozmieszczonych nadajników o jeden, co pozwala strzec całą płaszczyznę ze zbiorem przeszkód $S$.
 \begin{figure}[ht!]
   \centering
   \includegraphics[width=6.5cm]{rysunki/pokrycie_nadajnikami.png}
@@ -417,7 +423,7 @@ Tak powstały graf jest 1-planarny oraz 6-kolorowalny \cite{borodin}.
 \end{figure} 
 
 \section{Podział gilotynowy}
-Podział gilotynowy $S$ płaszczyzny $\mathbb{R}^2$ otrzymujemy przez dodanie kolejno $s_1,\ldots,s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany, tworząc nowy podział $S_i$. Za ścianę $S_0$ przyjmujemy całą płaszczyznę. Zauważmy, że ściany podziału gilotynowego są wypukłe.
+Podział gilotynowy $S$ płaszczyzny $\mathbb{R}^2$ otrzymujemy przez dodanie kolejno $s_1,\ldots,s_n$ odcinków prostych w taki sposób, że każdy dodany odcinek $s_i$ dzieli dowolną ścianę podzbioru $S_{i-1}$ na dwie nowe ściany, tworząc nowy podział $S_i$. Bez straty ogólności możemy przyjąć, że żadne dwa odcinki nie mają wspólnego końca. Za ścianę $S_0$ przyjmujemy całą płaszczyznę. Zauważmy, że ściany podziału gilotynowego są wypukłe.
 
 \begin{Lemat}\label{sasiednie sciany strzega F} \cite{knadajniki}
   Niech $F$ będzie ścianą podziału gilotynowego $S$. Jeżeli każda inna ściana, która współdzieli krawędź ze ścianą $F$, posiada wewnątrz 1-nadajnik, to taki zbiór nadajników pokrywa całą ścianę $F$.
@@ -472,7 +478,7 @@ Strażnik będący w punkcie $x$ siatki $P$ \emph{widzi} punkt $y$ siatki $P$, j
  \end{figure} 
 
 \begin{Twierdzenie} \cite{ntafos}
-	Minimalna liczba strażników potrzebna, aby strzec siatki o $n$ odcinkach wynosi $n-m$, gdzie $m$ to moc najliczniejszego skojarzenia w grafie przecięć siatki, które można znaleźć w czasie $\theta(n^{2.5})$.
+	Minimalna liczba strażników potrzebna, aby strzec siatkę o $n$ odcinkach wynosi $n-m$, gdzie $m$ to moc najliczniejszego skojarzenia w grafie przecięć siatki, które można znaleźć w czasie $\theta(n^{2.5})$.
 \end{Twierdzenie}
 
 Ntafos zaproponował elegancki algorytm, aby znaleźć minimalną liczbę strażników potrzebną do strzeżenia siatki.
@@ -483,7 +489,7 @@ Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w ka
  \begin{figure}[ht!]
    \centering
    \includegraphics{rysunki/graf_skojarzen.png}
-   \caption{Graf przecięć siatki. Skojarzenie oznaczono linią ciągłą.}
+   \caption{Graf przecięć siatki z rysunku \ref{fig:siatka 2d}. Skojarzenie oznaczono linią ciągłą.}
    \label{fig:graf przeciec}
  \end{figure} 
 
@@ -498,19 +504,19 @@ Aby strzec całej siatki, przynajmniej jeden strażnik musi znajdować się w ka
 \end{Definicja}
 Naszym celem jest stworzenie trójwymiarowej siatki $P$, którą możemy pokryć co najwyżej $g(K)$ strażnikami wtedy i tylko wtedy, gdy istnieje pokrycie wierzchołkowe $G$ o mocy co najwyżej $K$.
 W tym celu etykietujemy wszystkie wierzchołki grafu $G = (V,E)$ kolejnymi liczbami $1,2,\ldots,n = |V|$. Następnie przypisujemy wierzchołki punktom siatki wzdłuż prostej poprowadzonej przez punkty $(0,0,0)$ i $(1,1,1)$ tak, aby każdy wierzchołek $i$ otrzymał punkt siatki $v_i = (3i, 3i, 3i)$. Krawędzie $G$ reprezentowane są przez odcinki łączące węzły siatki. Jako że każdy wierzchołek grafu $G$ jest stopnia co najwyżej trzy, każdej incydentnej krawędzi możemy przypisać jeden z kierunków $(x,y,z)$.
-\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami \linebreak $1,\ldots,i-1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź $\{i,j\}, i < j$. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla $i < j$, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$, a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jedna z trzech osi $+x$, $+y$ lub $+z$ rozpoczynająca się w $(3i, 3i, 3i)$ nie zawiera ścieżki dotychczas skonstruowanej siatki $P$. Załóżmy, że oś $+x$ jest wolna. W takim wypadku łączymy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
+\\\indent Załóżmy teraz, że wszystkie krawędzie incydentne z wierzchołkami \linebreak $1,\ldots,i-1$ grafu $G$ zostały przypisane do ścieżek siatki $P$ oraz rozpatrzmy krawędź $\{i,j\}, i < j$. Przyjmujemy, że ścieżka z $v_i$ do $v_j$, dla $i < j$, wychodzi z $v_i$ dodatnią osią $+x$, $+y$ lub $+z$, a wchodzi do $v_j$ ujemną osią $-x$, $-y$ lub $-z$. Skoro stopień wierzchołka $i$ wynosi co najwyżej trzy, jeden z trzech kierunków $x$, $y$ lub $z$ w $(3i, 3i, 3i)$ nie zawiera ścieżki dotychczas skonstruowanej siatki $P$. Załóżmy, że kierunek $x$ jest wolny. W takim wypadku łączymy $v_i = (3i, 3i, 3i)$ z $v_j = (3j, 3j, 3j)$ trzema odcinkami:
 \begin{itemize}
 	\item $(3i, 3i, 3i) \rightarrow (3j, 3i, 3i)$;
 	\item $(3j, 3i, 3i) \rightarrow (3j, 3j, 3i)$;
 	\item $(3j, 3j, 3i) \rightarrow (3j, 3j, 3j)$.
 \end{itemize}
-Oczywiście powyższe odcinki nie mogą przecinać się z żadnymi już istniejącymi ścieżkami. Przykład takiego połączenia widać na rysunku \ref{fig:nowe sciezki} w przypadku, gdy wolna jest oś $+x$, $+y$ lub $+z$.
+Oczywiście powyższe odcinki nie mogą przecinać się z żadnymi już istniejącymi ścieżkami. Przykład takiego połączenia widać na rysunku \ref{fig:nowe sciezki} w przypadku, gdy wolny jest kierunek $x$, $y$ lub $z$.
 \begin{figure}[ht!]
   \centering
   a)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_x.png}
   b)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_y.png}
   c)\includegraphics[width=4cm,height=5cm]{rysunki/wolne_z.png}
-  \caption{Nowo powstałe ścieżki w przypadku wolnych osi $+x$, $+y$ lub $+z$.}
+  \caption{Nowo powstałe ścieżki w przypadku wolnych kierunków $x$, $y$ lub $z$.}
   \label{fig:nowe sciezki}
 \end{figure} 
 \\\indent Zajmiemy się teraz przypadkiem, w którym fragment ścieżki pomiędzy węzłami $v_i$ i $v_j$ nakłada się ze ścieżką łącząca $v_k$ z $v_j$ wzdłuż osi $-z$, dla $k < i < j$. W takiej sytuacji przynajmniej jedna z osi $-x$ lub $-y$ musi być wolna. Jeżeli jest to oś $-x$, zmieniamy ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}(a), jeżeli $-y$, to wtedy musimy poprawić ścieżkę zgodnie z rysunkiem \ref{fig:nakladanie}(b). Analogicznych operacji dokonamy, jeżeli zajęta będzie oś $-x$ i $-y$.
@@ -628,7 +634,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 	\\\indent Gracz $A$ ponownie przekroczy wiersz $j$ w drugim kroku algorytmu po upływie $\frac{n-1}{n+1}$ czasu. Do tego momentu gracz $Z$ musi przejść cały wiersz i znaleźć się w kolumnie $k$. Żeby tego dokonać, musi przemieścić się o $\frac{j}{n+1}$ + $\delta$ w ciągu $\frac{n-1}{n+1}$ jednostek czasu. Daje nam to ograniczenie $j < \frac{n}{2}$.
 	\\\indent Pomiędzy momentem, kiedy policjant przekracza wiersz $j$ w kroku drugim, a przejściem do wierzchołka $(0,k)$, mija $\frac{j}{n+1}$ jednostki czasu. W sumie mijają dwie jednostki czasu od momentu $t_k$. Złodziej, startując w kolumnie $j + 1$ i poruszając się wzdłuż wiersza $j$, nie ma wystarczająco dużo czasu, aby przesunąć się do wiersza $j-1$ lub $j + 1$, ponieważ nie może rozpocząć ruchu, dopóki pierwszy gracz nie przekroczy wiersza $j$. Więc w momencie, kiedy ścigający kończy ruch nr 2, gracz $Z$ musi znajdować się w odległości nie większej niż $\frac{j}{n+1}-\gamma$ od $(k,j)$. 
 
-	Widać to na poniższym rysunku. 
+	Ilustruje to poniższy rysunek. 
 	\begin{figure}[ht!]
 	  \centering
 	  \includegraphics[width=5cm,height=7cm]{rysunki/poscig_2.png}
@@ -654,7 +660,7 @@ Podobnie jak zwykły problem gonitwy i ucieczki, również ta odmiana jest całk
 Avis i Toussaint \cite{avis} korzystając z metody przedstawionej przez Fiska \cite{fisk}, którą opisałem w rozdziale \ref{sec:klasyczny}, uzyskali algorytm, który w czasie $O(n \log n)$ znajduje zbiór strażników o mocy co najwyżej $\floor{\frac{n}{3}}$ w dowolnym wielokącie prostym. Opisany w dalszej części rozdziału problem dla wielokątów z dziurami wymaga co najwyżej $\floor{\frac{n+2h}{3}}$ = $\ceil{\frac{t}{3}}$ strażników.
 
 W rozdziale \ref{sec:strzezenie odcinkow} opisałem zagadnienie strzeżenia zbioru odcinków rozłącznych.
-Aby strzec dowolny zbiór $n$ rozłącznych odcinków prostych, zawsze wystarcza $\ceil{\frac{n}{2}}$, a czasami potrzeba $\floor{\frac{2n-3}{5}}$ strażników. W dalszej części rozdziału omówiłem inny wariant strzeżenia zbioru -- oświetlanie. Aby oświetlić dowolny zbiór odcinków potrzebujemy nie więcej niż $\ceil{\frac{2n}{3}}-3$ źródeł światła. Ograniczenie dolne jest wciąż problemem otwartym. Na koniec zająłem  się problemem znajdowania zbioru ukrytego, który dla dowolnej rodziny $n$ rozłącznych odcinków posiada moc co najmniej $\sqrt{n}$.
+Aby strzec dowolny zbiór $n$ rozłącznych odcinków prostych, zawsze wystarcza $\ceil{\frac{n}{2}}$, a czasami potrzeba $\floor{\frac{2n-3}{5}}$ strażników. W dalszej części rozdziału omówiłem inny wariant strzeżenia zbioru -- oświetlanie. Aby oświetlić dowolny zbiór odcinków potrzebujemy nie więcej niż $\ceil{\frac{2n}{3}}$ źródeł światła. Ograniczenie dolne jest wciąż problemem otwartym. Na koniec zająłem  się problemem znajdowania zbioru ukrytego, który dla dowolnej rodziny $n$ rozłącznych odcinków posiada moc co najmniej $\sqrt{n}$.
 
 W kolejnym rozdziale opisałem $K$-nadajniki, a dokładnie pokrycie płaszczyzny z przeszkodami oraz podział gilotynowy. Aby pokryć płaszczyznę z $n$ rozłącznymi odcinkami prostopadłymi zawsze wystarcza $\ceil{\frac{5n+6}{12}}$ $1$-nadajników, a $\ceil{\frac{n+1}{4}}$ jest czasami koniecznych. Natomiast dowolny podział gilotynowy można strzec przez co najwyżej $\floor{\frac{n+1}{2}} 1$-nadajników.
 
@@ -664,9 +670,9 @@ W ostatnim rozdziale zająłem się problemem pościgu i ucieczki w grafie. Prze
 
 W pracy nie omówiłem wszystkich zagadnień związanych z problemem galerii sztuki dla odcinków, m.in.:
 \begin{itemize}
- \item strażnicy mobilni \cite{mobileguards}
- \item strażnicy peryskopowi \cite{periscope}
- \item problem pościgu i ucieczki w grafach losowych \cite{randompursuit}
+ \item strażnicy mobilni \cite{mobileguards};
+ \item najkrótsza droga strażnika mobilnego \cite{watchmanroutes};
+ \item strażnicy peryskopowi \cite{periscope}.
 \end{itemize}
 
 \appendix
@@ -717,13 +723,8 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \bibitem{knadajniki} 
  B. \ Ballinger, N. \ Benbernou, P. \ Bose, M. \ Damian, E. \ Demaine, V. \ Dujmovi\`c, R. \ Flatland, F. \ Hurtado, J. \ Iacono, A. \ Lubiw, P. \ Morin, V. \ Sacristán, D. \ Souvaine i R. \ Uehara. 
  \newblock{Coverage with $k$-transmitters in the presence of obstacles.}
- \newblock{{\em Journal of Combinatorial Optimization} 25(2), str. 208-233 (2013) }
+ \newblock{{\em Journal of Combinatorial Optimization} 25(2), str. 208-233 (2013). }
  
- \bibitem{randompursuit}
-  B. \ Bollob\'as, G. \ Kun i I. \ Leader.
-  \newblock{Cops and robbers in a random graph.}
-  \newblock{{\em Journal of Combinatorial Theory} 103(2), str. 226-236 (2013)}
-
  \bibitem{borodin} 
  O. V. \ Borodin.
  \newblock{Solution of Ringel's problems on vertex-face coloring of plane graphs and coloring of 1-planar graphs.}
@@ -749,10 +750,15 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \newblock{Some pursuit--evasion problems on grid.}
  \newblock{{\em Information Processing Letters} 58(1), str. 5-9 (1996).}
 
+ \bibitem{watchmanroutes}
+ A. \ Dumitrescu, J. \ Mitchell i P. \ Żyliński
+ \newblock{Watchman routes for lines and line segments.}
+ \newblock{{\em Computational Geometry} 47(4), str. 527-539 (2014).}
+
  \bibitem{erdosszekeres}  
  P. \ Erdös i G. \ Szekeres.
  \newblock{A combinatorial problem in geometry.}
- \newblock{{\em Compositio Mathematica 2,} str. 463-470 (1935)}
+ \newblock{{\em Compositio Mathematica 2,} str. 463-470 (1935).}
 
  \bibitem{even} 
  S. \ Even.
@@ -764,6 +770,11 @@ Dowolny $n$-kąt prosty można zawsze podzielić na $n-2$ trójkątów.
  \newblock{On modem illumination problems.}
  \newblock{XIII Encuentros de Geometria Computacional (2009).}
 
+ \bibitem{fary}
+ I. \ F\'ary.
+ \newblock{On straight-line representation of planar graphs.}
+ \newblock{{\em Acta Scientiarum Mathematicarum} 11, str. 229–233 (1948).}
+ 
  \bibitem{fisk} 
  S. \ Fisk. 
  \newblock{A short proof of Chv\'atal's watchman theorem.} 
@@ -822,7 +833,7 @@ S. \ Ntafos i L. Gewali.
  \bibitem{illumination} 
  J. \ Urrutia
  \newblock{Art gallery and illumination problems.}
- \newblock{Handbook of computational geometry.}
+ \newblock{Handbook of Computational Geometry.}
  \newblock{Elsevier Science, str. 973-1027 (2000).}
 
 \end{thebibliography}
